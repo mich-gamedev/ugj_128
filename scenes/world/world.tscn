@@ -1,0 +1,314 @@
+[gd_scene format=3 uid="uid://btjyjxrp5b0h7"]
+
+[ext_resource type="Script" uid="uid://pei6riydbube" path="res://objects/hooks/hook.gd" id="1_sl2e5"]
+[ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="2_1fp7r"]
+
+[sub_resource type="Curve2D" id="Curve2D_4rhad"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 320, 0, 0, 0, 0, 0, 320, 180, 0, 0, 0, 0, 0, 180, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sl2e5"]
+radius = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1fp7r"]
+radius = 72.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6m72w"]
+radius = 48.0
+
+[node name="Node2D" type="Node2D" unique_id=1398138327]
+
+[node name="EdgeCurve" type="Path2D" parent="." unique_id=1729099955 groups=["edge_curve"]]
+unique_name_in_owner = true
+curve = SubResource("Curve2D_4rhad")
+
+[node name="Hook" type="Area2D" parent="." unique_id=1096294697 node_paths=PackedStringArray("sep_area", "coh_area", "align_area")]
+position = Vector2(94, 64)
+script = ExtResource("1_sl2e5")
+sep_distance = 40.0
+sep_ease = 2.0
+sep_force = 3.0
+sep_area = NodePath("SepArea")
+coh_distance = 72.0
+coh_ease = 0.5
+coh_force = 0.66
+coh_area = NodePath("CohArea")
+align_distance = 48.0
+align_ease = 0.5
+align_force = 0.33
+align_area = NodePath("AlignArea")
+edge_distance = 24.0
+edge_ease = 1.035265
+edge_force = 4.0
+turn_speed = 0.7853981633974483
+metadata/_custom_type_script = "uid://pei6riydbube"
+
+[node name="RingDraw" type="Node2D" parent="Hook" unique_id=620644312]
+script = ExtResource("2_1fp7r")
+width = 2.0
+radius = 4.0
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="SepArea" type="Area2D" parent="Hook" unique_id=681845067]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook/SepArea" unique_id=1386807377]
+shape = SubResource("CircleShape2D_sl2e5")
+
+[node name="CohArea" type="Area2D" parent="Hook" unique_id=2028735016]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook/CohArea" unique_id=1536635222]
+shape = SubResource("CircleShape2D_1fp7r")
+
+[node name="AlignArea" type="Area2D" parent="Hook" unique_id=1867868322]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook/AlignArea" unique_id=349625406]
+shape = SubResource("CircleShape2D_6m72w")
+
+[node name="Hook2" type="Area2D" parent="." unique_id=254271711 node_paths=PackedStringArray("sep_area", "coh_area", "align_area")]
+position = Vector2(165, 63)
+script = ExtResource("1_sl2e5")
+sep_distance = 40.0
+sep_ease = 2.0
+sep_force = 3.0
+sep_area = NodePath("SepArea")
+coh_distance = 72.0
+coh_ease = 0.5
+coh_force = 0.66
+coh_area = NodePath("CohArea")
+align_distance = 48.0
+align_ease = 0.5
+align_force = 0.33
+align_area = NodePath("AlignArea")
+edge_distance = 24.0
+edge_force = 4.0
+turn_speed = 0.7853981633974483
+metadata/_custom_type_script = "uid://pei6riydbube"
+
+[node name="RingDraw" type="Node2D" parent="Hook2" unique_id=838857852]
+script = ExtResource("2_1fp7r")
+width = 2.0
+radius = 4.0
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="SepArea" type="Area2D" parent="Hook2" unique_id=1438161026]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook2/SepArea" unique_id=1268249650]
+shape = SubResource("CircleShape2D_sl2e5")
+
+[node name="CohArea" type="Area2D" parent="Hook2" unique_id=52041529]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook2/CohArea" unique_id=1031418891]
+shape = SubResource("CircleShape2D_1fp7r")
+
+[node name="AlignArea" type="Area2D" parent="Hook2" unique_id=736102502]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook2/AlignArea" unique_id=926146744]
+shape = SubResource("CircleShape2D_6m72w")
+
+[node name="Hook3" type="Area2D" parent="." unique_id=1604388032 node_paths=PackedStringArray("sep_area", "coh_area", "align_area")]
+position = Vector2(241, 46)
+script = ExtResource("1_sl2e5")
+sep_distance = 40.0
+sep_ease = 2.0
+sep_force = 3.0
+sep_area = NodePath("SepArea")
+coh_distance = 72.0
+coh_ease = 0.5
+coh_force = 0.66
+coh_area = NodePath("CohArea")
+align_distance = 48.0
+align_ease = 0.5
+align_force = 0.33
+align_area = NodePath("AlignArea")
+edge_distance = 24.0
+edge_force = 4.0
+turn_speed = 0.7853981633974483
+metadata/_custom_type_script = "uid://pei6riydbube"
+
+[node name="RingDraw" type="Node2D" parent="Hook3" unique_id=1200116509]
+script = ExtResource("2_1fp7r")
+width = 2.0
+radius = 4.0
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="SepArea" type="Area2D" parent="Hook3" unique_id=1348757496]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook3/SepArea" unique_id=761493664]
+shape = SubResource("CircleShape2D_sl2e5")
+
+[node name="CohArea" type="Area2D" parent="Hook3" unique_id=746602082]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook3/CohArea" unique_id=1154243979]
+shape = SubResource("CircleShape2D_1fp7r")
+
+[node name="AlignArea" type="Area2D" parent="Hook3" unique_id=1578789460]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook3/AlignArea" unique_id=864953756]
+shape = SubResource("CircleShape2D_6m72w")
+
+[node name="Hook4" type="Area2D" parent="." unique_id=834876468 node_paths=PackedStringArray("sep_area", "coh_area", "align_area")]
+position = Vector2(243, 107)
+script = ExtResource("1_sl2e5")
+sep_distance = 40.0
+sep_ease = 2.0
+sep_force = 3.0
+sep_area = NodePath("SepArea")
+coh_distance = 72.0
+coh_ease = 0.5
+coh_force = 0.66
+coh_area = NodePath("CohArea")
+align_distance = 48.0
+align_ease = 0.5
+align_force = 0.33
+align_area = NodePath("AlignArea")
+edge_distance = 24.0
+edge_force = 4.0
+turn_speed = 0.7853981633974483
+metadata/_custom_type_script = "uid://pei6riydbube"
+
+[node name="RingDraw" type="Node2D" parent="Hook4" unique_id=1807492068]
+script = ExtResource("2_1fp7r")
+width = 2.0
+radius = 4.0
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="SepArea" type="Area2D" parent="Hook4" unique_id=1536568608]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook4/SepArea" unique_id=661585170]
+shape = SubResource("CircleShape2D_sl2e5")
+
+[node name="CohArea" type="Area2D" parent="Hook4" unique_id=430302699]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook4/CohArea" unique_id=1878296686]
+shape = SubResource("CircleShape2D_1fp7r")
+
+[node name="AlignArea" type="Area2D" parent="Hook4" unique_id=537981739]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook4/AlignArea" unique_id=984305445]
+shape = SubResource("CircleShape2D_6m72w")
+
+[node name="Hook5" type="Area2D" parent="." unique_id=801269903 node_paths=PackedStringArray("sep_area", "coh_area", "align_area")]
+position = Vector2(119, 129)
+script = ExtResource("1_sl2e5")
+sep_distance = 40.0
+sep_ease = 2.0
+sep_force = 3.0
+sep_area = NodePath("SepArea")
+coh_distance = 72.0
+coh_ease = 0.5
+coh_force = 0.66
+coh_area = NodePath("CohArea")
+align_distance = 48.0
+align_ease = 0.5
+align_force = 0.33
+align_area = NodePath("AlignArea")
+edge_distance = 24.0
+edge_force = 4.0
+turn_speed = 0.7853981633974483
+metadata/_custom_type_script = "uid://pei6riydbube"
+
+[node name="RingDraw" type="Node2D" parent="Hook5" unique_id=872083248]
+script = ExtResource("2_1fp7r")
+width = 2.0
+radius = 4.0
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="SepArea" type="Area2D" parent="Hook5" unique_id=1001505033]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook5/SepArea" unique_id=1275128824]
+shape = SubResource("CircleShape2D_sl2e5")
+
+[node name="CohArea" type="Area2D" parent="Hook5" unique_id=622758630]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook5/CohArea" unique_id=2624702]
+shape = SubResource("CircleShape2D_1fp7r")
+
+[node name="AlignArea" type="Area2D" parent="Hook5" unique_id=544916953]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook5/AlignArea" unique_id=934588773]
+shape = SubResource("CircleShape2D_6m72w")
+
+[node name="Hook6" type="Area2D" parent="." unique_id=1480531836 node_paths=PackedStringArray("sep_area", "coh_area", "align_area")]
+position = Vector2(186, 140)
+script = ExtResource("1_sl2e5")
+sep_distance = 40.0
+sep_ease = 2.0
+sep_force = 3.0
+sep_area = NodePath("SepArea")
+coh_distance = 72.0
+coh_ease = 0.5
+coh_force = 0.66
+coh_area = NodePath("CohArea")
+align_distance = 48.0
+align_ease = 0.5
+align_force = 0.33
+align_area = NodePath("AlignArea")
+edge_distance = 24.0
+edge_force = 4.0
+turn_speed = 0.7853981633974483
+metadata/_custom_type_script = "uid://pei6riydbube"
+
+[node name="RingDraw" type="Node2D" parent="Hook6" unique_id=966541739]
+script = ExtResource("2_1fp7r")
+width = 2.0
+radius = 4.0
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="SepArea" type="Area2D" parent="Hook6" unique_id=1503868987]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook6/SepArea" unique_id=1615850569]
+shape = SubResource("CircleShape2D_sl2e5")
+
+[node name="CohArea" type="Area2D" parent="Hook6" unique_id=103557314]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook6/CohArea" unique_id=708837209]
+shape = SubResource("CircleShape2D_1fp7r")
+
+[node name="AlignArea" type="Area2D" parent="Hook6" unique_id=932680306]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook6/AlignArea" unique_id=958786830]
+shape = SubResource("CircleShape2D_6m72w")
+
+[node name="Hook7" type="Area2D" parent="." unique_id=1889377998 node_paths=PackedStringArray("sep_area", "coh_area", "align_area")]
+position = Vector2(83, 21)
+script = ExtResource("1_sl2e5")
+sep_distance = 40.0
+sep_ease = 2.0
+sep_force = 3.0
+sep_area = NodePath("SepArea")
+coh_distance = 72.0
+coh_ease = 0.5
+coh_force = 0.66
+coh_area = NodePath("CohArea")
+align_distance = 48.0
+align_ease = 0.5
+align_force = 0.33
+align_area = NodePath("AlignArea")
+edge_distance = 24.0
+edge_ease = 1.035265
+edge_force = 4.0
+turn_speed = 0.7853981633974483
+metadata/_custom_type_script = "uid://pei6riydbube"
+
+[node name="RingDraw" type="Node2D" parent="Hook7" unique_id=504717743]
+script = ExtResource("2_1fp7r")
+width = 2.0
+radius = 4.0
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="SepArea" type="Area2D" parent="Hook7" unique_id=2100612025]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook7/SepArea" unique_id=1118696610]
+shape = SubResource("CircleShape2D_sl2e5")
+
+[node name="CohArea" type="Area2D" parent="Hook7" unique_id=1554665213]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook7/CohArea" unique_id=642901474]
+shape = SubResource("CircleShape2D_1fp7r")
+
+[node name="AlignArea" type="Area2D" parent="Hook7" unique_id=541104353]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook7/AlignArea" unique_id=675919371]
+shape = SubResource("CircleShape2D_6m72w")
