@@ -28,6 +28,10 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray("res://addons/fancy_folder_icons/plugin.cfg", "res://addons/quick_notes_dock/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
+[global_group]
+
+hook=""
+
 [layer_names]
 
 2d_physics/layer_1="Boids avoid this layer"

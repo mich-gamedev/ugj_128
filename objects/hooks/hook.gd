@@ -9,6 +9,8 @@ class_name Hook extends Area2D
 @export var sep_area: Area2D
 
 @export_group("Hook Attraction", "hook_")
+@export var hook_distance: float = 360.
+@export_exp_easing var hook_ease: float = 1.
 @export var hook_force: float = 1.0
 @export var hook_self_strength: float = 1.0
 
@@ -34,7 +36,7 @@ class_name Hook extends Area2D
 @export_range(0, 1000, 0.01, "or_greater", "prefix:px/s") var regular_speed: float = 128.
 @export_range(-180, 180, 0.01, "radians_as_degrees") var turn_speed: float = PI/8
 @export var turn_force: float = 1.
-@export_range(0, 1, 0.0000000000000000000000000000001) var acceleration_weight: float = 0.0000000001
+@export_range(0, 1, 0.00000000000001) var acceleration_weight: float = 0.0000000001
 
 
 var hooks: Array[Hook]
@@ -50,7 +52,11 @@ var forces: Array[Callable] = [get_separation, get_coherence, get_alignment, get
 func _physics_process(delta: float) -> void:
 	var force_vecs: Array[Vector2]
 	for i in forces:
-		force_vecs.append(i.call() as Vector2)
+		var result = i.call()
+		if result is Vector2:
+			force_vecs.append(result)
+		elif result is Array[Vector2]:
+			force_vecs.append_array(result)
 	var _tmp := Vector2.ZERO
 	for i in force_vecs:
 		_tmp += i
@@ -60,8 +66,13 @@ func _physics_process(delta: float) -> void:
 		total_force.normalized() * remap(total_force.length(), 0, 1, min_speed, regular_speed),
 		1 - acceleration_weight ** delta
 	)
+	_validate_velocity()
 	global_position += velocity * delta
 	queue_redraw()
+	if get_hook(): print(get_hook())
+
+func _validate_velocity() -> void:
+	pass
 
 func get_separation() -> Vector2:
 	var result: Array[Vector2]
@@ -95,12 +106,15 @@ func get_alignment() -> Vector2:
 	var avg_distance = result.reduce(func(accum: float, i: Vector2) -> float: return accum + i.length(), 0) / result.size()
 	return result.reduce(func(accum: Vector2, i: Vector2) -> Vector2: return (accum + i).normalized(), Vector2.ZERO) * align_force * avg_distance
 
-func get_hook() -> Vector2:
+func get_hook() -> Array[Vector2]:
 	var result: Array[Vector2]
 	for i: Hook in hooks:
-		result.append(global_position.direction_to(i.global_position) * i.hook_self_strength)
-	if result.is_empty(): return Vector2.ZERO
-	return result.reduce(func(accum: Vector2, i: Vector2) -> Vector2: return (accum + i).normalized(), Vector2.ZERO) * hook_force * hooks.reduce(func(accum: float, i: Hook): return accum + (global_position.dot(i.global_position) * i.hook_self_strength), 0)
+		var vec := global_position.direction_to(i.global_position)
+		vec *= ease(global_position.distance_to(i.global_position) / hook_distance, hook_ease)
+		vec *= i.hook_self_strength
+		vec *= hook_force
+		result.append(vec)
+	return result
 
 func get_turn() -> Vector2:
 	return velocity.normalized().rotated(turn_speed * get_physics_process_delta_time()) * turn_force
@@ -119,6 +133,8 @@ func _can_hook() -> bool:
 
 static func add_hook(from: Hook, to: Hook) -> bool:
 	if !(from.can_hook() and to.can_hook()): return false
+	from._connected_cache = []
+	to._connected_cache = []
 	from.hooks.append(to)
 	to.hooks.append(from)
 	from.hooked.emit(to)
@@ -135,10 +151,35 @@ func _draw() -> void:
 	draw_circle(Vector2.ZERO, edge_distance, Color.MAROON, false)
 	for i in forces:
 		var result = i.call()
-		draw_line(Vector2.ZERO, result * 24, Color.AQUA)
-		draw_string(
-			ThemeDB.fallback_font,
-			result * 24,
-			i.get_method() + ": " + str(result),
-			HORIZONTAL_ALIGNMENT_LEFT, -1, 4
-		)
+		if result is Vector2:
+			draw_line(Vector2.ZERO, result * 24, Color.AQUA * Color(1, 1, 1, result.length()))
+
+			draw_string(
+				ThemeDB.fallback_font,
+				result * 24,
+				i.get_method() + ": " + str(result),
+				HORIZONTAL_ALIGNMENT_LEFT, -1, 2, Color(1,1,1, result.length())
+			)
+		elif result is Array[Vector2]:
+			for j in result:
+				draw_line(Vector2.ZERO, j * 24, Color.AQUA * Color(1, 1, 1, j.length()))
+				draw_string(
+					ThemeDB.fallback_font,
+					j * 24,
+					i.get_method() + ": " + str(j),
+					HORIZONTAL_ALIGNMENT_LEFT, -1, 2, Color(1,1,1, j.length())
+				)
+
+
+var _connected_cache: Array[Hook]
+
+func get_total_connected_hooks() -> Array[Hook]:
+	if _connected_cache: return _connected_cache
+	return _fetch_total_hooks([])
+
+func _fetch_total_hooks(found: Array[Hook]) -> Array[Hook]:
+	for i in hooks:
+		if !found.has(i):
+			found.append(i)
+			i._fetch_total_hooks(found)
+	return found
