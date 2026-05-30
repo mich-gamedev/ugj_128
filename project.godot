@@ -40,3 +40,4 @@ hook=""
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.14117648, 0.15294118, 0.22745098, 1)

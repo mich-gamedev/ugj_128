@@ -2,6 +2,10 @@ class_name Hook extends Area2D
 
 @export var draw_debug: bool = false
 
+@export_group("Visuals")
+@export var main_color: Color
+@export var radius: float = 8
+
 @export_group("Separation", "sep_")
 @export var sep_distance: float = 64.
 @export_exp_easing var sep_ease: float = 1
@@ -57,6 +61,7 @@ func _physics_process(delta: float) -> void:
 			force_vecs.append(result)
 		elif result is Array[Vector2]:
 			force_vecs.append_array(result)
+	force_vecs = force_vecs.filter(func(i: Vector2) -> bool: return !i.is_zero_approx())
 	var _tmp := Vector2.ZERO
 	for i in force_vecs:
 		_tmp += i
@@ -68,6 +73,10 @@ func _physics_process(delta: float) -> void:
 	)
 	_validate_velocity()
 	global_position += velocity * delta
+	var bounds_rect := (get_tree().get_first_node_in_group(&"bounds_rect") as Control).get_global_rect()
+	bounds_rect = bounds_rect.grow(radius)
+	global_position.x = wrapf(global_position.x, bounds_rect.position.x, bounds_rect.end.x)
+	global_position.y = wrapf(global_position.y, bounds_rect.position.y, bounds_rect.end.y)
 	queue_redraw()
 	if get_hook(): print(get_hook())
 
@@ -75,6 +84,7 @@ func _validate_velocity() -> void:
 	pass
 
 func get_separation() -> Vector2:
+	if sep_force == 0: return Vector2()
 	var result: Array[Vector2]
 
 	for i in sep_area.get_overlapping_areas():
@@ -86,6 +96,7 @@ func get_separation() -> Vector2:
 	return result.reduce(func(accum: Vector2, i: Vector2) -> Vector2: return (accum + i).normalized(), Vector2.ZERO) * sep_force * avg_distance
 
 func get_coherence() -> Vector2:
+	if coh_force == 0: return Vector2()
 	var result: Array[Vector2]
 	for i in coh_area.get_overlapping_areas():
 		var vec := global_position.direction_to(i.global_position)
@@ -96,6 +107,7 @@ func get_coherence() -> Vector2:
 	return result.reduce(func(accum: Vector2, i: Vector2) -> Vector2: return (accum + i).normalized(), Vector2.ZERO) * coh_force * avg_distance
 
 func get_alignment() -> Vector2:
+	if align_force == 0: return Vector2()
 	var result: Array[Vector2]
 	for i in align_area.get_overlapping_areas():
 		if i is Hook:
@@ -117,9 +129,11 @@ func get_hook() -> Array[Vector2]:
 	return result
 
 func get_turn() -> Vector2:
+	if turn_force == 0: return Vector2()
 	return velocity.normalized().rotated(turn_speed * get_physics_process_delta_time()) * turn_force
 
 func get_edge_resist() -> Vector2:
+	if edge_force == 0: return Vector2()
 	var edge := get_tree().get_first_node_in_group(&"edge_curve") as Path2D
 	var closest_point := edge.curve.get_closest_point(edge.to_local(global_position))
 	var distance = edge.to_local(global_position).distance_to(closest_point)
@@ -141,6 +155,8 @@ static func add_hook(from: Hook, to: Hook) -> bool:
 	from.hook_added.emit(to)
 	to.hook_received.emit(from)
 	to.hook_added.emit(from)
+	from.edge_force = maxf(from.edge_force, 2)
+	to.edge_force = maxf(to.edge_force, 2)
 	return true
 
 func _draw() -> void:

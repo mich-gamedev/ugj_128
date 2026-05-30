@@ -2,6 +2,9 @@ extends DraggableHook
 
 @onready var timer: Timer = $Timer
 
+func _ready() -> void:
+	timer.start(randf_range(3, 20))
+
 func _can_hook() -> bool:
 	return get_total_connected_hooks().size() < 5
 

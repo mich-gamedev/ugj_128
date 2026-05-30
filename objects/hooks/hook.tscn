@@ -18,15 +18,17 @@ radius = 48.0
 
 [node name="Hook" type="Area2D" unique_id=591076568 node_paths=PackedStringArray("sep_area", "coh_area", "align_area") groups=["hook"]]
 script = ExtResource("1_kpcy8")
+main_color = Color(0.7921569, 0.827451, 0.9607843, 1)
+radius = 5.0
 sep_distance = 24.0
 sep_ease = 0.5
-sep_force = 1.5
+sep_force = 2.0
 sep_area = NodePath("SepArea")
 hook_distance = 180.0
 hook_ease = 2.0
 coh_distance = 72.0
 coh_ease = 3.683938
-coh_force = 0.66
+coh_force = 0.33
 coh_area = NodePath("CohArea")
 align_distance = 48.0
 align_ease = -2.0
@@ -34,7 +36,7 @@ align_force = 1.5
 align_area = NodePath("AlignArea")
 edge_distance = 48.0
 edge_ease = 2.0
-edge_force = 6.0
+edge_force = 0.0
 min_speed = 0.0
 turn_speed = 0.7853981633974483
 turn_force = 0.15
@@ -50,7 +52,8 @@ z_index = 1
 script = ExtResource("2_t54xo")
 width = 2.0
 radius = 4.0
-fill_color = Color(0.3019608, 0.3019608, 0.3019608, 1)
+draw_color = Color(0.7921569, 0.827451, 0.9607843, 1)
+fill_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
 metadata/_custom_type_script = "uid://bxm5rpt45kanq"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=645445217]

@@ -1,7 +1,13 @@
 extends Line2D
 
-var from: Hook
-var to: Hook
+var from: Hook:
+	set(v):
+		from = v
+		gradient.colors[0] = v.main_color
+var to: Hook:
+	set(v):
+		to = v
+		gradient.colors[1] = v.main_color
 var reach: float
 
 func _ready() -> void:

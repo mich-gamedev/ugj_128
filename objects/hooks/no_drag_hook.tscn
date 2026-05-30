@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://dby6t8itifno1"]
+[gd_scene format=3 uid="uid://cp8pfn8n8kb5k"]
 
-[ext_resource type="Script" uid="uid://b44agbo8751pu" path="res://objects/hooks/hooking_hook.gd" id="1_x2hq4"]
-[ext_resource type="Script" uid="uid://c8brc8tafbvgp" path="res://objects/hooks/sprite.gd" id="2_w1wrh"]
-[ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="3_7078d"]
+[ext_resource type="Script" uid="uid://pei6riydbube" path="res://objects/hooks/hook.gd" id="1_biw4f"]
+[ext_resource type="Script" uid="uid://c8brc8tafbvgp" path="res://objects/hooks/sprite.gd" id="2_eqysx"]
+[ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="3_4xrwc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v5dby"]
 radius = 8.0
@@ -17,17 +17,15 @@ radius = 72.0
 radius = 48.0
 
 [node name="Hook" type="Area2D" unique_id=591076568 node_paths=PackedStringArray("sep_area", "coh_area", "align_area") groups=["hook"]]
-z_index = 1
-script = ExtResource("1_x2hq4")
-main_color = Color(0.93333334, 0.83137256, 0.62352943, 1)
-radius = 5.0
+script = ExtResource("1_biw4f")
+main_color = Color(0.5764706, 0.6039216, 0.7176471, 1)
+radius = 4.0
 sep_distance = 24.0
 sep_ease = 0.5
 sep_force = 2.0
 sep_area = NodePath("SepArea")
 hook_distance = 180.0
 hook_ease = 2.0
-hook_self_strength = 2.0
 coh_distance = 72.0
 coh_ease = 3.683938
 coh_force = 0.33
@@ -46,14 +44,15 @@ acceleration_weight = 0.01
 metadata/_custom_type_script = "uid://pei6riydbube"
 
 [node name="Sprite" type="Node2D" parent="." unique_id=841350920 node_paths=PackedStringArray("hook")]
-script = ExtResource("2_w1wrh")
+script = ExtResource("2_eqysx")
 hook = NodePath("..")
 
 [node name="RingDraw" type="Node2D" parent="Sprite" unique_id=51570606]
-script = ExtResource("3_7078d")
+z_index = 1
+script = ExtResource("3_4xrwc")
 width = 2.0
-radius = 4.0
-draw_color = Color(0.93333334, 0.83137256, 0.62352943, 1)
+radius = 3.0
+draw_color = Color(0.5764706, 0.6039216, 0.7176471, 1)
 fill_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
 metadata/_custom_type_script = "uid://bxm5rpt45kanq"
 
@@ -77,10 +76,3 @@ debug_color = Color(0.49803922, 1, 0.83137256, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AlignArea" unique_id=1014501630]
 shape = SubResource("CircleShape2D_6m72w")
 debug_color = Color(0, 1, 0.49803922, 0)
-
-[node name="Timer" type="Timer" parent="." unique_id=2061695093]
-wait_time = 3.0
-one_shot = true
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_timeout"]

@@ -1,17 +1,19 @@
 [gd_scene format=3 uid="uid://btjyjxrp5b0h7"]
 
-[ext_resource type="PackedScene" uid="uid://b287fvog46nx7" path="res://objects/hooks/hook_test.tscn" id="1_dphjl"]
+[ext_resource type="PackedScene" uid="uid://b287fvog46nx7" path="res://objects/hooks/hook.tscn" id="1_dphjl"]
 [ext_resource type="PackedScene" uid="uid://dby6t8itifno1" path="res://objects/hooks/hooking_hook.tscn" id="2_sl2e5"]
+[ext_resource type="PackedScene" uid="uid://cp8pfn8n8kb5k" path="res://objects/hooks/no_drag_hook.tscn" id="3_1fp7r"]
 
 [sub_resource type="Curve2D" id="Curve2D_4rhad"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 320, 0, 0, 0, 0, 0, 320, 180, 0, 0, 0, 0, 0, 180, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, -5, -5, 0, 0, 0, 0, 325, -5, 0, 0, 0, 0, 325, 185, 0, 0, 0, 0, -5, 185, 0, 0, 0, 0, -5, -5)
 }
 point_count = 5
 
 [node name="Node2D" type="Node2D" unique_id=1398138327]
 
-[node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=160237268]
+[node name="BoundsRect" type="ReferenceRect" parent="." unique_id=160237268 groups=["bounds_rect"]]
+unique_name_in_owner = true
 offset_right = 320.0
 offset_bottom = 180.0
 mouse_filter = 2
@@ -66,3 +68,15 @@ position = Vector2(187, 158)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=31501052]
 position = Vector2(160, 90)
+
+[node name="Hook6" parent="." unique_id=2012762089 instance=ExtResource("3_1fp7r")]
+position = Vector2(85, 30)
+
+[node name="Hook12" parent="." unique_id=3091525 instance=ExtResource("3_1fp7r")]
+position = Vector2(288, 21)
+
+[node name="Hook13" parent="." unique_id=907978244 instance=ExtResource("3_1fp7r")]
+position = Vector2(131, 99)
+
+[node name="Hook14" parent="." unique_id=1198596831 instance=ExtResource("3_1fp7r")]
+position = Vector2(151, 157)
