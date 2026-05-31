@@ -35,17 +35,38 @@ position = Vector2(289, 146)
 [node name="Hook8" parent="." unique_id=2000884045 instance=ExtResource("1_dphjl")]
 position = Vector2(36, 41)
 
-[node name="Hook9" parent="." unique_id=849678192 instance=ExtResource("1_dphjl")]
-position = Vector2(185, 76)
+[node name="Hook17" parent="." unique_id=591076568 instance=ExtResource("1_dphjl")]
+position = Vector2(61, 13)
 
-[node name="Hook10" parent="." unique_id=359719787 instance=ExtResource("1_dphjl")]
-position = Vector2(113, 138)
+[node name="Hook18" parent="." unique_id=344324105 instance=ExtResource("1_dphjl")]
+position = Vector2(22, 17)
 
-[node name="Hook11" parent="." unique_id=840262634 instance=ExtResource("1_dphjl")]
-position = Vector2(239, 121)
+[node name="Hook19" parent="." unique_id=1152176397 instance=ExtResource("1_dphjl")]
+position = Vector2(96, 62)
+
+[node name="Hook20" parent="." unique_id=752814845 instance=ExtResource("1_dphjl")]
+position = Vector2(29, 120)
+
+[node name="Hook29" parent="." unique_id=1535268812 instance=ExtResource("1_dphjl")]
+position = Vector2(257, 156)
+
+[node name="Hook30" parent="." unique_id=145013904 instance=ExtResource("1_dphjl")]
+position = Vector2(261, 132)
+
+[node name="Hook31" parent="." unique_id=1139943859 instance=ExtResource("1_dphjl")]
+position = Vector2(308, 165)
 
 [node name="HookingHook" parent="." unique_id=1016998064 instance=ExtResource("2_sl2e5")]
 position = Vector2(59, 121)
+
+[node name="HookingHook5" parent="." unique_id=204934184 instance=ExtResource("2_sl2e5")]
+position = Vector2(221, 57)
+
+[node name="HookingHook6" parent="." unique_id=931696906 instance=ExtResource("2_sl2e5")]
+position = Vector2(297, 54)
+
+[node name="HookingHook7" parent="." unique_id=443101879 instance=ExtResource("2_sl2e5")]
+position = Vector2(94, 152)
 
 [node name="HookingHook2" parent="." unique_id=1318861951 instance=ExtResource("2_sl2e5")]
 position = Vector2(183, 22)
@@ -66,13 +87,16 @@ position = Vector2(85, 30)
 position = Vector2(288, 21)
 
 [node name="Hook13" parent="." unique_id=907978244 instance=ExtResource("3_1fp7r")]
-position = Vector2(131, 99)
+position = Vector2(118, 107)
 
 [node name="Hook14" parent="." unique_id=1198596831 instance=ExtResource("3_1fp7r")]
 position = Vector2(151, 157)
 
-[node name="Hook" parent="." unique_id=591076568 instance=ExtResource("4_6m72w")]
+[node name="Hook" parent="." unique_id=559281627 instance=ExtResource("4_6m72w")]
 position = Vector2(134, 47)
+
+[node name="Hook16" parent="." unique_id=1245444165 instance=ExtResource("4_6m72w")]
+position = Vector2(58, 73)
 
 [node name="Hook2" parent="." unique_id=1062951457 instance=ExtResource("4_6m72w")]
 position = Vector2(31, 90)
@@ -84,7 +108,7 @@ position = Vector2(33, 149)
 position = Vector2(275, 97)
 
 [node name="Hook15" parent="." unique_id=1421724014 instance=ExtResource("4_6m72w")]
-position = Vector2(176, 112)
+position = Vector2(224, 134)
 
 [node name="Node2D" parent="." unique_id=176965589 instance=ExtResource("5_v5dby")]
-position = Vector2(94, 77)
+position = Vector2(160, 90)

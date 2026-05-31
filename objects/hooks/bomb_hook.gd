@@ -6,6 +6,9 @@ extends DraggableHook
 func _ready() -> void:
 	await get_tree().create_timer(randf_range(0, 4)).timeout
 	anim.play(&"warn")
+	drag_started.connect(func():
+		if anim.current_animation != &"warn": anim.play(&"warn")
+		anim.seek(min(anim.current_animation_position + 1, anim.current_animation_length - .5)))
 
 func _animation_finished(anim_name: StringName) -> void:
 	if anim_name == &"warn":

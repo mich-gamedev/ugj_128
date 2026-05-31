@@ -3,14 +3,6 @@
 [ext_resource type="Script" uid="uid://4ehc6vnrf0k2" path="res://objects/raft/raft.gd" id="1_en5le"]
 [ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="1_fc07u"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_en5le"]
-seed = -2011870331
-fractal_octaves = 4
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_erfpm"]
-seed = 1459796662
-fractal_octaves = 1
-
 [sub_resource type="Animation" id="Animation_en5le"]
 length = 0.001
 tracks/0/type = "value"
@@ -189,13 +181,12 @@ _data = {
 radius = 25.079872
 
 [node name="Node2D" type="Area2D" unique_id=176965589 groups=["raft"]]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_en5le")
-turn_noise = SubResource("FastNoiseLite_en5le")
-speed_noise = SubResource("FastNoiseLite_erfpm")
 
 [node name="Circle" type="Node2D" parent="." unique_id=621290750]
+z_index = -2
 
 [node name="RingDraw" type="Node2D" parent="Circle" unique_id=2085418543]
 z_index = -2

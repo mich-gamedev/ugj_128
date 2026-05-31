@@ -36,6 +36,7 @@ hook=""
 
 2d_physics/layer_1="Boids avoid this layer"
 2d_physics/layer_2="Boids can be collected if on this layer"
+2d_physics/layer_3="Raft"
 
 [physics]
 

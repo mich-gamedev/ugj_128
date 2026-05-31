@@ -38,6 +38,12 @@ class_name Hook extends Area2D
 	get:
 		return edge_force if hooks.is_empty() else maxf(edge_force, 2)
 
+@export_group("Raft resistance", "raft_")
+@export var raft_distance: float = 48.
+@export_exp_easing var raft_ease: float = 1
+@export var raft_force: float = 2
+@export var raft_area: Area2D
+
 @export_group("Velocity")
 @export_range(0, 1000, 0.01, "or_greater", "prefix:px/s") var min_speed: float = 32.
 @export_range(0, 1000, 0.01, "or_greater", "prefix:px/s") var regular_speed: float = 128.
@@ -57,7 +63,7 @@ signal hook_removed(other: Hook)
 signal hook_detatched_from(from: Hook)
 signal deleting
 
-var forces: Array[Callable] = [get_separation, get_coherence, get_alignment, get_hook, get_turn, get_edge_resist]
+var forces: Array[Callable] = [get_separation, get_coherence, get_alignment, get_hook, get_turn, get_edge_resist, get_raft]
 
 func _ready() -> void:
 	set_collision_layer_value(2, true)
@@ -106,6 +112,15 @@ func get_separation() -> Vector2:
 	if result.is_empty(): return Vector2.ZERO
 	var avg_distance = result.reduce(func(accum: float, i: Vector2) -> float: return accum + i.length(), 0) / result.size()
 	return result.reduce(func(accum: Vector2, i: Vector2) -> Vector2: return (accum + i).normalized(), Vector2.ZERO) * sep_force * avg_distance
+
+func get_raft() -> Vector2:
+	if raft_force == 0: return Vector2()
+	for i in raft_area.get_overlapping_areas():
+		if i.is_in_group(&"raft"):
+			var vec := -global_position.direction_to(i.global_position)
+			vec *= ease((raft_distance - global_position.distance_to(i.global_position)) / raft_distance, raft_ease)
+			return vec
+	return Vector2()
 
 func get_coherence() -> Vector2:
 	if coh_force == 0: return Vector2()
