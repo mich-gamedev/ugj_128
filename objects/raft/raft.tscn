@@ -1,0 +1,296 @@
+[gd_scene format=3 uid="uid://wa2yieno3883"]
+
+[ext_resource type="Script" uid="uid://4ehc6vnrf0k2" path="res://objects/raft/raft.gd" id="1_en5le"]
+[ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="1_fc07u"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_en5le"]
+seed = -2011870331
+fractal_octaves = 4
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_erfpm"]
+seed = 1459796662
+fractal_octaves = 1
+
+[sub_resource type="Animation" id="Animation_en5le"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_erfpm"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.39269908169872414]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ommf3"]
+_data = {
+&"RESET": SubResource("Animation_en5le"),
+&"spin": SubResource("Animation_erfpm")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ehv71"]
+
+[sub_resource type="Animation" id="Animation_60lnf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bucket:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlagBase:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlagBase/Flag:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FlagBase/Flag:skew")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3su3l"]
+resource_name = "sway"
+length = 5.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [-0.17453292519943295, 0.17453292519943295]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bucket:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.25, 3.75),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(-4, 0), Vector2(4, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlagBase:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(-1.2745605, -1.2745605),
+"update": 0,
+"values": [0.17453292519943295, -0.17453292519943295]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlagBase/Flag:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.25, 2.493481, 3.7434812, 5.03263),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [0.3490658503988659, -0.08726646259971647, 0.3490658503988659, -0.08726646259971647, 0.3490658503988659]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FlagBase/Flag:skew")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.25, 2.493481, 3.7434812, 5.03263),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [-0.3490658503988659, 0.08726646259971647, -0.3490658503988659, 0.08726646259971647, -0.3490658503988659]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q2es0"]
+_data = {
+&"RESET": SubResource("Animation_60lnf"),
+&"sway": SubResource("Animation_3su3l")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fc07u"]
+radius = 25.079872
+
+[node name="Node2D" type="Area2D" unique_id=176965589 groups=["raft"]]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_en5le")
+turn_noise = SubResource("FastNoiseLite_en5le")
+speed_noise = SubResource("FastNoiseLite_erfpm")
+
+[node name="Circle" type="Node2D" parent="." unique_id=621290750]
+
+[node name="RingDraw" type="Node2D" parent="Circle" unique_id=2085418543]
+z_index = -2
+script = ExtResource("1_fc07u")
+width = 2.0
+draw_color = Color(0.28627452, 0.3019608, 0.39215687, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Node2D" type="Node2D" parent="Circle" unique_id=1735123006]
+physics_interpolation_mode = 2
+
+[node name="Line2D" type="Line2D" parent="Circle/Node2D" unique_id=911464146]
+points = PackedVector2Array(-25, 0, 25, 0)
+width = 4.0
+default_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+
+[node name="Line2D2" type="Line2D" parent="Circle/Node2D" unique_id=1634032637]
+rotation = 0.3926991
+points = PackedVector2Array(-25, 0, 25, 0)
+width = 4.0
+default_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+
+[node name="Line2D3" type="Line2D" parent="Circle/Node2D" unique_id=1920872474]
+rotation = 0.7853982
+points = PackedVector2Array(-25, 0, 25, 0)
+width = 4.0
+default_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+
+[node name="Line2D4" type="Line2D" parent="Circle/Node2D" unique_id=1556948468]
+rotation = 1.1780972
+points = PackedVector2Array(-25, 0, 25, 0)
+width = 4.0
+default_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+
+[node name="Line2D5" type="Line2D" parent="Circle/Node2D" unique_id=1699270778]
+rotation = 1.5707964
+points = PackedVector2Array(-25, 0, 25, 0)
+width = 4.0
+default_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+
+[node name="Line2D6" type="Line2D" parent="Circle/Node2D" unique_id=255413913]
+rotation = 1.9634954
+points = PackedVector2Array(-25, 0, 25, 0)
+width = 4.0
+default_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+
+[node name="Line2D7" type="Line2D" parent="Circle/Node2D" unique_id=23016006]
+rotation = 2.3561945
+points = PackedVector2Array(-25, 0, 25, 0)
+width = 4.0
+default_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+
+[node name="Line2D8" type="Line2D" parent="Circle/Node2D" unique_id=883185998]
+rotation = 2.7488935
+points = PackedVector2Array(-25, 0, 25, 0)
+width = 4.0
+default_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Circle/Node2D" unique_id=1446057145]
+libraries/ = SubResource("AnimationLibrary_ommf3")
+autoplay = &"spin"
+
+[node name="Sprite" type="Node2D" parent="." unique_id=69059884]
+
+[node name="ColorRect" type="ColorRect" parent="Sprite" unique_id=849803343]
+offset_left = -16.0
+offset_right = 16.0
+offset_bottom = 2.0
+color = Color(0.6509804, 0.85490197, 0.58431375, 1)
+
+[node name="FlagBase" type="Node2D" parent="Sprite" unique_id=1809267493]
+position = Vector2(-8.999855, -1.0013051)
+
+[node name="FlagPole" type="ColorRect" parent="Sprite/FlagBase" unique_id=1558092493]
+offset_left = -1.000145
+offset_top = -20.998695
+offset_right = 0.99985504
+offset_bottom = 0.0013046265
+color = Color(0.6509804, 0.85490197, 0.58431375, 1)
+
+[node name="Flag" type="Polygon2D" parent="Sprite/FlagBase" unique_id=529354508]
+material = SubResource("ShaderMaterial_ehv71")
+position = Vector2(1.999855, -14.998695)
+color = Color(0.6509804, 0.85490197, 0.58431375, 1)
+polygon = PackedVector2Array(0, -5, 0, 5, 10, 0)
+
+[node name="Bucket" type="Polygon2D" parent="Sprite" unique_id=1492319318]
+color = Color(0.6509804, 0.85490197, 0.58431375, 1)
+polygon = PackedVector2Array(6, -1, 9, -1, 10, -5, 5, -5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" unique_id=1911078394]
+libraries/ = SubResource("AnimationLibrary_q2es0")
+autoplay = &"sway"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=76437036]
+shape = SubResource("CircleShape2D_fc07u")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -49,6 +49,12 @@ metadata/_custom_type_script = "uid://pei6riydbube"
 script = ExtResource("2_w1wrh")
 hook = NodePath("..")
 
+[node name="Outline" type="Node2D" parent="Sprite" unique_id=953582498]
+script = ExtResource("3_7078d")
+radius = 4.0
+draw_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
 [node name="RingDraw" type="Node2D" parent="Sprite" unique_id=51570606]
 script = ExtResource("3_7078d")
 width = 2.0

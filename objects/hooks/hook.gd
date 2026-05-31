@@ -10,6 +10,7 @@ class_name Hook extends Area2D
 @export var sep_distance: float = 64.
 @export_exp_easing var sep_ease: float = 1
 @export var sep_force: float = 1.
+@export var sep_self_strength: float = 1.0
 @export var sep_area: Area2D
 
 @export_group("Hook Attraction", "hook_")
@@ -33,7 +34,9 @@ class_name Hook extends Area2D
 @export_group("Edge resistance", "edge_")
 @export var edge_distance: float = 32
 @export_exp_easing var edge_ease: float = 1
-@export var edge_force: float = 10.
+@export var edge_force: float = 10.:
+	get:
+		return edge_force if hooks.is_empty() else maxf(edge_force, 2)
 
 @export_group("Velocity")
 @export_range(0, 1000, 0.01, "or_greater", "prefix:px/s") var min_speed: float = 32.
@@ -50,8 +53,14 @@ var velocity: Vector2
 signal hooked(to: Hook)
 signal hook_received(from: Hook)
 signal hook_added(other: Hook)
+signal hook_removed(other: Hook)
+signal hook_detatched_from(from: Hook)
+signal deleting
 
 var forces: Array[Callable] = [get_separation, get_coherence, get_alignment, get_hook, get_turn, get_edge_resist]
+
+func _ready() -> void:
+	set_collision_layer_value(2, true)
 
 func _physics_process(delta: float) -> void:
 	var force_vecs: Array[Vector2]
@@ -75,8 +84,10 @@ func _physics_process(delta: float) -> void:
 	global_position += velocity * delta
 	var bounds_rect := (get_tree().get_first_node_in_group(&"bounds_rect") as Control).get_global_rect()
 	bounds_rect = bounds_rect.grow(radius)
-	global_position.x = wrapf(global_position.x, bounds_rect.position.x, bounds_rect.end.x)
-	global_position.y = wrapf(global_position.y, bounds_rect.position.y, bounds_rect.end.y)
+	if !bounds_rect.has_point(global_position):
+		global_position.x = wrapf(global_position.x, bounds_rect.position.x, bounds_rect.end.x)
+		global_position.y = wrapf(global_position.y, bounds_rect.position.y, bounds_rect.end.y)
+		reset_physics_interpolation()
 	queue_redraw()
 	if get_hook(): print(get_hook())
 
@@ -90,6 +101,7 @@ func get_separation() -> Vector2:
 	for i in sep_area.get_overlapping_areas():
 		var vec := -global_position.direction_to(i.global_position)
 		vec *= ease((sep_distance - global_position.distance_to(i.global_position)) / sep_distance, sep_ease)
+		if i is Hook: vec *= i.sep_self_strength
 		result.append(vec)
 	if result.is_empty(): return Vector2.ZERO
 	var avg_distance = result.reduce(func(accum: float, i: Vector2) -> float: return accum + i.length(), 0) / result.size()
@@ -155,9 +167,19 @@ static func add_hook(from: Hook, to: Hook) -> bool:
 	from.hook_added.emit(to)
 	to.hook_received.emit(from)
 	to.hook_added.emit(from)
-	from.edge_force = maxf(from.edge_force, 2)
-	to.edge_force = maxf(to.edge_force, 2)
 	return true
+
+static func remove_hook(from: Hook, to: Hook) -> void:
+	if !from.hooks.has(to):
+		push_error("Hooks already attached!")
+		return
+	from._connected_cache = []
+	to._connected_cache = []
+	from.hooks.erase(to)
+	to.hooks.erase(from)
+	from.hook_removed.emit(to)
+	to.hook_removed.emit(from)
+	from.hook_detatched_from.emit(to)
 
 func _draw() -> void:
 	if !draw_debug: return
@@ -199,3 +221,15 @@ func _fetch_total_hooks(found: Array[Hook]) -> Array[Hook]:
 			found.append(i)
 			i._fetch_total_hooks(found)
 	return found
+
+
+func _exit_tree() -> void:
+	for i in hooks:
+		Hook.remove_hook(i, self)
+
+func delete() -> void:
+	for i in hooks:
+		Hook.remove_hook(i, self)
+	deleting.emit()
+	await get_tree().create_timer(0.5).timeout
+	queue_free()

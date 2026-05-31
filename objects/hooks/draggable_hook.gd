@@ -15,6 +15,7 @@ func _input(event: InputEvent) -> void:
 		if !event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			dragged_hook = null
 			drag_ended.emit()
+			set_collision_layer_value(2, true)
 
 func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if dragged_hook: return
@@ -22,6 +23,7 @@ func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			dragged_hook = self
 			drag_started.emit()
+			set_collision_layer_value(2, false)
 
 func _physics_process(delta: float) -> void:
 	super(delta)

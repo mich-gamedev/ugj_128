@@ -8,10 +8,11 @@
 radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sl2e5"]
-radius = 24.0
+resource_local_to_scene = true
+radius = 48.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1fp7r"]
-radius = 72.0
+radius = 180.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6m72w"]
 radius = 48.0
@@ -46,6 +47,14 @@ metadata/_custom_type_script = "uid://pei6riydbube"
 [node name="Sprite" type="Node2D" parent="." unique_id=841350920 node_paths=PackedStringArray("hook")]
 script = ExtResource("2_mt6ks")
 hook = NodePath("..")
+
+[node name="Outline" type="Node2D" parent="Sprite" unique_id=140084309]
+z_index = 1
+script = ExtResource("2_t54xo")
+radius = 4.0
+draw_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+fill_color = Color(0.7921569, 0.827451, 0.9607843, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
 
 [node name="RingDraw" type="Node2D" parent="Sprite" unique_id=51570606]
 z_index = 1

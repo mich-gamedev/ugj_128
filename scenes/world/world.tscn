@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://b287fvog46nx7" path="res://objects/hooks/hook.tscn" id="1_dphjl"]
 [ext_resource type="PackedScene" uid="uid://dby6t8itifno1" path="res://objects/hooks/hooking_hook.tscn" id="2_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://cp8pfn8n8kb5k" path="res://objects/hooks/no_drag_hook.tscn" id="3_1fp7r"]
+[ext_resource type="PackedScene" uid="uid://bqrmetadjks4h" path="res://objects/hooks/bomb_hook.tscn" id="4_6m72w"]
+[ext_resource type="PackedScene" uid="uid://wa2yieno3883" path="res://objects/raft/raft.tscn" id="5_v5dby"]
 
 [sub_resource type="Curve2D" id="Curve2D_4rhad"]
 _data = {
@@ -23,18 +25,6 @@ editor_only = false
 [node name="EdgeCurve" type="Path2D" parent="." unique_id=1729099955 groups=["edge_curve"]]
 unique_name_in_owner = true
 curve = SubResource("Curve2D_4rhad")
-
-[node name="Hook" parent="." unique_id=591076568 instance=ExtResource("1_dphjl")]
-position = Vector2(94, 64)
-
-[node name="Hook2" parent="." unique_id=1349406927 instance=ExtResource("1_dphjl")]
-position = Vector2(130, 43)
-
-[node name="Hook3" parent="." unique_id=46815286 instance=ExtResource("1_dphjl")]
-position = Vector2(172, 123)
-
-[node name="Hook4" parent="." unique_id=862786136 instance=ExtResource("1_dphjl")]
-position = Vector2(265, 76)
 
 [node name="Hook5" parent="." unique_id=1302202467 instance=ExtResource("1_dphjl")]
 position = Vector2(232, 25)
@@ -80,3 +70,21 @@ position = Vector2(131, 99)
 
 [node name="Hook14" parent="." unique_id=1198596831 instance=ExtResource("3_1fp7r")]
 position = Vector2(151, 157)
+
+[node name="Hook" parent="." unique_id=591076568 instance=ExtResource("4_6m72w")]
+position = Vector2(134, 47)
+
+[node name="Hook2" parent="." unique_id=1062951457 instance=ExtResource("4_6m72w")]
+position = Vector2(31, 90)
+
+[node name="Hook3" parent="." unique_id=918363163 instance=ExtResource("4_6m72w")]
+position = Vector2(33, 149)
+
+[node name="Hook4" parent="." unique_id=117802461 instance=ExtResource("4_6m72w")]
+position = Vector2(275, 97)
+
+[node name="Hook15" parent="." unique_id=1421724014 instance=ExtResource("4_6m72w")]
+position = Vector2(176, 112)
+
+[node name="Node2D" parent="." unique_id=176965589 instance=ExtResource("5_v5dby")]
+position = Vector2(94, 77)
