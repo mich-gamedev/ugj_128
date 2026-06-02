@@ -1,6 +1,7 @@
 class_name Hook extends Area2D
 
 @export var draw_debug: bool = false
+@export var cost: int = 1
 
 @export_group("Visuals")
 @export var main_color: Color
@@ -41,7 +42,7 @@ class_name Hook extends Area2D
 @export_group("Raft resistance", "raft_")
 @export var raft_distance: float = 48.
 @export_exp_easing var raft_ease: float = 1
-@export var raft_force: float = 2
+@export var raft_force: float = .5
 @export var raft_area: Area2D
 
 @export_group("Velocity")
@@ -196,6 +197,25 @@ static func remove_hook(from: Hook, to: Hook) -> void:
 	to.hook_removed.emit(from)
 	from.hook_detatched_from.emit(to)
 
+static var _spawns_cache: Array[HookSpawnrate]
+static func get_hook_spawns() -> Array[HookSpawnrate]:
+	const DIR := "res://objects/hooks/spawnrates/"
+	if !_spawns_cache:
+		var directories := DirAccess.get_directories_at(DIR)
+		for i in directories:
+			var path := DIR.path_join(i).path_join("hook.tres")
+			if i.begins_with("_") or !ResourceLoader.exists(path): continue
+			_spawns_cache.append(load(path))
+	return _spawns_cache
+
+static func random() -> HookSpawnrate:
+	var weights : Dictionary[HookSpawnrate, float]
+	for i in get_hook_spawns():
+		weights[i] = i.spawnrate.sample(min(Raft.points, Raft.needed_points / 2) / 100.)
+	var rng := RandomNumberGenerator.new()
+	rng.seed = randi()
+	return weights.keys()[rng.rand_weighted(weights.values())]
+
 func _draw() -> void:
 	if !draw_debug: return
 	draw_circle(Vector2.ZERO, sep_distance, Color.RED, false)
@@ -244,7 +264,7 @@ func _exit_tree() -> void:
 
 func delete() -> void:
 	for i in hooks:
-		Hook.remove_hook(i, self)
+		Hook.remove_hook(self, i)
 	deleting.emit()
 	await get_tree().create_timer(0.5).timeout
 	queue_free()

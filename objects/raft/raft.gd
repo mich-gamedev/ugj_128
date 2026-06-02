@@ -1,8 +1,54 @@
-extends Area2D
+class_name Raft extends Area2D
 
-var points: int
+static var raft: Raft
+
+var twn_points: Tween
+var twn_time: Tween
+static var points: int:
+	set(v):
+		points = v
+		if v >= needed_points:
+			points = 0
+			needed_points *= randf_range(.9, 2.5)
+			wait_time *= randf_range(1, 1.35)
+			time_left = wait_time
+		raft.points_label.text = "[font otv='wght=800']%d[color=#6e738d]/%d" % [points, needed_points]
+		if raft.twn_points: raft.twn_points.kill()
+		raft.twn_points = raft.create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC).set_parallel(true)
+		raft.twn_points.tween_property(raft.points_label, ^"scale", Vector2.ONE, .5).from(Vector2(1.25, 1 / 1.25))
+		raft.twn_points.tween_property(raft.points_bar, ^"value", points, 0.15).set_trans(Tween.TRANS_CUBIC)
+		raft.twn_points.tween_property(raft.points_bar, ^"max_value", needed_points, 0.15).set_trans(Tween.TRANS_CUBIC)
+static var needed_points: int = 30
+static var wait_time: float = 45:
+	set(v):
+		wait_time = v
+		if raft.twn_time: raft.twn_time.kill()
+		raft.twn_time = raft.create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+		raft.twn_time.tween_property(raft.time_label, ^"scale", Vector2.ONE, 1.5).from(Vector2.ONE * 2.5)
+static var time_left: float = wait_time
+
+@onready var time_label: RichTextLabel = $TimeLabel
+@onready var points_label: RichTextLabel = $PointsLabel
+@onready var points_bar: ProgressBar = $PointsBar
+
+func _ready() -> void:
+	raft = self
+
+func _process(delta: float) -> void:
+	if points > 0:
+		time_left -= delta
+	time_label.text = "[font otv='wght=600']%02d:%02d left" % [Time.get_time_dict_from_unix_time(time_left).minute, Time.get_time_dict_from_unix_time(time_left).second]
+	if time_left <= 6:
+		time_label.add_theme_color_override(&"default_color", Color("#a6da95") if fmod(time_left, .3) > .15 else Color("#ed8796"))
+	elif time_left <= 11:
+		time_label.add_theme_color_override(&"default_color", Color("#a6da95") if fmod(time_left, 1) > .5 else Color("#ed8796"))
+	elif time_left <= 21:
+		time_label.add_theme_color_override(&"default_color", Color("#a6da95") if fmod(time_left, 2) > 1 else Color("#ed8796"))
+	else:
+		time_label.add_theme_color_override(&"default_color", Color("#a6da95"))
+
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is Hook:
 		area.delete()
-		points += 1
+		points += area.cost

@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://btjyjxrp5b0h7"]
 
-[ext_resource type="PackedScene" uid="uid://b287fvog46nx7" path="res://objects/hooks/hook.tscn" id="1_dphjl"]
-[ext_resource type="PackedScene" uid="uid://dby6t8itifno1" path="res://objects/hooks/hooking_hook.tscn" id="2_sl2e5"]
-[ext_resource type="PackedScene" uid="uid://cp8pfn8n8kb5k" path="res://objects/hooks/no_drag_hook.tscn" id="3_1fp7r"]
-[ext_resource type="PackedScene" uid="uid://bqrmetadjks4h" path="res://objects/hooks/bomb_hook.tscn" id="4_6m72w"]
+[ext_resource type="Script" uid="uid://dw8ltepr8espo" path="res://scenes/world/world.gd" id="1_t5ptc"]
 [ext_resource type="PackedScene" uid="uid://wa2yieno3883" path="res://objects/raft/raft.tscn" id="5_v5dby"]
 
 [sub_resource type="Curve2D" id="Curve2D_4rhad"]
@@ -13,6 +10,7 @@ _data = {
 point_count = 5
 
 [node name="Node2D" type="Node2D" unique_id=1398138327]
+script = ExtResource("1_t5ptc")
 
 [node name="BoundsRect" type="ReferenceRect" parent="." unique_id=160237268 groups=["bounds_rect"]]
 unique_name_in_owner = true
@@ -20,95 +18,48 @@ offset_right = 320.0
 offset_bottom = 180.0
 mouse_filter = 2
 border_color = Color(0, 0, 0, 1)
-editor_only = false
 
 [node name="EdgeCurve" type="Path2D" parent="." unique_id=1729099955 groups=["edge_curve"]]
 unique_name_in_owner = true
 curve = SubResource("Curve2D_4rhad")
 
-[node name="Hook5" parent="." unique_id=1302202467 instance=ExtResource("1_dphjl")]
-position = Vector2(232, 25)
-
-[node name="Hook7" parent="." unique_id=256674391 instance=ExtResource("1_dphjl")]
-position = Vector2(289, 146)
-
-[node name="Hook8" parent="." unique_id=2000884045 instance=ExtResource("1_dphjl")]
-position = Vector2(36, 41)
-
-[node name="Hook17" parent="." unique_id=591076568 instance=ExtResource("1_dphjl")]
-position = Vector2(61, 13)
-
-[node name="Hook18" parent="." unique_id=344324105 instance=ExtResource("1_dphjl")]
-position = Vector2(22, 17)
-
-[node name="Hook19" parent="." unique_id=1152176397 instance=ExtResource("1_dphjl")]
-position = Vector2(96, 62)
-
-[node name="Hook20" parent="." unique_id=752814845 instance=ExtResource("1_dphjl")]
-position = Vector2(29, 120)
-
-[node name="Hook29" parent="." unique_id=1535268812 instance=ExtResource("1_dphjl")]
-position = Vector2(257, 156)
-
-[node name="Hook30" parent="." unique_id=145013904 instance=ExtResource("1_dphjl")]
-position = Vector2(261, 132)
-
-[node name="Hook31" parent="." unique_id=1139943859 instance=ExtResource("1_dphjl")]
-position = Vector2(308, 165)
-
-[node name="HookingHook" parent="." unique_id=1016998064 instance=ExtResource("2_sl2e5")]
-position = Vector2(59, 121)
-
-[node name="HookingHook5" parent="." unique_id=204934184 instance=ExtResource("2_sl2e5")]
-position = Vector2(221, 57)
-
-[node name="HookingHook6" parent="." unique_id=931696906 instance=ExtResource("2_sl2e5")]
-position = Vector2(297, 54)
-
-[node name="HookingHook7" parent="." unique_id=443101879 instance=ExtResource("2_sl2e5")]
-position = Vector2(94, 152)
-
-[node name="HookingHook2" parent="." unique_id=1318861951 instance=ExtResource("2_sl2e5")]
-position = Vector2(183, 22)
-
-[node name="HookingHook3" parent="." unique_id=1829325508 instance=ExtResource("2_sl2e5")]
-position = Vector2(224, 88)
-
-[node name="HookingHook4" parent="." unique_id=1928430509 instance=ExtResource("2_sl2e5")]
-position = Vector2(187, 158)
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=31501052]
 position = Vector2(160, 90)
 
-[node name="Hook6" parent="." unique_id=2012762089 instance=ExtResource("3_1fp7r")]
-position = Vector2(85, 30)
-
-[node name="Hook12" parent="." unique_id=3091525 instance=ExtResource("3_1fp7r")]
-position = Vector2(288, 21)
-
-[node name="Hook13" parent="." unique_id=907978244 instance=ExtResource("3_1fp7r")]
-position = Vector2(118, 107)
-
-[node name="Hook14" parent="." unique_id=1198596831 instance=ExtResource("3_1fp7r")]
-position = Vector2(151, 157)
-
-[node name="Hook" parent="." unique_id=559281627 instance=ExtResource("4_6m72w")]
-position = Vector2(134, 47)
-
-[node name="Hook16" parent="." unique_id=1245444165 instance=ExtResource("4_6m72w")]
-position = Vector2(58, 73)
-
-[node name="Hook2" parent="." unique_id=1062951457 instance=ExtResource("4_6m72w")]
-position = Vector2(31, 90)
-
-[node name="Hook3" parent="." unique_id=918363163 instance=ExtResource("4_6m72w")]
-position = Vector2(33, 149)
-
-[node name="Hook4" parent="." unique_id=117802461 instance=ExtResource("4_6m72w")]
-position = Vector2(275, 97)
-
-[node name="Hook15" parent="." unique_id=1421724014 instance=ExtResource("4_6m72w")]
-position = Vector2(224, 134)
-
-[node name="Node2D" parent="." unique_id=176965589 instance=ExtResource("5_v5dby")]
+[node name="Raft" parent="." unique_id=176965589 instance=ExtResource("5_v5dby")]
 position = Vector2(160, 90)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=851417491]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=690941004]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/HBoxContainer" unique_id=770197254]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+
+[node name="Control" type="Control" parent="CanvasLayer/HBoxContainer" unique_id=270484331]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/HBoxContainer" unique_id=525618507]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+
+[node name="SpawnAttemptTimer" type="Timer" parent="." unique_id=1188634649]
+unique_name_in_owner = true
+wait_time = 0.35
+autostart = true
+
+[connection signal="timeout" from="SpawnAttemptTimer" to="." method="_spawn_timeout"]

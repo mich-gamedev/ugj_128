@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="HookSpawnrate" format=3 uid="uid://f7x47v8ejphp"]
+
+[ext_resource type="PackedScene" uid="uid://b287fvog46nx7" path="res://objects/hooks/spawnrates/basic/hook.tscn" id="1_y20af"]
+[ext_resource type="Script" uid="uid://bwpicb1kotnet" path="res://objects/hooks/hook_spawnrate.gd" id="2_7xct0"]
+
+[sub_resource type="Curve" id="Curve_p3uu3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[resource]
+script = ExtResource("2_7xct0")
+scene = ExtResource("1_y20af")
+spawnrate = SubResource("Curve_p3uu3")
+metadata/_custom_type_script = "uid://bwpicb1kotnet"

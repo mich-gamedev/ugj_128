@@ -32,6 +32,11 @@ enabled=PackedStringArray("res://addons/fancy_folder_icons/plugin.cfg", "res://a
 
 hook=""
 
+[gui]
+
+common/snap_controls_to_pixels=false
+theme/custom_font="uid://ssvwv7airuao"
+
 [layer_names]
 
 2d_physics/layer_1="Boids avoid this layer"
