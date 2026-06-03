@@ -40,6 +40,7 @@ hook=""
 
 common/snap_controls_to_pixels=false
 theme/custom="uid://crwh0s0onq4n5"
+theme/custom_font="uid://ssvwv7airuao"
 
 [layer_names]
 

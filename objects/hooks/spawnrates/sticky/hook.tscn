@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://bqpqwvipbyoug" path="res://objects/hooks/spawnrates/sticky/hook.gd" id="1_c32ds"]
 [ext_resource type="Script" uid="uid://c8brc8tafbvgp" path="res://objects/hooks/sprite.gd" id="2_q1osa"]
 [ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="3_ky6vl"]
+[ext_resource type="AudioStream" uid="uid://ddorcc1632idk" path="res://assets/sound/sfx/hookAdded.wav" id="4_ky6vl"]
+[ext_resource type="AudioStream" uid="uid://de8ivsvcrx5b0" path="res://assets/sound/sfx/hookRemoved.wav" id="5_73vpd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v5dby"]
 radius = 8.0
@@ -294,9 +296,21 @@ radius = 180.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_6m72w"]
 radius = 48.0
 
-[node name="Hook" type="Area2D" unique_id=591076568 node_paths=PackedStringArray("sep_area", "coh_area", "align_area", "raft_area") groups=["hook"]]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l77ov"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("4_ky6vl")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uxqoq"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("5_73vpd")
+
+[node name="Hook" type="Area2D" unique_id=591076568 node_paths=PackedStringArray("drag_started_sfx", "drag_ended_sfx", "sep_area", "coh_area", "align_area", "raft_area", "hook_added_sfx", "hook_removed_sfx") groups=["hook"]]
 collision_layer = 3
 script = ExtResource("1_c32ds")
+drag_started_sfx = NodePath("HookAddedSFX")
+drag_ended_sfx = NodePath("HookRemovedSFX")
 cost = 8
 main_color = Color(0.95686275, 0.85882354, 0.8392157, 1)
 radius = 5.0
@@ -324,6 +338,8 @@ min_speed = 0.0
 turn_speed = 0.7853981633974483
 turn_force = 0.15
 acceleration_weight = 0.01
+hook_added_sfx = NodePath("HookAddedSFX")
+hook_removed_sfx = NodePath("HookRemovedSFX")
 metadata/_custom_type_script = "uid://pei6riydbube"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=645445217]
@@ -427,5 +443,19 @@ visible = false
 visible = false
 shape = SubResource("CircleShape2D_6m72w")
 debug_color = Color(0, 1, 0.49803922, 0)
+
+[node name="HookAddedSFX" type="AudioStreamPlayer2D" parent="." unique_id=1098118176]
+stream = SubResource("AudioStreamRandomizer_l77ov")
+volume_db = -9.0
+max_distance = 19200.0
+attenuation = 1e-05
+max_polyphony = 16
+
+[node name="HookRemovedSFX" type="AudioStreamPlayer2D" parent="." unique_id=78080514]
+stream = SubResource("AudioStreamRandomizer_uxqoq")
+volume_db = -9.0
+max_distance = 19200.0
+attenuation = 1e-05
+max_polyphony = 16
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

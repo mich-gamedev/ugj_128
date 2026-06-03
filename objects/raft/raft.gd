@@ -63,4 +63,14 @@ func _process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area is Hook:
 		area.delete()
+		
+		if points + area.cost >= needed_points:
+			%RoundClear.play()
+			
 		points += area.cost
+		
+		%PlopSFX.play();
+		if area.cost >= 10:
+			%GreenPts1SFX.play()
+		if area.cost >= 20:
+			%GreenPts2SFX.play()

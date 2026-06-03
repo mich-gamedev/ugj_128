@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://4ehc6vnrf0k2" path="res://objects/raft/raft.gd" id="1_en5le"]
 [ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="1_fc07u"]
+[ext_resource type="AudioStream" uid="uid://db8b1xq5ubs12" path="res://assets/sound/sfx/raftPlop1.wav" id="3_ommf3"]
+[ext_resource type="AudioStream" uid="uid://diyl3ava8djs1" path="res://assets/sound/sfx/raftPlop2.wav" id="4_ehv71"]
+[ext_resource type="AudioStream" uid="uid://ds2g4fsrm1o0m" path="res://assets/sound/sfx/roundClear.wav" id="5_3su3l"]
+[ext_resource type="AudioStream" uid="uid://ovv878ynk4ky" path="res://assets/sound/sfx/raftPts1.wav" id="5_60lnf"]
+[ext_resource type="AudioStream" uid="uid://ongdqj8veqbx" path="res://assets/sound/sfx/raftPts2.wav" id="6_3su3l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fc07u"]
 radius = 25.079872
@@ -206,6 +211,22 @@ corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_60lnf"]
+random_pitch = 1.0594631
+streams_count = 2
+stream_0/stream = ExtResource("3_ommf3")
+stream_1/stream = ExtResource("4_ehv71")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3su3l"]
+random_volume_offset_db = 0.5
+streams_count = 1
+stream_0/stream = ExtResource("5_60lnf")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q2es0"]
+random_volume_offset_db = 0.5
+streams_count = 1
+stream_0/stream = ExtResource("6_3su3l")
+
 [node name="Raft" type="Area2D" unique_id=176965589 groups=["raft"]]
 collision_layer = 4
 collision_mask = 2
@@ -356,5 +377,29 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
+
+[node name="PlopSFX" type="AudioStreamPlayer" parent="." unique_id=570633035]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_60lnf")
+volume_db = -9.0
+max_polyphony = 16
+
+[node name="RoundClear" type="AudioStreamPlayer" parent="." unique_id=1425591813]
+unique_name_in_owner = true
+stream = ExtResource("5_3su3l")
+volume_db = -12.0
+max_polyphony = 4
+
+[node name="GreenPts1SFX" type="AudioStreamPlayer" parent="." unique_id=1287116989]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_3su3l")
+volume_db = -9.0
+max_polyphony = 16
+
+[node name="GreenPts2SFX" type="AudioStreamPlayer" parent="." unique_id=467137276]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_q2es0")
+volume_db = -10.0
+max_polyphony = 16
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

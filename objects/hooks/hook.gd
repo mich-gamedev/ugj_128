@@ -52,6 +52,9 @@ class_name Hook extends Area2D
 @export var turn_force: float = 1.
 @export_range(0, 1, 0.00000000000001) var acceleration_weight: float = 0.0000000001
 
+@export_group("SFX")
+@export var hook_added_sfx: AudioStreamPlayer2D
+@export var hook_removed_sfx: AudioStreamPlayer2D
 
 var hooks: Array[Hook]:
 	get:
@@ -186,6 +189,7 @@ static func add_hook(from: Hook, to: Hook) -> bool:
 	from.hook_added.emit(to)
 	to.hook_received.emit(from)
 	to.hook_added.emit(from)
+	to.hook_added_sfx.play()
 	return true
 
 static func remove_hook(from: Hook, to: Hook) -> void:
@@ -199,6 +203,7 @@ static func remove_hook(from: Hook, to: Hook) -> void:
 	from.hook_removed.emit(to)
 	to.hook_removed.emit(from)
 	from.hook_detatched_from.emit(to)
+	to.hook_removed_sfx.play()
 
 static var _spawns_cache: Array[HookSpawnrate]
 static func get_hook_spawns() -> Array[HookSpawnrate]:
