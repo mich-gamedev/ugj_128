@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://c851w1lsmyj2y"]
+
+[ext_resource type="Script" uid="uid://dgxqohck252ep" path="res://objects/raft/earn_popup.gd" id="1_ys5xd"]
+
+[sub_resource type="Animation" id="Animation_i2jk3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ys5xd"]
+resource_name = "pop"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.008333334, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(-3, -3), Vector2(-3, -12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 1),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xhoif"]
+_data = {
+&"RESET": SubResource("Animation_i2jk3"),
+&"pop": SubResource("Animation_ys5xd")
+}
+
+[node name="Node2D" type="Node2D" unique_id=905210341]
+script = ExtResource("1_ys5xd")
+
+[node name="Label" type="RichTextLabel" parent="." unique_id=879489259]
+clip_contents = false
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 2.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.5019608, 0.5294118, 0.63529414, 1)
+theme_override_colors/font_outline_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/normal_font_size = 4
+bbcode_enabled = true
+text = "[font otv='wght=900']+1"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label" unique_id=101093275]
+libraries/ = SubResource("AnimationLibrary_xhoif")
+autoplay = &"pop"
+
+[connection signal="animation_finished" from="Label/AnimationPlayer" to="." method="_anim_finished"]

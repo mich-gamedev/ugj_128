@@ -17,7 +17,7 @@ class_name Hook extends Area2D
 @export_group("Hook Attraction", "hook_")
 @export var hook_distance: float = 360.
 @export_exp_easing var hook_ease: float = 1.
-@export var hook_force: float = 1.0
+@export var hook_force: float = 3
 @export var hook_self_strength: float = 1.0
 
 @export_group("Coherence", "coh_")
@@ -53,7 +53,10 @@ class_name Hook extends Area2D
 @export_range(0, 1, 0.00000000000001) var acceleration_weight: float = 0.0000000001
 
 
-var hooks: Array[Hook]
+var hooks: Array[Hook]:
+	get:
+		hooks = hooks.filter(func(i): return is_instance_valid(i))
+		return hooks
 
 var velocity: Vector2
 
@@ -70,6 +73,7 @@ func _ready() -> void:
 	set_collision_layer_value(2, true)
 
 func _physics_process(delta: float) -> void:
+	flush_hooks()
 	var force_vecs: Array[Vector2]
 	for i in forces:
 		var result = i.call()
@@ -167,14 +171,14 @@ func get_edge_resist() -> Vector2:
 	var distance = edge.to_local(global_position).distance_to(closest_point)
 	return -(edge.to_local(global_position).direction_to(closest_point)) * ease((edge_distance - distance) / edge_distance, edge_ease) * edge_force
 
-func can_hook() -> bool:
-	return _can_hook()
+func can_hook(hook: Hook) -> bool:
+	return _can_hook(hook)
 
-func _can_hook() -> bool:
+func _can_hook(hook: Hook) -> bool:
 	return true
 
 static func add_hook(from: Hook, to: Hook) -> bool:
-	if !(from.can_hook() and to.can_hook()): return false
+	if !(from.can_hook(to) and to.can_hook(from)): return false
 	from._connected_cache = []
 	to._connected_cache = []
 	from.hooks.append(to)
@@ -211,7 +215,7 @@ static func get_hook_spawns() -> Array[HookSpawnrate]:
 static func random() -> HookSpawnrate:
 	var weights : Dictionary[HookSpawnrate, float]
 	for i in get_hook_spawns():
-		weights[i] = i.spawnrate.sample(min(Raft.points, Raft.needed_points / 2) / 100.)
+		weights[i] = i.spawnrate.sample(min(Raft.points, Raft.needed_points * .75) / 100.)
 	var rng := RandomNumberGenerator.new()
 	rng.seed = randi()
 	return weights.keys()[rng.rand_weighted(weights.values())]
@@ -268,3 +272,6 @@ func delete() -> void:
 	deleting.emit()
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
+
+func flush_hooks() -> void:
+	hooks = hooks.filter(func(i): return is_instance_valid(i))

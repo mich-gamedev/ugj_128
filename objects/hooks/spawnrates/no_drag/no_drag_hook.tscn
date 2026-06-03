@@ -24,7 +24,7 @@ radius = 48.0
 collision_layer = 3
 script = ExtResource("1_biw4f")
 cost = 10
-main_color = Color(0.5764706, 0.6039216, 0.7176471, 1)
+main_color = Color(0.43137255, 0.4509804, 0.5529412, 1)
 radius = 4.0
 sep_distance = 24.0
 sep_ease = 0.5
@@ -70,7 +70,7 @@ z_index = 1
 script = ExtResource("3_4xrwc")
 width = 2.0
 radius = 3.0
-draw_color = Color(0.5764706, 0.6039216, 0.7176471, 1)
+draw_color = Color(0.43137255, 0.4509804, 0.5529412, 1)
 fill_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
 metadata/_custom_type_script = "uid://bxm5rpt45kanq"
 

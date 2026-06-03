@@ -11,15 +11,26 @@ func _ready() -> void:
 	if hook is DraggableHook:
 		hook.drag_started.connect(_drag_started)
 		hook.drag_ended.connect(_drag_ended)
+		hook.mouse_entered.connect(_mouse_entered)
+		hook.mouse_exited.connect(_mouse_exited)
+
 
 var twn_drag: Tween
 
+func _mouse_entered() -> void:
+	if !DraggableHook.dragged_hook: Cursor.make_visible(Cursor.HAND_OPEN)
+
+func _mouse_exited() -> void:
+	if !DraggableHook.dragged_hook: Cursor.make_visible(Cursor.NORMAL)
+
 func _drag_started() -> void:
+	Cursor.make_visible(Cursor.HAND_CLOSED)
 	if twn_drag: twn_drag.kill()
 	twn_drag = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	twn_drag.tween_property(self, ^"scale", Vector2.ONE * 1.5, .5)
 
 func _drag_ended() -> void:
+	Cursor.make_visible(Cursor.HAND_OPEN)
 	if twn_drag: twn_drag.kill()
 	twn_drag = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	twn_drag.tween_property(self, ^"scale", Vector2.ONE, 1.5)

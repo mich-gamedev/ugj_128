@@ -6,7 +6,7 @@ func _ready() -> void:
 	timer.start(randf_range(3, 20))
 	drag_started.connect(_timeout)
 
-func _can_hook() -> bool:
+func _can_hook(hook: Hook) -> bool:
 	return get_total_connected_hooks().size() < 5
 
 func _timeout() -> void:

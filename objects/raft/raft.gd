@@ -2,15 +2,19 @@ class_name Raft extends Area2D
 
 static var raft: Raft
 
+const EARN_POPUP = preload("uid://c851w1lsmyj2y")
+
 var twn_points: Tween
 var twn_time: Tween
 static var points: int:
 	set(v):
+		var diff := v - points
 		points = v
 		if v >= needed_points:
 			points = 0
 			needed_points *= randf_range(.9, 2.5)
-			wait_time *= randf_range(1, 1.35)
+			wait_time *= randf_range(1, 1.5)
+			World.max_hooks *= randf_range(1.1, 1.35)
 			time_left = wait_time
 		raft.points_label.text = "[font otv='wght=800']%d[color=#6e738d]/%d" % [points, needed_points]
 		if raft.twn_points: raft.twn_points.kill()
@@ -18,8 +22,15 @@ static var points: int:
 		raft.twn_points.tween_property(raft.points_label, ^"scale", Vector2.ONE, .5).from(Vector2(1.25, 1 / 1.25))
 		raft.twn_points.tween_property(raft.points_bar, ^"value", points, 0.15).set_trans(Tween.TRANS_CUBIC)
 		raft.twn_points.tween_property(raft.points_bar, ^"max_value", needed_points, 0.15).set_trans(Tween.TRANS_CUBIC)
+		var inst := EARN_POPUP.instantiate() as Node2D
+		(inst.get_node(^"Label") as RichTextLabel).text = "[font otv='wght=900']%+d" % diff
+		if diff >= 10:
+			(inst.get_node(^"Label") as RichTextLabel).add_theme_color_override(&"default_color", Color("#a6da95"))
+		raft.add_child(inst)
+		inst.position = Vector2.from_angle(randf() * TAU) * sqrt(randf_range(0, 625)) # 625 == 25 ** 2
+		inst.reset_physics_interpolation()
 static var needed_points: int = 30
-static var wait_time: float = 45:
+static var wait_time: float = 60:
 	set(v):
 		wait_time = v
 		if raft.twn_time: raft.twn_time.kill()

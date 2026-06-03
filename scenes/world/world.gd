@@ -1,9 +1,9 @@
-extends Node2D
+class_name World extends Node2D
 
 @onready var bounds: ReferenceRect = %BoundsRect
 @onready var spawn_timer: Timer = %SpawnAttemptTimer
 
-var max_hooks := 32
+static var max_hooks := 10
 
 func _spawn_timeout() -> void:
 	if get_tree().get_nodes_in_group(&"hook").size() >= max_hooks: return

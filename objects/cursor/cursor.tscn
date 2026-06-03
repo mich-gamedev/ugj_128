@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://d1qrewxpucjcs"]
+
+[ext_resource type="Script" uid="uid://bqkj58hvucuek" path="res://objects/cursor/cursor.gd" id="1_7iavq"]
+[ext_resource type="Texture2D" uid="uid://c0351rjvnk1id" path="res://assets/kenney/cursors/cursor_none.svg" id="1_oji3d"]
+[ext_resource type="Shader" uid="uid://fbaxcaq16i03" path="res://resources/shaders/outline.gdshader" id="2_3ct15"]
+[ext_resource type="Texture2D" uid="uid://c6bt4ehrji74t" path="res://assets/kenney/cursors/hand_thin_open.svg" id="2_7iavq"]
+[ext_resource type="Texture2D" uid="uid://x8i3prbyqpef" path="res://assets/kenney/cursors/hand_thin_closed.svg" id="3_3ct15"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wsb1n"]
+shader = ExtResource("2_3ct15")
+shader_parameter/allow_out_of_bounds = false
+shader_parameter/outline_thickness = 4.0
+shader_parameter/outline_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+
+[node name="Cursor" type="Node2D" unique_id=872239697]
+z_index = 4096
+script = ExtResource("1_7iavq")
+
+[node name="Normal" type="Sprite2D" parent="." unique_id=1652703629]
+modulate = Color(0.7921569, 0.827451, 0.9607843, 1)
+material = SubResource("ShaderMaterial_wsb1n")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_oji3d")
+offset = Vector2(7, 11)
+
+[node name="HandOpen" type="Sprite2D" parent="." unique_id=1418863058]
+visible = false
+modulate = Color(0.7921569, 0.827451, 0.9607843, 1)
+material = SubResource("ShaderMaterial_wsb1n")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_7iavq")
+offset = Vector2(2, 2)
+
+[node name="HandClosed" type="Sprite2D" parent="." unique_id=2126147099]
+visible = false
+modulate = Color(0.7921569, 0.827451, 0.9607843, 1)
+material = SubResource("ShaderMaterial_wsb1n")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_3ct15")
+offset = Vector2(2, 2)

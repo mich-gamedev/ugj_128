@@ -4,8 +4,9 @@
 [ext_resource type="Script" uid="uid://bwpicb1kotnet" path="res://objects/hooks/hook_spawnrate.gd" id="2_7xct0"]
 
 [sub_resource type="Curve" id="Curve_p3uu3"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
-point_count = 1
+_limits = [0.0, 1.0, 0.0, 5.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(3.7481165, 1), 0.0, 0.0, 0, 0, Vector2(5, 0), -2.1971047, 0.0, 0, 0]
+point_count = 3
 
 [resource]
 script = ExtResource("2_7xct0")
