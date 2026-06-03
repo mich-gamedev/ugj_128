@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dip66g6s5aqei"]
+
+[ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="1_q7y2q"]
+
+[node name="ReferenceRect" type="ReferenceRect" unique_id=1857619717]
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="Sprite" type="Node2D" parent="." unique_id=2126213130]
+position = Vector2(10, 10)
+
+[node name="Outline" type="Node2D" parent="Sprite" unique_id=611591377]
+z_index = 1
+script = ExtResource("1_q7y2q")
+radius = 4.0
+draw_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+fill_color = Color(0.7921569, 0.827451, 0.9607843, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw" type="Node2D" parent="Sprite" unique_id=1371154810]
+z_index = 1
+script = ExtResource("1_q7y2q")
+width = 2.0
+radius = 4.0
+draw_color = Color(0.6509804, 0.85490197, 0.58431375, 1)
+fill_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Label" type="RichTextLabel" parent="Sprite" unique_id=491884590]
+z_index = 1
+offset_left = -1.6
+offset_top = -3.3
+offset_right = 38.4
+offset_bottom = 15.7
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.6509804, 0.85490197, 0.58431375, 1)
+theme_override_font_sizes/normal_font_size = 5
+bbcode_enabled = true
+text = "[font otv=\"wght=600\"]$"

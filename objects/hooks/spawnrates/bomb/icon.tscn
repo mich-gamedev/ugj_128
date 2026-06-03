@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://drpfa24mempdm"]
+
+[ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="1_x58s8"]
+
+[sub_resource type="Animation" id="Animation_bbd1x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 3
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ptphy"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.141592653589793]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7lpx8"]
+_data = {
+&"RESET": SubResource("Animation_bbd1x"),
+&"spin": SubResource("Animation_ptphy")
+}
+
+[node name="ReferenceRect" type="ReferenceRect" unique_id=636435579]
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="Sprite" type="Node2D" parent="." unique_id=1252949725]
+position = Vector2(10, 10)
+
+[node name="Outline" type="Node2D" parent="Sprite" unique_id=1517219233]
+z_index = 1
+script = ExtResource("1_x58s8")
+radius = 4.0
+draw_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+fill_color = Color(0.7921569, 0.827451, 0.9607843, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Line2D" type="Line2D" parent="Sprite" unique_id=1084555210]
+physics_interpolation_mode = 2
+z_index = 1
+points = PackedVector2Array(-5, 0, -2, -2, 0, -5, 2, -2, 5, 0, 2, 2, 0, 5, -2, 2)
+closed = true
+width = 2.0
+default_color = Color(0.9411765, 0.7764706, 0.7764706, 1)
+sharp_limit = 100.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite/Line2D" unique_id=1974543881]
+libraries/ = SubResource("AnimationLibrary_7lpx8")
+autoplay = &"spin"
+
+[node name="RingDraw" type="Node2D" parent="Sprite" unique_id=588210395]
+z_index = 1
+script = ExtResource("1_x58s8")
+width = 2.0
+radius = 4.0
+draw_color = Color(0.9411765, 0.7764706, 0.7764706, 1)
+fill_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"

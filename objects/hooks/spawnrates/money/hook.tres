@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bwpicb1kotnet" path="res://objects/hooks/hook_spawnrate.gd" id="1_2mbog"]
 [ext_resource type="PackedScene" uid="uid://dvneq6mvm8o1y" path="res://objects/hooks/spawnrates/money/hook.tscn" id="1_11uo4"]
+[ext_resource type="PackedScene" uid="uid://dip66g6s5aqei" path="res://objects/hooks/spawnrates/money/icon.tscn" id="1_ixk8t"]
 
 [sub_resource type="Curve" id="Curve_ixk8t"]
 _data = [Vector2(0, 0.033333335), 0.0, 0.20232634, 0, 0, Vector2(1, 0.23333335), 0.20423831, 0.0, 0, 0]
@@ -11,6 +12,10 @@ metadata/_snap_count = 30
 
 [resource]
 script = ExtResource("1_2mbog")
+name = "money fish"
+desc = "a very rare fish, that holds alot of money. it's wealth makes it very heavy, so it's often better to just manually move it in than use nets."
+icon_20_x_20 = ExtResource("1_ixk8t")
+main_color = Color(0.6509804, 0.85490197, 0.58431375, 1)
 scene = ExtResource("1_11uo4")
 spawnrate = SubResource("Curve_ixk8t")
 metadata/_custom_type_script = "uid://bwpicb1kotnet"

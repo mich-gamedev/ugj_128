@@ -100,7 +100,6 @@ func _physics_process(delta: float) -> void:
 		global_position.y = wrapf(global_position.y, bounds_rect.position.y, bounds_rect.end.y)
 		reset_physics_interpolation()
 	queue_redraw()
-	if get_hook(): print(get_hook())
 
 func _validate_velocity() -> void:
 	pass

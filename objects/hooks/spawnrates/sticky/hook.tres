@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="HookSpawnrate" format=3 uid="uid://cegshs2ug1tp3"]
 
 [ext_resource type="Script" uid="uid://bwpicb1kotnet" path="res://objects/hooks/hook_spawnrate.gd" id="1_7gcyj"]
+[ext_resource type="PackedScene" uid="uid://cr2b3apxj1yfl" path="res://objects/hooks/spawnrates/sticky/icon.tscn" id="1_kefyt"]
 [ext_resource type="PackedScene" uid="uid://cjv78br046tfu" path="res://objects/hooks/spawnrates/sticky/hook.tscn" id="1_oqes7"]
 
 [sub_resource type="Curve" id="Curve_kefyt"]
@@ -10,6 +11,10 @@ point_count = 2
 
 [resource]
 script = ExtResource("1_7gcyj")
+name = "glue fish"
+desc = "a sticky fish that latches onto any fish it touches; that is, until it runs out of glue and needs replaced. great for pulling tons of fish in, but is a limited resource!"
+icon_20_x_20 = ExtResource("1_kefyt")
+main_color = Color(0.95686275, 0.85882354, 0.8392157, 1)
 scene = ExtResource("1_oqes7")
 spawnrate = SubResource("Curve_kefyt")
 metadata/_custom_type_script = "uid://bwpicb1kotnet"

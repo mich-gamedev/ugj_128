@@ -13,8 +13,9 @@ static var points: int:
 		if v >= needed_points:
 			points = 0
 			needed_points *= randf_range(.9, 2.5)
-			wait_time *= randf_range(1, 1.5)
-			World.max_hooks *= randf_range(1.1, 1.35)
+			wait_time *= randf_range(1, 1.25)
+			World.max_hooks *= randf_range(1.1, 1.5)
+			World.max_hooks = min(World.max_hooks, 40)
 			time_left = wait_time
 		raft.points_label.text = "[font otv='wght=800']%d[color=#6e738d]/%d" % [points, needed_points]
 		if raft.twn_points: raft.twn_points.kill()

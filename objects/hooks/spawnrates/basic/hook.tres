@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="HookSpawnrate" format=3 uid="uid://f7x47v8ejphp"]
 
+[ext_resource type="PackedScene" uid="uid://dkh4rpxfdsmno" path="res://objects/hooks/spawnrates/basic/icon.tscn" id="1_7xct0"]
 [ext_resource type="PackedScene" uid="uid://b287fvog46nx7" path="res://objects/hooks/spawnrates/basic/hook.tscn" id="1_y20af"]
 [ext_resource type="Script" uid="uid://bwpicb1kotnet" path="res://objects/hooks/hook_spawnrate.gd" id="2_7xct0"]
 
@@ -10,6 +11,10 @@ point_count = 3
 
 [resource]
 script = ExtResource("2_7xct0")
+name = "normal fish"
+desc = "a low-cost, but simple fish that's abundant and easy to collect"
+icon_20_x_20 = ExtResource("1_7xct0")
+main_color = Color(0.7921569, 0.827451, 0.9607843, 1)
 scene = ExtResource("1_y20af")
 spawnrate = SubResource("Curve_p3uu3")
 metadata/_custom_type_script = "uid://bwpicb1kotnet"

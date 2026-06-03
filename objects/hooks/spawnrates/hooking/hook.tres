@@ -10,6 +10,11 @@ metadata/_snap_enabled = true
 
 [resource]
 script = ExtResource("1_sdbq7")
+name = "net fish"
+desc = "a helfpul fish that latches onto other fish, pulling them towards it.
+
+useful to reel many fish in at once."
+main_color = Color(0.93333334, 0.83137256, 0.62352943, 1)
 scene = ExtResource("1_xnda2")
 spawnrate = SubResource("Curve_3a4pb")
 metadata/_custom_type_script = "uid://bwpicb1kotnet"

@@ -28,5 +28,6 @@ func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 func _physics_process(delta: float) -> void:
 	super(delta)
 	if dragged_hook == self:
+		var bounds := get_tree().get_first_node_in_group(&"bounds_rect").get_global_rect() as Rect2
 		velocity = (get_global_mouse_position() - global_position) / delta * .5
-		global_position = get_global_mouse_position()
+		global_position = get_global_mouse_position().clamp(bounds.position, bounds.end)

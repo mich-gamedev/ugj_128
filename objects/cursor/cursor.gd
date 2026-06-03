@@ -1,4 +1,6 @@
-extends Node2D
+extends CanvasLayer
+
+@onready var cursor: Node2D = $Cursor
 
 enum {
 	NORMAL,
@@ -9,10 +11,10 @@ enum {
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
-func _process(delta: float) -> void:
-	global_position = get_global_mouse_position()
+func _process(_delta: float) -> void:
+	cursor.global_position = cursor.get_global_mouse_position()
 
 func make_visible(child: int) -> void:
-	for i in get_children():
+	for i in cursor.get_children():
 		if i is Node2D:
 			i.visible = i.get_index() == child

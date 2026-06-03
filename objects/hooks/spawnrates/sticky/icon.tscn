@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://cr2b3apxj1yfl"]
+
+[ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="1_ych15"]
+
+[sub_resource type="Animation" id="Animation_73vpd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_l77ov"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-1.1061198, 1),
+"update": 0,
+"values": [0.0, -6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nuwx1"]
+_data = {
+&"RESET": SubResource("Animation_73vpd"),
+&"spin": SubResource("Animation_l77ov")
+}
+
+[node name="ReferenceRect" type="ReferenceRect" unique_id=2071166260]
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="Sprite" type="Node2D" parent="." unique_id=888822104]
+position = Vector2(10, 10)
+
+[node name="Node2D" type="Node2D" parent="Sprite" unique_id=429335327]
+
+[node name="Outline" type="Node2D" parent="Sprite/Node2D" unique_id=264626341]
+z_index = 1
+script = ExtResource("1_ych15")
+radius = 4.0
+draw_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+fill_color = Color(0.7921569, 0.827451, 0.9607843, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Line2D" type="Line2D" parent="Sprite/Node2D" unique_id=181254559]
+z_index = 1
+points = PackedVector2Array(-6, 0, 8, 0)
+width = 2.0
+default_color = Color(0.95686275, 0.85882354, 0.8392157, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="Sprite/Node2D" unique_id=334517362]
+z_index = 1
+rotation = 0.7853981
+points = PackedVector2Array(-6, 0, 5.6568546, 0)
+width = 2.0
+default_color = Color(0.95686275, 0.85882354, 0.8392157, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D3" type="Line2D" parent="Sprite/Node2D" unique_id=790065565]
+z_index = 1
+rotation = 1.5707963
+points = PackedVector2Array(-7, 3.059797e-07, 6, 0)
+width = 2.0
+default_color = Color(0.95686275, 0.85882354, 0.8392157, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D4" type="Line2D" parent="Sprite/Node2D" unique_id=189784600]
+z_index = 1
+rotation = 2.3561945
+points = PackedVector2Array(-5.6568546, 0, 5.6568546, 0)
+width = 2.0
+default_color = Color(0.95686275, 0.85882354, 0.8392157, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="RingDraw" type="Node2D" parent="Sprite/Node2D" unique_id=578942356]
+z_index = 1
+script = ExtResource("1_ych15")
+width = 2.0
+radius = 4.0
+draw_color = Color(0.95686275, 0.85882354, 0.8392157, 1)
+fill_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" unique_id=1169658371]
+libraries/ = SubResource("AnimationLibrary_nuwx1")
+autoplay = &"spin"
+speed_scale = 0.1

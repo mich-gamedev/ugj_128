@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="HookSpawnrate" format=3 uid="uid://c6t335op1wtaq"]
 
+[ext_resource type="PackedScene" uid="uid://fgkomo3hfsf4" path="res://objects/hooks/spawnrates/no_drag/icon.tscn" id="1_k0vhe"]
 [ext_resource type="PackedScene" uid="uid://cp8pfn8n8kb5k" path="res://objects/hooks/spawnrates/no_drag/no_drag_hook.tscn" id="1_u3ce2"]
 [ext_resource type="Script" uid="uid://bwpicb1kotnet" path="res://objects/hooks/hook_spawnrate.gd" id="1_v7u7o"]
 
@@ -11,6 +12,10 @@ metadata/_snap_enabled = true
 
 [resource]
 script = ExtResource("1_v7u7o")
+name = "slip fish"
+desc = "a tricky and expensive fish that can't be dragged, but is extremely lightweight and pullable with nets."
+icon_20_x_20 = ExtResource("1_k0vhe")
+main_color = Color(0.43137255, 0.4509804, 0.5529412, 1)
 scene = ExtResource("1_u3ce2")
 spawnrate = SubResource("Curve_k0vhe")
 metadata/_custom_type_script = "uid://bwpicb1kotnet"

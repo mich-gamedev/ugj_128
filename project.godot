@@ -30,7 +30,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/fancy_folder_icons/plugin.cfg", "res://addons/quick_notes_dock/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/StyleboxFancy/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/fancy_folder_icons/plugin.cfg", "res://addons/quick_notes_dock/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [global_group]
 
@@ -39,7 +39,7 @@ hook=""
 [gui]
 
 common/snap_controls_to_pixels=false
-theme/custom_font="uid://ssvwv7airuao"
+theme/custom="uid://crwh0s0onq4n5"
 
 [layer_names]
 
