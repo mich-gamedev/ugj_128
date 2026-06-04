@@ -47,10 +47,10 @@ theme_override_constants/separation = 0
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
-color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+color = Color(0.11764706, 0.1254902, 0.1882353, 1)
 
 [node name="Control" type="Control" parent="CanvasLayer/HBoxContainer" unique_id=270484331]
-custom_minimum_size = Vector2(320, 0)
+custom_minimum_size = Vector2(320, 180)
 layout_mode = 2
 mouse_filter = 2
 
@@ -58,7 +58,35 @@ mouse_filter = 2
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
-color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+color = Color(0.11764706, 0.1254902, 0.1882353, 1)
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="CanvasLayer" unique_id=85984298]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/HBoxContainer2" unique_id=1076134726]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+color = Color(0.11764706, 0.1254902, 0.1882353, 1)
+
+[node name="Control" type="Control" parent="CanvasLayer/HBoxContainer2" unique_id=412937438]
+custom_minimum_size = Vector2(320, 180)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/HBoxContainer2" unique_id=1930285398]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+color = Color(0.11764706, 0.1254902, 0.1882353, 1)
 
 [node name="SpawnAttemptTimer" type="Timer" parent="." unique_id=1188634649]
 unique_name_in_owner = true
@@ -72,5 +100,9 @@ position = Vector2(208, 50)
 
 [node name="Hook3" parent="." unique_id=1198382285 instance=ExtResource("9_5qq27")]
 position = Vector2(129, 130)
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1146789381]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1635460710]
 
 [connection signal="timeout" from="SpawnAttemptTimer" to="." method="_spawn_timeout"]

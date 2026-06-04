@@ -197,7 +197,7 @@ static func add_hook(from: Hook, to: Hook) -> bool:
 
 static func remove_hook(from: Hook, to: Hook) -> void:
 	if !from.hooks.has(to):
-		push_error("Hooks already attached!")
+		push_error("Hooks are not attached!")
 		return
 	from._connected_cache = []
 	to._connected_cache = []

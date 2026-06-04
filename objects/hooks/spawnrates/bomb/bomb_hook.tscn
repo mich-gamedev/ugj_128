@@ -652,12 +652,14 @@ libraries/ = SubResource("AnimationLibrary_6k6eh")
 shape = SubResource("CircleShape2D_v5dby")
 
 [node name="SepArea" type="Area2D" parent="." unique_id=11390180]
+input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SepArea" unique_id=1787614354]
 shape = SubResource("CircleShape2D_sl2e5")
 debug_color = Color(1, 0.011764706, 0, 0)
 
 [node name="CohArea" type="Area2D" parent="." unique_id=991657393]
+input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CohArea" unique_id=784526702]
 visible = false
@@ -665,6 +667,7 @@ shape = SubResource("CircleShape2D_1fp7r")
 debug_color = Color(0.49803922, 1, 0.83137256, 0)
 
 [node name="AlignArea" type="Area2D" parent="." unique_id=1641467686]
+input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AlignArea" unique_id=1014501630]
 visible = false
@@ -674,6 +677,7 @@ debug_color = Color(0, 1, 0.49803922, 0)
 [node name="RaftSep" type="Area2D" parent="." unique_id=957631207]
 collision_layer = 0
 collision_mask = 4
+input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RaftSep" unique_id=1748781036]
 shape = SubResource("CircleShape2D_bbd1x")

@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bwmcerf8l4bqt"]
+
+[ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="1_uauqc"]
+
+[sub_resource type="Curve" id="Curve_0rpsb"]
+_data = [Vector2(0, 1), 0.0, -3.0484302, 0, 1, Vector2(0.27770382, 0.15343934), 0.0, 0.0, 0, 0, Vector2(0.47694075, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.9118294, 0.0, 1, 0]
+point_count = 4
+
+[node name="ReferenceRect" type="ReferenceRect" unique_id=1880478481]
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="Sprite" type="Node2D" parent="." unique_id=410143918]
+z_index = 1
+position = Vector2(10, 11)
+
+[node name="ColorRect" type="ColorRect" parent="Sprite" unique_id=415451109]
+clip_children = 1
+offset_left = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+
+[node name="Outline" type="Node2D" parent="Sprite/ColorRect" unique_id=195490573]
+position = Vector2(6, 0)
+script = ExtResource("1_uauqc")
+radius = 4.0
+draw_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+fill_color = Color(0.7921569, 0.827451, 0.9607843, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw" type="Node2D" parent="Sprite/ColorRect" unique_id=1986873205]
+position = Vector2(6, 0)
+script = ExtResource("1_uauqc")
+width = 2.0
+radius = 4.0
+draw_color = Color(0.7764706, 0.627451, 0.9647059, 1)
+fill_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="ColorRect2" type="ColorRect" parent="Sprite" unique_id=726064774]
+clip_children = 1
+offset_left = -6.0
+offset_top = -10.0
+offset_right = 6.0
+
+[node name="Outline" type="Node2D" parent="Sprite/ColorRect2" unique_id=860187081]
+position = Vector2(6, 10)
+scale = Vector2(1, 1.403)
+script = ExtResource("1_uauqc")
+radius = 4.0
+draw_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+fill_color = Color(0.7921569, 0.827451, 0.9607843, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw2" type="Node2D" parent="Sprite/ColorRect2" unique_id=1550580842]
+position = Vector2(6, 10)
+scale = Vector2(1, 1.5)
+script = ExtResource("1_uauqc")
+width = 2.0
+radius = 4.0
+draw_color = Color(0.7764706, 0.627451, 0.9647059, 1)
+fill_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Line2D" type="Line2D" parent="Sprite" unique_id=807757874]
+points = PackedVector2Array(-1, -5, 1, -3, -1, -1, 0, 1)
+width = 2.0
+width_curve = SubResource("Curve_0rpsb")
+default_color = Color(0.7764706, 0.627451, 0.9647059, 1)

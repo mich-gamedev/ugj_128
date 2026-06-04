@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 		ray.global_position = from.global_position
 		ray.target_position = ray.to_local(to.global_position)
 		ray.force_raycast_update()
-		if ray.is_colliding():
+		if ray.is_colliding() and from.hooks.has(to):
 			Hook.remove_hook(from, to)
 
 func hook_detatched(detatched: Hook, origin: Hook) -> void:

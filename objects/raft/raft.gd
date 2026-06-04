@@ -33,7 +33,7 @@ static var points: int:
 			inst.position = Vector2.from_angle(randf() * TAU) * sqrt(randf_range(0, 625)) # 625 == 25 ** 2
 			inst.reset_physics_interpolation()
 static var needed_points: int = 30
-static var wait_time: float = 45:
+static var wait_time: float = 40:
 	set(v):
 		wait_time = v
 		if raft.twn_time: raft.twn_time.kill()
@@ -49,7 +49,7 @@ static var time_left: float = wait_time
 func reset() -> void:
 	points = 0
 	needed_points = 30
-	wait_time = 45
+	wait_time = 40
 	time_left = wait_time
 
 func _ready() -> void:
@@ -80,6 +80,8 @@ func _process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if GameStats.state == GameStats.GAME_OVER: return
 	if area is Hook:
+		if area._is_deleting:
+			return
 		area.collected.emit()
 		area.delete()
 

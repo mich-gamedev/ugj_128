@@ -327,25 +327,6 @@ text = "STATS"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ValueQuotas" type="HBoxContainer" parent="Control2/Control/ColorRect2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1369656724]
-layout_mode = 2
-theme_override_constants/separation = 1
-
-[node name="Label2" type="Label" parent="Control2/Control/ColorRect2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ValueQuotas" unique_id=1193100165]
-layout_mode = 2
-text = "quotas"
-
-[node name="HSeparator" type="HSeparator" parent="Control2/Control/ColorRect2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ValueQuotas" unique_id=1599487898]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-theme_type_variation = &"LineFollower"
-
-[node name="Quotas" type="Label" parent="Control2/Control/ColorRect2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ValueQuotas" unique_id=295912132]
-unique_name_in_owner = true
-layout_mode = 2
-text = "4"
-
 [node name="ValuePoints" type="HBoxContainer" parent="Control2/Control/ColorRect2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=2071671039]
 layout_mode = 2
 theme_override_constants/separation = 1
@@ -364,6 +345,25 @@ theme_type_variation = &"LineFollower"
 unique_name_in_owner = true
 layout_mode = 2
 text = "864"
+
+[node name="ValueQuotas" type="HBoxContainer" parent="Control2/Control/ColorRect2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1369656724]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label2" type="Label" parent="Control2/Control/ColorRect2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ValueQuotas" unique_id=1193100165]
+layout_mode = 2
+text = "quotas"
+
+[node name="HSeparator" type="HSeparator" parent="Control2/Control/ColorRect2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ValueQuotas" unique_id=1599487898]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_type_variation = &"LineFollower"
+
+[node name="Quotas" type="Label" parent="Control2/Control/ColorRect2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ValueQuotas" unique_id=295912132]
+unique_name_in_owner = true
+layout_mode = 2
+text = "4"
 
 [node name="ValueTime" type="HBoxContainer" parent="Control2/Control/ColorRect2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=202586840]
 layout_mode = 2
@@ -390,10 +390,11 @@ layout_mode = 2
 [node name="HSeparator" type="HSeparator" parent="Control2/Control/ColorRect2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SepDiscoveries" unique_id=1763843059]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control2/Control/ColorRect2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SepDiscoveries" unique_id=1460199823]
+[node name="SepDiscoveriesLabel" type="Label" parent="Control2/Control/ColorRect2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SepDiscoveries" unique_id=1460199823]
+unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"SeparatorLabel"
-text = "DISCOVERIES"
+text = "DISCOVERIES (%d/%d)"
 
 [node name="HSeparator2" type="HSeparator" parent="Control2/Control/ColorRect2/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SepDiscoveries" unique_id=1812485071]
 layout_mode = 2
@@ -464,6 +465,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_type_variation = &"PanelCover"
+metadata/_edit_lock_ = true
 
 [node name="Anim" type="AnimationPlayer" parent="Control2" unique_id=1288644167]
 unique_name_in_owner = true

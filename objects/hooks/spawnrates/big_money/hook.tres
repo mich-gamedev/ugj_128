@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="HookSpawnrate" format=3 uid="uid://drmu8r17j0s4y"]
+
+[ext_resource type="PackedScene" uid="uid://ckycv4667rhcm" path="res://objects/hooks/spawnrates/big_money/icon.tscn" id="1_132u1"]
+[ext_resource type="Script" uid="uid://bwpicb1kotnet" path="res://objects/hooks/hook_spawnrate.gd" id="1_jidx7"]
+[ext_resource type="PackedScene" uid="uid://olsl1qqrih6y" path="res://objects/hooks/spawnrates/big_money/hook.tscn" id="2_fruva"]
+
+[sub_resource type="Curve" id="Curve_6e8w3"]
+_limits = [0.0, 1.0, 0.0, 15.0]
+_data = [Vector2(0.48270875, 0), 0.0, 0.0, 0, 0, Vector2(6.558472, 0), 0.0, 0.0, 0, 0, Vector2(7.506, 0.005), 0.0, 0.0, 0, 0, Vector2(8.484397, 0), 0.0, 0.0, 0, 0, Vector2(10, 0), 0.0, 0.025516137, 0, 0, Vector2(15, 0.022456884), 0.0, 0.0, 0, 0]
+point_count = 6
+metadata/_snap_count = 15
+
+[resource]
+script = ExtResource("1_jidx7")
+name = "ELDER MONEY FISH"
+desc = "because of hunting, it's rare to find money fish this old. they have extremely high money, but have to be pushed rathed than dragged, and are extremely heavy."
+icon_20_x_20 = ExtResource("1_132u1")
+main_color = Color(0.54509807, 0.8352941, 0.7921569, 1)
+scene = ExtResource("2_fruva")
+spawnrate = SubResource("Curve_6e8w3")
+metadata/_custom_type_script = "uid://bwpicb1kotnet"

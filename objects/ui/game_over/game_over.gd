@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var discoveries: VBoxContainer = %DiscoveriesContainer
 @onready var anim: AnimationPlayer = %Anim
 @onready var high_score_label: RichTextLabel = %HighScoreLabel
+@onready var sep_discoveries_label: Label = %SepDiscoveriesLabel
 
 const DISCOVER_PANEL = preload("uid://dh3w4l4j4274e")
 
@@ -20,6 +21,10 @@ func _ready() -> void:
 		Time.get_time_dict_from_unix_time(int(GameStats.pack.time_elapsed)).minute,
 		Time.get_time_dict_from_unix_time(int(GameStats.pack.time_elapsed)).second
 	]
+	sep_discoveries_label.text %= [
+		((SaveData.data.high_score.discoveries if SaveData.data.high_score else []) + GameStats.pack.discoveries).size(),
+		Hook.get_hook_spawns().size()
+	]
 	for i in GameStats.pack.discoveries:
 		var inst := DISCOVER_PANEL.instantiate() as DiscoverPanel
 		inst.hook = load(i)
@@ -28,10 +33,6 @@ func _ready() -> void:
 	var effect := AudioServer.get_bus_effect(3, 0) as AudioEffectFilter # filter on In-game SFX
 	twn_filter = create_tween()
 	twn_filter.tween_property(effect, ^"cutoff_hz", 3000, 0.5)
-	twn_filter.parallel().tween_method(
-		func(v: float) -> void: AudioServer.set_bus_volume_linear(3, v),
-		1, .66, 0.5
-	)
 
 func _on_retry_pressed() -> void:
 	if twn_filter: twn_filter.kill()
@@ -39,10 +40,6 @@ func _on_retry_pressed() -> void:
 	twn_filter = get_tree().create_tween()
 	twn_filter.tween_property(effect, ^"cutoff_hz", 20500, 0.5)
 	twn_filter.tween_callback(func() -> void: AudioServer.set_bus_effect_enabled(3, 0, false))
-	twn_filter.parallel().tween_method(
-		func(v: float) -> void: AudioServer.set_bus_volume_linear(3, v),
-		.25, 1, 0.5
-	)
 	get_tree().reload_current_scene()
 
 
