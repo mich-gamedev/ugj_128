@@ -44,7 +44,8 @@ func _hooked(to: Hook) -> void:
 	get_tree().current_scene.add_child(inst)
 
 func _deleting() -> void:
+	var dur := randf_range(0.25, .75)
 	if twn_drag: twn_drag.kill()
 	twn_drag = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).set_parallel()
-	twn_drag.tween_property(self, ^"scale", Vector2.ZERO, .5)
-	twn_drag.tween_property(self, ^'global_position', get_tree().get_first_node_in_group(&"raft").global_position, 0.5)
+	twn_drag.tween_property(self, ^"scale", Vector2.ZERO, dur)
+	twn_drag.tween_property(self, ^'global_position', get_tree().get_first_node_in_group(&"raft").global_position, dur)

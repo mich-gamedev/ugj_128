@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://dtc8n3ajyw8hc"]
+
+[ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="2_n8tnu"]
+
+[sub_resource type="Animation" id="Animation_mcog3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_g2ab2"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gr0u0"]
+_data = {
+&"RESET": SubResource("Animation_mcog3"),
+&"spin": SubResource("Animation_g2ab2")
+}
+
+[node name="ReferenceRect" type="ReferenceRect" unique_id=1558535637]
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="Sprite" type="Node2D" parent="." unique_id=1130278670]
+position = Vector2(10, 10)
+
+[node name="Outline" type="Node2D" parent="Sprite" unique_id=1068850621]
+z_index = 1
+script = ExtResource("2_n8tnu")
+radius = 4.0
+draw_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+fill_color = Color(0.7921569, 0.827451, 0.9607843, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Blade" type="Line2D" parent="Sprite" unique_id=1822965458]
+z_index = 1
+points = PackedVector2Array(-2.3327007, -3.247151, 0, -5, 0.36953878, -1.9782896)
+width = 2.0
+default_color = Color(0.9607843, 0.6627451, 0.49803922, 1)
+
+[node name="Blade2" type="Line2D" parent="Sprite" unique_id=1561396631]
+z_index = 1
+rotation = 3.1415927
+points = PackedVector2Array(-2.3327007, -3.247151, 0, -5, 0.36953878, -1.9782896)
+width = 2.0
+default_color = Color(0.9607843, 0.6627451, 0.49803922, 1)
+
+[node name="Blade3" type="Line2D" parent="Sprite" unique_id=18243062]
+z_index = 1
+rotation = 0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+points = PackedVector2Array(-2.3327007, -3.247151, 0, -5, 0.36953878, -1.9782896)
+width = 2.0
+default_color = Color(0.9607843, 0.6627451, 0.49803922, 1)
+
+[node name="Blade4" type="Line2D" parent="Sprite" unique_id=664418419]
+z_index = 1
+rotation = -2.3561945
+scale = Vector2(0.99999994, 0.99999994)
+points = PackedVector2Array(-2.3327007, -3.247151, 0, -5, 0.36953878, -1.9782896)
+width = 2.0
+default_color = Color(0.9607843, 0.6627451, 0.49803922, 1)
+
+[node name="Blade5" type="Line2D" parent="Sprite" unique_id=1719030006]
+z_index = 1
+rotation = 1.5707964
+points = PackedVector2Array(-2.3327007, -3.247151, 0, -5, 0.36953878, -1.9782896)
+width = 2.0
+default_color = Color(0.9607843, 0.6627451, 0.49803922, 1)
+
+[node name="Blade6" type="Line2D" parent="Sprite" unique_id=511055464]
+z_index = 1
+rotation = -1.5707963
+points = PackedVector2Array(-2.3327007, -3.247151, 0, -5, 0.36953878, -1.9782896)
+width = 2.0
+default_color = Color(0.9607843, 0.6627451, 0.49803922, 1)
+
+[node name="Blade7" type="Line2D" parent="Sprite" unique_id=471385086]
+z_index = 1
+rotation = 2.3561945
+scale = Vector2(0.99999994, 0.99999994)
+points = PackedVector2Array(-2.3327007, -3.247151, 0, -5, 0.36953878, -1.9782896)
+width = 2.0
+default_color = Color(0.9607843, 0.6627451, 0.49803922, 1)
+
+[node name="Blade8" type="Line2D" parent="Sprite" unique_id=1422168000]
+z_index = 1
+rotation = -0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+points = PackedVector2Array(-2.3327007, -3.247151, 0, -5, 0.36953878, -1.9782896)
+width = 2.0
+default_color = Color(0.9607843, 0.6627451, 0.49803922, 1)
+
+[node name="RingDraw" type="Node2D" parent="Sprite" unique_id=201426212]
+z_index = 1
+script = ExtResource("2_n8tnu")
+width = 2.0
+radius = 4.0
+draw_color = Color(0.9607843, 0.6627451, 0.49803922, 1)
+fill_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" unique_id=12932075]
+libraries/ = SubResource("AnimationLibrary_gr0u0")
+autoplay = &"spin"

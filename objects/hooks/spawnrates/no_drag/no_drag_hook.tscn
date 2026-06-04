@@ -3,8 +3,7 @@
 [ext_resource type="Script" uid="uid://pei6riydbube" path="res://objects/hooks/hook.gd" id="1_biw4f"]
 [ext_resource type="Script" uid="uid://c8brc8tafbvgp" path="res://objects/hooks/sprite.gd" id="2_eqysx"]
 [ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="3_4xrwc"]
-[ext_resource type="AudioStream" uid="uid://ddorcc1632idk" path="res://assets/sound/sfx/hookAdded.wav" id="4_pncqp"]
-[ext_resource type="AudioStream" uid="uid://de8ivsvcrx5b0" path="res://assets/sound/sfx/hookRemoved.wav" id="5_01pjq"]
+[ext_resource type="PackedScene" uid="uid://6xuvcg34aisj" path="res://objects/hooks/hook_sfx.tscn" id="4_f2k2t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v5dby"]
 radius = 8.0
@@ -22,17 +21,7 @@ radius = 48.0
 resource_local_to_scene = true
 radius = 48.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bxjni"]
-random_pitch = 1.0293022
-streams_count = 1
-stream_0/stream = ExtResource("4_pncqp")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rcr6j"]
-random_pitch = 1.0293022
-streams_count = 1
-stream_0/stream = ExtResource("5_01pjq")
-
-[node name="Hook" type="Area2D" unique_id=591076568 node_paths=PackedStringArray("sep_area", "coh_area", "align_area", "raft_area", "hook_added_sfx", "hook_removed_sfx") groups=["hook"]]
+[node name="Hook" type="Area2D" unique_id=591076568 node_paths=PackedStringArray("sep_area", "coh_area", "align_area", "raft_area") groups=["hook"]]
 collision_layer = 3
 script = ExtResource("1_biw4f")
 cost = 10
@@ -63,8 +52,6 @@ min_speed = 0.0
 turn_speed = 0.7853981633974483
 turn_force = 0.15
 acceleration_weight = 0.01
-hook_added_sfx = NodePath("HookAddedSFX")
-hook_removed_sfx = NodePath("HookRemovedSFX")
 metadata/_custom_type_script = "uid://pei6riydbube"
 
 [node name="Sprite" type="Node2D" parent="." unique_id=841350920 node_paths=PackedStringArray("hook")]
@@ -120,16 +107,5 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_biw4f")
 debug_color = Color(0, 0.8580905, 0.47950864, 0)
 
-[node name="HookAddedSFX" type="AudioStreamPlayer2D" parent="." unique_id=1746822196]
-stream = SubResource("AudioStreamRandomizer_bxjni")
-volume_db = -9.0
-max_distance = 19200.0
-attenuation = 1e-05
-max_polyphony = 16
-
-[node name="HookRemovedSFX" type="AudioStreamPlayer2D" parent="." unique_id=999734988]
-stream = SubResource("AudioStreamRandomizer_rcr6j")
-volume_db = -9.0
-max_distance = 19200.0
-attenuation = 1e-05
-max_polyphony = 16
+[node name="HookSFX" parent="." unique_id=1793462183 node_paths=PackedStringArray("hook") instance=ExtResource("4_f2k2t")]
+hook = NodePath("..")

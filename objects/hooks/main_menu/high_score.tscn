@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://d8i3yxn84yi4"]
+
+[ext_resource type="Script" uid="uid://btpbd3b364cw1" path="res://objects/hooks/main_menu/high_score.gd" id="1_c543v"]
+[ext_resource type="Script" uid="uid://c8brc8tafbvgp" path="res://objects/hooks/sprite.gd" id="2_5i0y3"]
+[ext_resource type="FontFile" uid="uid://ssvwv7airuao" path="res://assets/fonts/azaret_mono.ttf" id="3_xxgaf"]
+[ext_resource type="PackedScene" uid="uid://6xuvcg34aisj" path="res://objects/hooks/hook_sfx.tscn" id="5_ma1go"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lunmy"]
+size = Vector2(56, 32)
+
+[sub_resource type="FontVariation" id="FontVariation_07fi6"]
+base_font = ExtResource("3_xxgaf")
+variation_opentype = {
+2003265652: 700
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sl2e5"]
+resource_local_to_scene = true
+radius = 48.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rnkh5"]
+resource_local_to_scene = true
+radius = 48.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1fp7r"]
+radius = 180.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6m72w"]
+radius = 48.0
+
+[node name="Hook" type="Area2D" unique_id=161358052 node_paths=PackedStringArray("sep_area", "coh_area", "align_area", "raft_area") groups=["hook"]]
+collision_layer = 3
+script = ExtResource("1_c543v")
+cost = 0
+main_color = Color(0.7921569, 0.827451, 0.9607843, 1)
+radius = 33.0
+sep_distance = 24.0
+sep_ease = 0.5
+sep_force = 2.0
+sep_area = NodePath("SepArea")
+hook_distance = 180.0
+hook_ease = 2.0
+coh_distance = 72.0
+coh_ease = 3.683938
+coh_force = 0.0
+coh_area = NodePath("CohArea")
+align_distance = 48.0
+align_ease = -2.0
+align_force = 0.0
+align_area = NodePath("AlignArea")
+edge_distance = 48.0
+edge_ease = 2.0
+edge_force = 0.0
+raft_ease = 0.072291076
+raft_force = 2.0
+raft_area = NodePath("RaftSep")
+min_speed = 0.0
+turn_speed = 0.7853981633974483
+turn_force = 0.15
+acceleration_weight = 0.01
+metadata/_custom_type_script = "uid://pei6riydbube"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=645445217]
+shape = SubResource("RectangleShape2D_lunmy")
+
+[node name="Sprite" type="Node2D" parent="." unique_id=841350920 node_paths=PackedStringArray("hook")]
+script = ExtResource("2_5i0y3")
+hook = NodePath("..")
+
+[node name="Panel" type="Panel" parent="Sprite" unique_id=144391998]
+z_index = 1
+offset_left = -28.0
+offset_top = -16.0
+offset_right = 28.0
+offset_bottom = 16.0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Sprite/Panel" unique_id=2049952196]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Sprite/Panel/MarginContainer" unique_id=2005980097]
+z_index = 1
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Label2" type="Label" parent="Sprite/Panel/MarginContainer/VBoxContainer" unique_id=1905534997]
+z_index = 1
+layout_mode = 2
+size_flags_vertical = 1
+theme_type_variation = &"HeaderLabel"
+theme_override_constants/line_spacing = -1
+theme_override_fonts/font = SubResource("FontVariation_07fi6")
+theme_override_font_sizes/font_size = 5
+text = "HIGH SCORE :]"
+
+[node name="DataLabel" type="Label" parent="Sprite/Panel/MarginContainer/VBoxContainer" unique_id=1509772234]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/line_spacing = -1
+theme_override_fonts/font = SubResource("FontVariation_07fi6")
+theme_override_font_sizes/font_size = 5
+text = " %d points
+ %d quotas
+ in %d:%2d"
+
+[node name="SepArea" type="Area2D" parent="." unique_id=11390180]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SepArea" unique_id=1787614354]
+visible = false
+shape = SubResource("CircleShape2D_sl2e5")
+debug_color = Color(1, 0.011764706, 0, 0)
+
+[node name="RaftSep" type="Area2D" parent="." unique_id=41361099]
+visible = false
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RaftSep" unique_id=1922735904]
+shape = SubResource("CircleShape2D_rnkh5")
+debug_color = Color(0, 0.8580905, 0.47950864, 0)
+
+[node name="CohArea" type="Area2D" parent="." unique_id=991657393]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CohArea" unique_id=784526702]
+visible = false
+shape = SubResource("CircleShape2D_1fp7r")
+debug_color = Color(0.49803922, 1, 0.83137256, 0)
+
+[node name="AlignArea" type="Area2D" parent="." unique_id=1641467686]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AlignArea" unique_id=1014501630]
+visible = false
+shape = SubResource("CircleShape2D_6m72w")
+debug_color = Color(0, 1, 0.49803922, 0)
+
+[node name="HookSFX" parent="." unique_id=1793462183 node_paths=PackedStringArray("hook") instance=ExtResource("5_ma1go")]
+hook = NodePath("..")

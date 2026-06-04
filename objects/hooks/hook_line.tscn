@@ -20,3 +20,9 @@ unique_name_in_owner = true
 show_behind_parent = true
 width = 4.0
 default_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+
+[node name="Ray" type="RayCast2D" parent="." unique_id=181005623]
+enabled = false
+collision_mask = 8
+collide_with_areas = true
+collide_with_bodies = false

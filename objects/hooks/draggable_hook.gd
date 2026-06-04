@@ -5,10 +5,6 @@ static var dragged_hook: DraggableHook
 signal drag_started
 signal drag_ended
 
-@export_group("Drag SFX")
-@export var drag_started_sfx: AudioStreamPlayer2D
-@export var drag_ended_sfx: AudioStreamPlayer2D
-
 func _validate_velocity() -> void:
 	if dragged_hook == self:
 		velocity = Vector2.ZERO
@@ -19,7 +15,6 @@ func _input(event: InputEvent) -> void:
 		if !event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			dragged_hook = null
 			drag_ended.emit()
-			drag_ended_sfx.play()
 			set_collision_layer_value(2, true)
 
 func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
@@ -28,7 +23,6 @@ func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			dragged_hook = self
 			drag_started.emit()
-			drag_started_sfx.play()
 			set_collision_layer_value(2, false)
 
 func _physics_process(delta: float) -> void:

@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://c0jsr4t763c7g"]
+
+[ext_resource type="Script" uid="uid://ctoqbca8iwbte" path="res://objects/hooks/draggable_hook.gd" id="1_2ghdc"]
+[ext_resource type="Script" uid="uid://c8brc8tafbvgp" path="res://objects/hooks/sprite.gd" id="2_14eqo"]
+[ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="3_dr67u"]
+[ext_resource type="FontFile" uid="uid://ssvwv7airuao" path="res://assets/fonts/azaret_mono.ttf" id="4_6h3f3"]
+[ext_resource type="Script" uid="uid://dfrxhri3iywfr" path="res://objects/hooks/main_menu/start.gd" id="5_14eqo"]
+[ext_resource type="PackedScene" uid="uid://6xuvcg34aisj" path="res://objects/hooks/hook_sfx.tscn" id="6_dr67u"]
+
+[sub_resource type="FontVariation" id="FontVariation_07fi6"]
+base_font = ExtResource("4_6h3f3")
+variation_opentype = {
+2003265652: 700
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v5dby"]
+radius = 17.029387
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sl2e5"]
+resource_local_to_scene = true
+radius = 48.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rnkh5"]
+resource_local_to_scene = true
+radius = 48.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1fp7r"]
+radius = 180.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6m72w"]
+radius = 48.0
+
+[node name="Hook" type="Area2D" unique_id=591076568 node_paths=PackedStringArray("sep_area", "coh_area", "align_area", "raft_area") groups=["hook"]]
+collision_layer = 3
+script = ExtResource("1_2ghdc")
+cost = 0
+main_color = Color(0.7921569, 0.827451, 0.9607843, 1)
+radius = 17.0
+sep_distance = 24.0
+sep_ease = 0.5
+sep_force = 2.0
+sep_area = NodePath("SepArea")
+hook_distance = 180.0
+hook_ease = 2.0
+coh_distance = 72.0
+coh_ease = 3.683938
+coh_force = 0.0
+coh_area = NodePath("CohArea")
+align_distance = 48.0
+align_ease = -2.0
+align_force = 0.0
+align_area = NodePath("AlignArea")
+edge_distance = 48.0
+edge_ease = 2.0
+edge_force = 0.0
+raft_ease = 0.072291076
+raft_force = 2.0
+raft_area = NodePath("RaftSep")
+min_speed = 0.0
+turn_speed = 0.7853981633974483
+turn_force = 0.15
+acceleration_weight = 0.01
+metadata/_custom_type_script = "uid://pei6riydbube"
+
+[node name="Sprite" type="Node2D" parent="." unique_id=841350920 node_paths=PackedStringArray("hook")]
+script = ExtResource("2_14eqo")
+hook = NodePath("..")
+
+[node name="Outline" type="Node2D" parent="Sprite" unique_id=140084309]
+z_index = 1
+script = ExtResource("3_dr67u")
+radius = 16.0
+draw_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+fill_color = Color(0.7921569, 0.827451, 0.9607843, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw" type="Node2D" parent="Sprite" unique_id=51570606]
+z_index = 1
+script = ExtResource("3_dr67u")
+width = 2.0
+radius = 16.0
+draw_color = Color(0.7921569, 0.827451, 0.9607843, 1)
+fill_color = Color(0.7921569, 0.827451, 0.9607843, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Label" type="Label" parent="Sprite" unique_id=1509772234]
+z_index = 1
+offset_left = -17.0
+offset_top = -17.0
+offset_right = 17.0
+offset_bottom = 17.0
+theme_override_colors/font_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+theme_override_fonts/font = SubResource("FontVariation_07fi6")
+theme_override_font_sizes/font_size = 6
+text = "START"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DragToRaftLabel" type="Label" parent="Sprite" unique_id=1184959735]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+offset_left = -27.0
+offset_top = 3.0
+offset_right = 28.0
+offset_bottom = 37.0
+theme_override_fonts/font = SubResource("FontVariation_07fi6")
+theme_override_font_sizes/font_size = 4
+text = "(DRAG TO RAFT)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=645445217]
+shape = SubResource("CircleShape2D_v5dby")
+
+[node name="SepArea" type="Area2D" parent="." unique_id=11390180]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SepArea" unique_id=1787614354]
+visible = false
+shape = SubResource("CircleShape2D_sl2e5")
+debug_color = Color(1, 0.011764706, 0, 0)
+
+[node name="RaftSep" type="Area2D" parent="." unique_id=41361099]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RaftSep" unique_id=1922735904]
+shape = SubResource("CircleShape2D_rnkh5")
+debug_color = Color(0, 0.8580905, 0.47950864, 0)
+
+[node name="CohArea" type="Area2D" parent="." unique_id=991657393]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CohArea" unique_id=784526702]
+visible = false
+shape = SubResource("CircleShape2D_1fp7r")
+debug_color = Color(0.49803922, 1, 0.83137256, 0)
+
+[node name="AlignArea" type="Area2D" parent="." unique_id=1641467686]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AlignArea" unique_id=1014501630]
+visible = false
+shape = SubResource("CircleShape2D_6m72w")
+debug_color = Color(0, 1, 0.49803922, 0)
+
+[node name="Behavior" type="Node" parent="." unique_id=1002270136 node_paths=PackedStringArray("hook")]
+script = ExtResource("5_14eqo")
+hook = NodePath("..")
+
+[node name="HintTimer" type="Timer" parent="Behavior" unique_id=1575150741]
+wait_time = 0.25
+one_shot = true
+
+[node name="HookSFX" parent="." unique_id=1793462183 node_paths=PackedStringArray("hook") instance=ExtResource("6_dr67u")]
+hook = NodePath("..")

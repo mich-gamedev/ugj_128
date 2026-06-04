@@ -6,9 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://hrvfjq6gm4uc" path="res://assets/sound/sfx/explode.wav" id="4_guda3"]
 [ext_resource type="Script" uid="uid://dmvogk41bpu78" path="res://objects/hooks/spawnrates/bomb/explode_sfx.gd" id="5_ykkfu"]
 [ext_resource type="AudioStream" uid="uid://bq0r1axqat155" path="res://assets/sound/sfx/bombWarn.wav" id="6_fk1mn"]
-[ext_resource type="AudioStream" uid="uid://de8ivsvcrx5b0" path="res://assets/sound/sfx/hookRemoved.wav" id="7_ywmln"]
-[ext_resource type="AudioStream" uid="uid://be6m7nis7f5kk" path="res://assets/sound/sfx/dragStart.wav" id="8_fk1mn"]
-[ext_resource type="AudioStream" uid="uid://cxjvembywksvw" path="res://assets/sound/sfx/dragEnd.wav" id="9_ana0l"]
+[ext_resource type="PackedScene" uid="uid://6xuvcg34aisj" path="res://objects/hooks/hook_sfx.tscn" id="7_6iw8h"]
 
 [sub_resource type="Animation" id="Animation_en5le"]
 length = 0.001
@@ -452,9 +450,15 @@ tracks/7/path = NodePath("../WarnSFX")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.25, 3.5, 3.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
 "args": [0.0],
 "method": &"play"
 }, {
@@ -510,31 +514,9 @@ random_pitch = 1.122462
 streams_count = 1
 stream_0/stream = ExtResource("4_guda3")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fk1mn"]
-random_pitch = 1.0293022
-streams_count = 1
-stream_0/stream = ExtResource("6_fk1mn")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ana0l"]
-random_pitch = 1.0293022
-streams_count = 1
-stream_0/stream = ExtResource("7_ywmln")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gtnl6"]
-random_pitch = 1.0293022
-streams_count = 1
-stream_0/stream = ExtResource("8_fk1mn")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_da364"]
-random_pitch = 1.0293022
-streams_count = 1
-stream_0/stream = ExtResource("9_ana0l")
-
-[node name="Hook" type="Area2D" unique_id=591076568 node_paths=PackedStringArray("drag_started_sfx", "drag_ended_sfx", "sep_area", "coh_area", "align_area", "raft_area", "hook_added_sfx", "hook_removed_sfx") groups=["hook"]]
+[node name="Hook" type="Area2D" unique_id=591076568 node_paths=PackedStringArray("sep_area", "coh_area", "align_area", "raft_area") groups=["hook"]]
 collision_layer = 3
 script = ExtResource("1_bbd1x")
-drag_started_sfx = NodePath("DragStartedSFX")
-drag_ended_sfx = NodePath("DragEndedSFX")
 cost = 4
 main_color = Color(0.9411765, 0.7764706, 0.7764706, 1)
 radius = 5.0
@@ -561,8 +543,6 @@ min_speed = 0.0
 turn_speed = 0.7853981633974483
 turn_force = 0.15
 acceleration_weight = 0.01
-hook_added_sfx = NodePath("HookAddedSFX")
-hook_removed_sfx = NodePath("HookRemovedSFX")
 metadata/_custom_type_script = "uid://pei6riydbube"
 
 [node name="Circle" type="Node2D" parent="." unique_id=853760324]
@@ -705,6 +685,7 @@ volume_db = -3.0
 pitch_scale = 1.2
 max_distance = 19200.0
 attenuation = 1e-05
+bus = &"In-game SFX"
 script = ExtResource("5_ykkfu")
 
 [node name="WarnSFX" type="AudioStreamPlayer2D" parent="." unique_id=298930079]
@@ -713,34 +694,10 @@ volume_db = -9.0
 max_distance = 19200.0
 attenuation = 1e-05
 max_polyphony = 16
+bus = &"In-game SFX"
 
-[node name="HookAddedSFX" type="AudioStreamPlayer2D" parent="." unique_id=356699179]
-stream = SubResource("AudioStreamRandomizer_fk1mn")
-volume_db = -9.0
-max_distance = 19200.0
-attenuation = 1e-05
-max_polyphony = 16
-
-[node name="HookRemovedSFX" type="AudioStreamPlayer2D" parent="." unique_id=1064566943]
-stream = SubResource("AudioStreamRandomizer_ana0l")
-volume_db = -9.0
-max_distance = 19200.0
-attenuation = 1e-05
-max_polyphony = 16
-
-[node name="DragStartedSFX" type="AudioStreamPlayer2D" parent="." unique_id=1772321687]
-stream = SubResource("AudioStreamRandomizer_gtnl6")
-volume_db = -3.0
-max_distance = 19200.0
-attenuation = 1e-05
-max_polyphony = 16
-
-[node name="DragEndedSFX" type="AudioStreamPlayer2D" parent="." unique_id=888492588]
-stream = SubResource("AudioStreamRandomizer_da364")
-volume_db = -6.0
-max_distance = 19200.0
-attenuation = 1e-05
-max_polyphony = 16
+[node name="HookSFX" parent="." unique_id=1793462183 node_paths=PackedStringArray("hook") instance=ExtResource("7_6iw8h")]
+hook = NodePath("..")
 
 [connection signal="animation_finished" from="Sprite/Anim" to="." method="_animation_finished"]
 [connection signal="finished" from="ExplodeSFX" to="ExplodeSFX" method="_on_finished"]

@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://6xuvcg34aisj"]
+
+[ext_resource type="Script" uid="uid://rgvwwsykibf3" path="res://objects/hooks/hook_sfx.gd" id="1_x30kt"]
+[ext_resource type="AudioStream" uid="uid://ddorcc1632idk" path="res://assets/sound/sfx/hookAdded.wav" id="2_df8ec"]
+[ext_resource type="AudioStream" uid="uid://de8ivsvcrx5b0" path="res://assets/sound/sfx/hookRemoved.wav" id="3_fam6y"]
+[ext_resource type="AudioStream" uid="uid://be6m7nis7f5kk" path="res://assets/sound/sfx/dragStart.wav" id="4_8kkok"]
+[ext_resource type="AudioStream" uid="uid://cxjvembywksvw" path="res://assets/sound/sfx/dragEnd.wav" id="5_w0mu1"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_b7jl3"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("2_df8ec")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7a0ny"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("3_fam6y")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rrmel"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("4_8kkok")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3s016"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("5_w0mu1")
+
+[node name="HookSFX" type="Node2D" unique_id=1793462183]
+script = ExtResource("1_x30kt")
+
+[node name="HookAddedSFX" type="AudioStreamPlayer2D" parent="." unique_id=1726544288]
+stream = SubResource("AudioStreamRandomizer_b7jl3")
+volume_db = -9.0
+max_distance = 19200.0
+attenuation = 1e-05
+max_polyphony = 16
+bus = &"In-game SFX"
+
+[node name="HookRemovedSFX" type="AudioStreamPlayer2D" parent="." unique_id=1159082245]
+stream = SubResource("AudioStreamRandomizer_7a0ny")
+volume_db = -9.0
+max_distance = 19200.0
+attenuation = 1e-05
+max_polyphony = 16
+bus = &"In-game SFX"
+
+[node name="DragStartedSFX" type="AudioStreamPlayer2D" parent="." unique_id=1760204558]
+stream = SubResource("AudioStreamRandomizer_rrmel")
+volume_db = -3.0
+max_distance = 19200.0
+attenuation = 1e-05
+max_polyphony = 16
+bus = &"In-game SFX"
+
+[node name="DragEndedSFX" type="AudioStreamPlayer2D" parent="." unique_id=884411710]
+stream = SubResource("AudioStreamRandomizer_3s016")
+volume_db = -6.0
+max_distance = 19200.0
+attenuation = 1e-05
+max_polyphony = 16
+bus = &"In-game SFX"

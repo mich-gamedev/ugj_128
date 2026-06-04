@@ -185,6 +185,22 @@ _data = {
 &"sway": SubResource("Animation_3su3l")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_60lnf"]
+random_pitch = 1.0594631
+streams_count = 2
+stream_0/stream = ExtResource("3_ommf3")
+stream_1/stream = ExtResource("4_ehv71")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3su3l"]
+random_volume_offset_db = 0.5
+streams_count = 1
+stream_0/stream = ExtResource("5_60lnf")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q2es0"]
+random_volume_offset_db = 0.5
+streams_count = 1
+stream_0/stream = ExtResource("6_3su3l")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_en5le"]
 bg_color = Color(0.43137255, 0.4509804, 0.5529412, 1)
 skew = Vector2(0.5, 0)
@@ -211,21 +227,114 @@ corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_60lnf"]
-random_pitch = 1.0594631
-streams_count = 2
-stream_0/stream = ExtResource("3_ommf3")
-stream_1/stream = ExtResource("4_ehv71")
+[sub_resource type="Animation" id="Animation_q2es0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointsBar:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-24, -32)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointsBar:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(48, 6)]
+}
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3su3l"]
-random_volume_offset_db = 0.5
-streams_count = 1
-stream_0/stream = ExtResource("5_60lnf")
+[sub_resource type="Animation" id="Animation_jivyt"]
+resource_name = "show"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.091679, 1),
+"update": 0,
+"values": [Vector2(0, 8), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.091679, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointsBar:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.091679, 1),
+"update": 0,
+"values": [Vector2(0, -16), Vector2(-24, -32)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointsBar:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.091679, 1),
+"update": 0,
+"values": [Vector2(0, 6), Vector2(48, 6)]
+}
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q2es0"]
-random_volume_offset_db = 0.5
-streams_count = 1
-stream_0/stream = ExtResource("6_3su3l")
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tj3u7"]
+_data = {
+&"RESET": SubResource("Animation_q2es0"),
+&"show": SubResource("Animation_jivyt")
+}
 
 [node name="Raft" type="Area2D" unique_id=176965589 groups=["raft"]]
 collision_layer = 4
@@ -332,17 +441,51 @@ polygon = PackedVector2Array(6, -1, 9, -1, 10, -5, 5, -5)
 libraries/ = SubResource("AnimationLibrary_q2es0")
 autoplay = &"sway"
 
-[node name="PointsBar" type="ProgressBar" parent="." unique_id=1168815553]
+[node name="PlopSFX" type="AudioStreamPlayer" parent="." unique_id=570633035]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_60lnf")
+volume_db = -9.0
+max_polyphony = 16
+bus = &"In-game SFX"
+
+[node name="RoundClear" type="AudioStreamPlayer" parent="." unique_id=1425591813]
+unique_name_in_owner = true
+stream = ExtResource("5_3su3l")
+volume_db = -12.0
+max_polyphony = 4
+bus = &"In-game SFX"
+
+[node name="GreenPts1SFX" type="AudioStreamPlayer" parent="." unique_id=1287116989]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_3su3l")
+volume_db = -9.0
+max_polyphony = 16
+bus = &"In-game SFX"
+
+[node name="GreenPts2SFX" type="AudioStreamPlayer" parent="." unique_id=467137276]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_q2es0")
+volume_db = -10.0
+max_polyphony = 16
+bus = &"In-game SFX"
+
+[node name="Node2D" type="CanvasGroup" parent="." unique_id=1498632425]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 32)
+
+[node name="PointsBar" type="ProgressBar" parent="Node2D" unique_id=1168815553]
+unique_name_in_owner = true
 offset_left = -24.0
 offset_top = -32.0
-offset_right = 25.0
+offset_right = 24.0
 offset_bottom = -26.0
 theme_override_styles/background = SubResource("StyleBoxFlat_en5le")
 theme_override_styles/fill = SubResource("StyleBoxFlat_erfpm")
 max_value = 30.0
 show_percentage = false
 
-[node name="TimeLabel" type="RichTextLabel" parent="." unique_id=1196594460]
+[node name="TimeLabel" type="RichTextLabel" parent="Node2D" unique_id=1196594460]
+unique_name_in_owner = true
 offset_left = -29.0
 offset_top = -41.0
 offset_right = 31.0
@@ -360,7 +503,8 @@ scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="PointsLabel" type="RichTextLabel" parent="." unique_id=347779956]
+[node name="PointsLabel" type="RichTextLabel" parent="Node2D" unique_id=347779956]
+unique_name_in_owner = true
 offset_left = -29.0
 offset_top = -34.0
 offset_right = 31.0
@@ -378,28 +522,8 @@ scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
 
-[node name="PlopSFX" type="AudioStreamPlayer" parent="." unique_id=570633035]
+[node name="AnimUI" type="AnimationPlayer" parent="Node2D" unique_id=1034128749]
 unique_name_in_owner = true
-stream = SubResource("AudioStreamRandomizer_60lnf")
-volume_db = -9.0
-max_polyphony = 16
-
-[node name="RoundClear" type="AudioStreamPlayer" parent="." unique_id=1425591813]
-unique_name_in_owner = true
-stream = ExtResource("5_3su3l")
-volume_db = -12.0
-max_polyphony = 4
-
-[node name="GreenPts1SFX" type="AudioStreamPlayer" parent="." unique_id=1287116989]
-unique_name_in_owner = true
-stream = SubResource("AudioStreamRandomizer_3su3l")
-volume_db = -9.0
-max_polyphony = 16
-
-[node name="GreenPts2SFX" type="AudioStreamPlayer" parent="." unique_id=467137276]
-unique_name_in_owner = true
-stream = SubResource("AudioStreamRandomizer_q2es0")
-volume_db = -10.0
-max_polyphony = 16
+libraries/ = SubResource("AnimationLibrary_tj3u7")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

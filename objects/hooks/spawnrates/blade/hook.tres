@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="HookSpawnrate" format=3 uid="uid://dtmsw7g41vurl"]
+
+[ext_resource type="Script" uid="uid://bwpicb1kotnet" path="res://objects/hooks/hook_spawnrate.gd" id="1_bfjf1"]
+[ext_resource type="PackedScene" uid="uid://dtc8n3ajyw8hc" path="res://objects/hooks/spawnrates/blade/icon.tscn" id="1_q5pkx"]
+[ext_resource type="PackedScene" uid="uid://h74m7jexxrvl" path="res://objects/hooks/spawnrates/blade/hook.tscn" id="2_h474c"]
+
+[sub_resource type="Curve" id="Curve_q5pkx"]
+_limits = [0.0, 1.0, 0.0, 10.0]
+_data = [Vector2(0.2602768, 0), 0.0, 0.0, 0, 0, Vector2(4.134962, 0), 0.0, 0.0, 0, 0, Vector2(4.555316, 0.016721249), 0.0, 0.0, 0, 0, Vector2(4.9876776, 0), 0.0, 0.0, 0, 0, Vector2(5.6899643, 0), 0.0, 0.1407484, 0, 0, Vector2(10, 0.0504781), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[resource]
+script = ExtResource("1_bfjf1")
+name = "SAW FISH"
+desc = "a profit-shattering fish that cuts through nets. These guys should be taken care of as quickly as possible."
+icon_20_x_20 = ExtResource("1_q5pkx")
+main_color = Color(0.9607843, 0.6627451, 0.49803922, 1)
+scene = ExtResource("2_h474c")
+spawnrate = SubResource("Curve_q5pkx")
+metadata/_custom_type_script = "uid://bwpicb1kotnet"

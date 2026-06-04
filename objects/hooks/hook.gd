@@ -17,7 +17,7 @@ class_name Hook extends Area2D
 @export_group("Hook Attraction", "hook_")
 @export var hook_distance: float = 360.
 @export_exp_easing var hook_ease: float = 1.
-@export var hook_force: float = 3
+@export var hook_force: float = 5
 @export var hook_self_strength: float = 1.0
 
 @export_group("Coherence", "coh_")
@@ -52,10 +52,6 @@ class_name Hook extends Area2D
 @export var turn_force: float = 1.
 @export_range(0, 1, 0.00000000000001) var acceleration_weight: float = 0.0000000001
 
-@export_group("SFX")
-@export var hook_added_sfx: AudioStreamPlayer2D
-@export var hook_removed_sfx: AudioStreamPlayer2D
-
 var hooks: Array[Hook]:
 	get:
 		hooks = hooks.filter(func(i): return is_instance_valid(i))
@@ -69,22 +65,30 @@ signal hook_added(other: Hook)
 signal hook_removed(other: Hook)
 signal hook_detatched_from(from: Hook)
 signal deleting
+signal collected
 
 var forces: Array[Callable] = [get_separation, get_coherence, get_alignment, get_hook, get_turn, get_edge_resist, get_raft]
+var _force_cache: Array[Vector2]
+var _force_cache_delta: float = randf_range(0, .1)
 
 func _ready() -> void:
 	set_collision_layer_value(2, true)
 
 func _physics_process(delta: float) -> void:
 	flush_hooks()
-	var force_vecs: Array[Vector2]
-	for i in forces:
-		var result = i.call()
-		if result is Vector2:
-			force_vecs.append(result)
-		elif result is Array[Vector2]:
-			force_vecs.append_array(result)
-	force_vecs = force_vecs.filter(func(i: Vector2) -> bool: return !i.is_zero_approx())
+	var force_vecs: Array[Vector2] = _force_cache
+	if _force_cache_delta < 0:
+		force_vecs.clear()
+		_force_cache.clear()
+		for i in forces:
+			var result = i.call()
+			if result is Vector2:
+				force_vecs.append(result)
+			elif result is Array[Vector2]:
+				force_vecs.append_array(result)
+		force_vecs = force_vecs.filter(func(i: Vector2) -> bool: return !i.is_zero_approx())
+		_force_cache_delta = 0.1
+	_force_cache_delta -= delta
 	var _tmp := Vector2.ZERO
 	for i in force_vecs:
 		_tmp += i
@@ -189,7 +193,6 @@ static func add_hook(from: Hook, to: Hook) -> bool:
 	from.hook_added.emit(to)
 	to.hook_received.emit(from)
 	to.hook_added.emit(from)
-	to.hook_added_sfx.play()
 	return true
 
 static func remove_hook(from: Hook, to: Hook) -> void:
@@ -203,7 +206,6 @@ static func remove_hook(from: Hook, to: Hook) -> void:
 	from.hook_removed.emit(to)
 	to.hook_removed.emit(from)
 	from.hook_detatched_from.emit(to)
-	to.hook_removed_sfx.play()
 
 static var _spawns_cache: Array[HookSpawnrate]
 static func get_hook_spawns() -> Array[HookSpawnrate]:
@@ -270,7 +272,11 @@ func _exit_tree() -> void:
 	for i in hooks:
 		Hook.remove_hook(i, self)
 
+var _is_deleting: bool
+
 func delete() -> void:
+	if _is_deleting: return
+	_is_deleting = true
 	for i in hooks:
 		Hook.remove_hook(self, i)
 	deleting.emit()

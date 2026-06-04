@@ -15,6 +15,10 @@ run/main_scene="uid://btjyjxrp5b0h7"
 config/features=PackedStringArray("4.6")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://m67tbvqdwg33"
+
 [autoload]
 
 Cursor="*uid://d1qrewxpucjcs"
@@ -47,6 +51,7 @@ theme/custom_font="uid://ssvwv7airuao"
 2d_physics/layer_1="Boids avoid this layer"
 2d_physics/layer_2="Boids can be collected if on this layer"
 2d_physics/layer_3="Raft"
+2d_physics/layer_4="Cuts hooks (for Layer, not mask)"
 
 [physics]
 

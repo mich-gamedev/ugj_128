@@ -6,6 +6,7 @@ var reach_from: float
 var reach_to: float
 
 @onready var outline: Line2D = %Outline
+@onready var ray: RayCast2D = $Ray
 var twn: Tween
 
 func _ready() -> void:
@@ -23,6 +24,14 @@ func _process(delta: float) -> void:
 		add_point(to_local(from.global_position).lerp(to_local(to.global_position), reach_to))
 		outline.points = points
 	else: queue_free()
+
+func _physics_process(delta: float) -> void:
+	if is_instance_valid(from) and is_instance_valid(to):
+		ray.global_position = from.global_position
+		ray.target_position = ray.to_local(to.global_position)
+		ray.force_raycast_update()
+		if ray.is_colliding():
+			Hook.remove_hook(from, to)
 
 func hook_detatched(detatched: Hook, origin: Hook) -> void:
 	if detatched in [from, to]:
