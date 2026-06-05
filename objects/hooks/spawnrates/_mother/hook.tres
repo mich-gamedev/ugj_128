@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="HookSpawnrate" format=3 uid="uid://c4ixo7fk0cc7s"]
 
 [ext_resource type="Script" uid="uid://bwpicb1kotnet" path="res://objects/hooks/hook_spawnrate.gd" id="1_725ho"]
-[ext_resource type="PackedScene" uid="uid://bwmcerf8l4bqt" path="res://objects/hooks/spawnrates/mother/icon.tscn" id="1_y0eer"]
-[ext_resource type="PackedScene" uid="uid://dcmxkv76psi0w" path="res://objects/hooks/spawnrates/mother/hook.tscn" id="2_qe1nu"]
+[ext_resource type="PackedScene" uid="uid://bwmcerf8l4bqt" path="res://objects/hooks/spawnrates/_mother/icon.tscn" id="1_y0eer"]
+[ext_resource type="PackedScene" uid="uid://dcmxkv76psi0w" path="res://objects/hooks/spawnrates/_mother/hook.tscn" id="2_qe1nu"]
 
 [sub_resource type="Curve" id="Curve_wri0o"]
 _limits = [0.0, 1.0, 0.0, 14.0]

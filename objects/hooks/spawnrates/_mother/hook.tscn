@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dcmxkv76psi0w"]
 
-[ext_resource type="Script" uid="uid://dtetdikvxautp" path="res://objects/hooks/spawnrates/mother/hook.gd" id="1_2gswl"]
+[ext_resource type="Script" uid="uid://dtetdikvxautp" path="res://objects/hooks/spawnrates/_mother/hook.gd" id="1_2gswl"]
 [ext_resource type="Script" uid="uid://c8brc8tafbvgp" path="res://objects/hooks/sprite.gd" id="2_62q1q"]
 [ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="3_jnf0t"]
 [ext_resource type="PackedScene" uid="uid://6xuvcg34aisj" path="res://objects/hooks/hook_sfx.tscn" id="4_ifplg"]

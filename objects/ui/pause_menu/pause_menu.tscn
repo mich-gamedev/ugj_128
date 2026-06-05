@@ -1,0 +1,594 @@
+[gd_scene format=3 uid="uid://dh05oskgcqqdw"]
+
+[ext_resource type="Script" uid="uid://be21vww1idujn" path="res://objects/ui/pause_menu/pause_menu.gd" id="1_mgf5d"]
+[ext_resource type="Shader" uid="uid://ci68iy2dvw7kn" path="res://resources/shaders/mipmap_blur.gdshader" id="1_o0bnm"]
+[ext_resource type="Shader" uid="uid://c2ka5jjkpagki" path="res://resources/shaders/stripes.gdshader" id="2_mgf5d"]
+[ext_resource type="Texture2D" uid="uid://kbfgkttkvhe5" path="res://assets/google_icons/undo.svg" id="3_52s8g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1yooq"]
+shader = ExtResource("1_o0bnm")
+shader_parameter/blur = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gb53w"]
+shader = ExtResource("2_mgf5d")
+shader_parameter/color_gap = Color(0.2509804, 0.2509804, 0.2509804, 0)
+shader_parameter/color_stripe = Color(0.5411765, 0.6784314, 0.95686275, 1)
+shader_parameter/divisions = 8.0
+shader_parameter/stripe_bias = 2.5
+shader_parameter/speed = 0.25
+shader_parameter/angle = 0.357
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1yooq"]
+bg_color = Color(0.28627452, 0.3019608, 0.39215687, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gb53w"]
+bg_color = Color(0.92941177, 0.5294118, 0.5882353, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_j2gmx"]
+color = Color(0.28627452, 0.3019608, 0.39215687, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 2
+vertical = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgf5d"]
+bg_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.28627452, 0.3019608, 0.39215687, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52s8g"]
+bg_color = Color(0.28627452, 0.3019608, 0.39215687, 1)
+
+[sub_resource type="Animation" id="Animation_tuhed"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Panel:size:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Panel:size:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [172.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:material:shader_parameter/blur")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/Panel:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4.0]
+}
+
+[sub_resource type="Animation" id="Animation_mgf5d"]
+resource_name = "close"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Panel:size:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.15747581, -5.8897333),
+"update": 0,
+"values": [124.0, 2.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Panel:size:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-5.8897333, 0.15747581),
+"update": 0,
+"values": [172.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:material:shader_parameter/blur")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [5.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/Panel:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-5.8897333, 0.15747581),
+"update": 0,
+"values": [4.0, 90.0]
+}
+
+[sub_resource type="Animation" id="Animation_u1sdv"]
+resource_name = "open"
+length = 0.75
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Panel:size:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(-5.8897333, 1),
+"update": 0,
+"values": [2.0, 124.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Panel:size:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(0.15747581, 1),
+"update": 0,
+"values": [0.0, 172.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:material:shader_parameter/blur")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [0.0, 5.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/Panel:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(0.15747581, 1),
+"update": 0,
+"values": [90.0, 4.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s184f"]
+_data = {
+&"RESET": SubResource("Animation_tuhed"),
+&"close": SubResource("Animation_mgf5d"),
+&"open": SubResource("Animation_u1sdv")
+}
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1230337919]
+process_mode = 3
+visible = false
+script = ExtResource("1_mgf5d")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1519465010]
+material = SubResource("ShaderMaterial_1yooq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="." unique_id=1713833099]
+custom_minimum_size = Vector2(320, 180)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="Control" unique_id=1772111217]
+clip_contents = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 4.0
+offset_bottom = 176.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel" unique_id=2036792266]
+custom_minimum_size = Vector2(124, 172)
+layout_mode = 1
+offset_right = 124.0
+offset_bottom = 172.0
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer" unique_id=1054414517]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer" unique_id=1266235372]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1148225588]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderLabel"
+text = "paused..."
+
+[node name="ColorRect" type="ColorRect" parent="Control/Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1884535766]
+material = SubResource("ShaderMaterial_gb53w")
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+color = Color(0.5411765, 0.6784314, 0.95686275, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/MarginContainer/VBoxContainer" unique_id=492263564]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer" unique_id=1844143303]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="SepVideo" type="HBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1181018413]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SepVideo" unique_id=706894953]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SepVideo" unique_id=1219490771]
+layout_mode = 2
+theme_type_variation = &"SeparatorLabel"
+text = "VIDEO"
+
+[node name="ResetVideo" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SepVideo" unique_id=104884408]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_1yooq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gb53w")
+icon = ExtResource("3_52s8g")
+icon_alignment = 1
+expand_icon = true
+
+[node name="HSeparator2" type="HSeparator" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SepVideo" unique_id=345296291]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1802668579]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1939598117]
+layout_mode = 2
+text = "fullscreen"
+
+[node name="HSeparator" type="Control" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=184280224]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_type_variation = &"LineFollower"
+
+[node name="Fullscreen" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2093631250]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"ToggleButton"
+toggle_mode = true
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=2031368009]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=603071832]
+layout_mode = 2
+text = "vsync"
+
+[node name="HSeparator" type="Control" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=1828178192]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_type_variation = &"LineFollower"
+
+[node name="Vsync" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=209078155]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"ToggleButton"
+toggle_mode = true
+button_pressed = true
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=694591417]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer7" unique_id=527663688]
+layout_mode = 2
+text = "show fps"
+
+[node name="HSeparator" type="Control" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer7" unique_id=760402111]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_type_variation = &"LineFollower"
+
+[node name="ShowFPS" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer7" unique_id=100343465]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"ToggleButton"
+toggle_mode = true
+button_pressed = true
+
+[node name="SepAudio" type="HBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1041857847]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HSeparator" type="HSeparator" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SepAudio" unique_id=602088716]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SepAudio" unique_id=1782014506]
+layout_mode = 2
+theme_type_variation = &"SeparatorLabel"
+text = "AUDIO"
+
+[node name="ResetAudio" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SepAudio" unique_id=1204901138]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_1yooq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gb53w")
+icon = ExtResource("3_52s8g")
+icon_alignment = 1
+expand_icon = true
+
+[node name="HSeparator2" type="HSeparator" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SepAudio" unique_id=1588686211]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1712084390]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=311212535]
+layout_mode = 2
+text = "music"
+
+[node name="Music" type="HSlider" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=890654395]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 0.75
+
+[node name="VSeparator" type="VSeparator" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/Music" unique_id=955056694]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 68.0
+offset_right = 72.0
+offset_bottom = 4.0
+mouse_filter = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_j2gmx")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=778045201]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=661279355]
+layout_mode = 2
+text = "sfx  "
+
+[node name="Sfx" type="HSlider" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1800343170]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 0.75
+
+[node name="VSeparator" type="VSeparator" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4/Sfx" unique_id=260933590]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 68.0
+offset_right = 72.0
+offset_bottom = 4.0
+mouse_filter = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_j2gmx")
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=677712163]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer6" unique_id=367535740]
+layout_mode = 2
+text = "filter effect"
+
+[node name="HSeparator" type="Control" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer6" unique_id=1848296942]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_type_variation = &"LineFollower"
+
+[node name="FilterEffect" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer6" unique_id=1195910504]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"ToggleButton"
+toggle_mode = true
+button_pressed = true
+
+[node name="Panel" type="Panel" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1400120701]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_mgf5d")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Panel" unique_id=326757215]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Panel/MarginContainer" unique_id=1043233734]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=682145237]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+theme_override_styles/normal = SubResource("StyleBoxFlat_52s8g")
+text = "+ CREDITS"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=912222195]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer" unique_id=1891710368]
+layout_mode = 2
+
+[node name="Label2" type="RichTextLabel" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=695239555]
+layout_mode = 2
+theme_override_constants/line_separation = -1
+bbcode_enabled = true
+text = "[url=https://michdev.nekoweb.org/]_michdev[/url]:
+  code, design, art
+[url=https://linktr.ee/vektor451]vekkie[/url]:
+  music, sfx, playtesting
+assets:
+  [url=https://fonts.google.com/specimen/Azeret+Mono]azaret mono[/url], [url=https://fonts.google.com/icons]material 
+  icons[/url], [url=https://www.kenney.nl/]kenney.nl[/url]
+"
+fit_content = true
+scroll_active = false
+
+[node name="Panel" type="Panel" parent="Control/Panel" unique_id=1555409523]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"PanelCover"
+metadata/_edit_lock_ = true
+
+[node name="Anim" type="AnimationPlayer" parent="." unique_id=978541888]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_s184f")
+autoplay = &"RESET"
+
+[connection signal="gui_input" from="ColorRect" to="." method="_click_off"]
+[connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SepVideo/ResetVideo" to="." method="_reset_video"]
+[connection signal="toggled" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/Fullscreen" to="." method="_fullscreen"]
+[connection signal="toggled" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer5/Vsync" to="." method="_vsync"]
+[connection signal="toggled" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer7/ShowFPS" to="." method="_show_fps"]
+[connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SepAudio/ResetAudio" to="." method="_reset_audio"]
+[connection signal="value_changed" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/Music" to="." method="_music"]
+[connection signal="value_changed" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4/Sfx" to="." method="_sfx"]
+[connection signal="toggled" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer6/FilterEffect" to="." method="_filter_effect"]

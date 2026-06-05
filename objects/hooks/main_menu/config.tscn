@@ -95,6 +95,18 @@ text = "CONFIG"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label2" type="Label" parent="Sprite" unique_id=1023705586]
+z_index = 1
+offset_left = -11.0
+offset_top = -8.0
+offset_right = 11.0
+offset_bottom = 16.0
+theme_override_fonts/font = SubResource("FontVariation_07fi6")
+theme_override_font_sizes/font_size = 2
+text = "ALSO [ESC]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=645445217]
 shape = SubResource("CircleShape2D_d8a7u")
 

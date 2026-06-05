@@ -213,6 +213,7 @@ static func get_hook_spawns() -> Array[HookSpawnrate]:
 	if !_spawns_cache:
 		var directories := DirAccess.get_directories_at(DIR)
 		for i in directories:
+			if i.begins_with("_"): continue
 			var path := DIR.path_join(i).path_join("hook.tres")
 			if i.begins_with("_") or !ResourceLoader.exists(path): continue
 			_spawns_cache.append(load(path))
