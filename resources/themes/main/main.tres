@@ -453,6 +453,18 @@ color = Color(0.14117648, 0.15294118, 0.22745098, 1)
 borders = Array[ExtResource("2_eaxtk")]([SubResource("Resource_ay3ex"), SubResource("Resource_la2py")])
 metadata/_custom_type_script = "uid://bkl6g25jwb47h"
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f1tr7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5411765, 0.6784314, 0.95686275, 1)
+
 [sub_resource type="FontVariation" id="FontVariation_5gwwf"]
 base_font = ExtResource("1_eyqu3")
 variation_opentype = {
@@ -522,3 +534,6 @@ ToggleButton/styles/hover = SubResource("StyleBox_crpf2")
 ToggleButton/styles/hover_pressed = SubResource("StyleBox_tjbc7")
 ToggleButton/styles/normal = SubResource("StyleBox_d4enw")
 ToggleButton/styles/pressed = SubResource("StyleBox_dgtin")
+TooltipLabel/colors/font_color = Color(0.7921569, 0.827451, 0.9607843, 1)
+TooltipLabel/font_sizes/font_size = 4
+TooltipPanel/styles/panel = SubResource("StyleBoxFlat_f1tr7")

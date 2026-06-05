@@ -28,11 +28,13 @@ func start_drag() -> void:
 	dragged_hook = self
 	drag_started.emit()
 	set_collision_layer_value(2, false)
+	set_collision_layer_value(5, true)
 
 func end_drag() -> void:
 	dragged_hook = null
 	drag_ended.emit()
 	set_collision_layer_value(2, true)
+	set_collision_layer_value(5, false)
 
 func _physics_process(delta: float) -> void:
 	super(delta)

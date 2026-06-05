@@ -5,9 +5,9 @@
 [ext_resource type="Script" uid="uid://bwpicb1kotnet" path="res://objects/hooks/hook_spawnrate.gd" id="1_v7u7o"]
 
 [sub_resource type="Curve" id="Curve_k0vhe"]
-_limits = [0.0, 1.0, 0.0, 5.0]
-_data = [Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 0.2), 0.0, 0.0, 0, 0, Vector2(2.5, 0.2), 0.0, 0.4672856, 0, 0, Vector2(4, 0.7), 0.0, 0.0, 0, 0]
-point_count = 4
+_limits = [0.0, 1.0, 0.0, 8.0]
+_data = [Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 0.2), 0.0, 0.0, 0, 0, Vector2(2, 0.2), 0.32505497, 0.32505497, 0, 0, Vector2(3.2, 0.5), 0.0, 0.5186524, 0, 0, Vector2(7.2000003, 0.6), 0.0, 0.0, 0, 0]
+point_count = 5
 metadata/_snap_enabled = true
 
 [resource]

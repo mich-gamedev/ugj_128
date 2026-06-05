@@ -108,7 +108,8 @@ color = Color(0.11764706, 0.1254902, 0.1882353, 1)
 
 [node name="SpawnAttemptTimer" type="Timer" parent="." unique_id=1188634649]
 unique_name_in_owner = true
-wait_time = 0.35
+wait_time = 0.15
+one_shot = true
 
 [node name="Hook" parent="." unique_id=591076568 instance=ExtResource("7_1yooq")]
 position = Vector2(100, 62)

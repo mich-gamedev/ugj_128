@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cep8v2u50smw4"]
+
+[ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="1_4405g"]
+
+[node name="ReferenceRect" type="ReferenceRect" unique_id=1953664216]
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="Sprite" type="Node2D" parent="." unique_id=2081637588]
+position = Vector2(10, 10)
+
+[node name="Outline" type="Node2D" parent="Sprite" unique_id=1656290638]
+z_index = 1
+script = ExtResource("1_4405g")
+radius = 4.0
+draw_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+fill_color = Color(0.7921569, 0.827451, 0.9607843, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="RingDraw" type="Node2D" parent="Sprite" unique_id=99506390]
+z_index = 1
+script = ExtResource("1_4405g")
+width = 2.0
+radius = 4.0
+draw_color = Color(0.93333334, 0.6, 0.627451, 1)
+fill_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+metadata/_custom_type_script = "uid://bxm5rpt45kanq"
+
+[node name="Line2D" type="Line2D" parent="Sprite" unique_id=962399600]
+z_index = 1
+points = PackedVector2Array(-2, 2, 2, -2)
+width = 2.0
+default_color = Color(0.93333334, 0.6, 0.627451, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2

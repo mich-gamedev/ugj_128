@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cjv78br046tfu" path="res://objects/hooks/spawnrates/sticky/hook.tscn" id="1_oqes7"]
 
 [sub_resource type="Curve" id="Curve_kefyt"]
-_limits = [0.0, 1.0, 0.0, 5.0]
-_data = [Vector2(1.5337578, 0), 0.0, 0.121431805, 0, 0, Vector2(5, 0.14937824), 0.08908137, 0.0, 0, 0]
+_limits = [0.0, 1.0, 0.0, 10.0]
+_data = [Vector2(4.7046404, 0), 0.0, 0.17626376, 0, 0, Vector2(7.555505, 0.09893769), 0.08908137, 0.0, 0, 0]
 point_count = 2
 
 [resource]

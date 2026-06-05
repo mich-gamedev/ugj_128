@@ -8,9 +8,6 @@ enum {
 	HAND_CLOSED
 }
 
-func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-
 func _process(_delta: float) -> void:
 	cursor.global_position = cursor.get_global_mouse_position()
 

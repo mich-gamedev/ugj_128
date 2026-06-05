@@ -45,6 +45,5 @@ func _on_retry_pressed() -> void:
 
 
 func _on_quit_pressed() -> void:
-	get_tree().reload_current_scene()
-	await get_tree().physics_frame_frame # just in case yknow
+	GameStats.start_new() # handles save data
 	get_tree().quit()

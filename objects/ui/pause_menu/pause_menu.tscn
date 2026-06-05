@@ -4,6 +4,11 @@
 [ext_resource type="Shader" uid="uid://ci68iy2dvw7kn" path="res://resources/shaders/mipmap_blur.gdshader" id="1_o0bnm"]
 [ext_resource type="Shader" uid="uid://c2ka5jjkpagki" path="res://resources/shaders/stripes.gdshader" id="2_mgf5d"]
 [ext_resource type="Texture2D" uid="uid://kbfgkttkvhe5" path="res://assets/google_icons/undo.svg" id="3_52s8g"]
+[ext_resource type="FontFile" uid="uid://ssvwv7airuao" path="res://assets/fonts/azaret_mono.ttf" id="5_r61su"]
+[ext_resource type="Script" uid="uid://cadud5wibf3rm" path="res://objects/ui/buttons/grouped_button_comp.gd" id="5_u1sdv"]
+[ext_resource type="Script" uid="uid://cjmmhbp1b5312" path="res://addons/StyleboxFancy/StyleBorder.gd" id="6_s184f"]
+[ext_resource type="Script" uid="uid://bkl6g25jwb47h" path="res://addons/StyleboxFancy/StyleBoxFancy.gd" id="7_r61su"]
+[ext_resource type="AudioStream" uid="uid://ddorcc1632idk" path="res://assets/sound/sfx/hookAdded.wav" id="8_s184f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1yooq"]
 shader = ExtResource("1_o0bnm")
@@ -25,6 +30,12 @@ anti_aliasing = false
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gb53w"]
 bg_color = Color(0.92941177, 0.5294118, 0.5882353, 1)
 
+[sub_resource type="FontVariation" id="FontVariation_q51ym"]
+base_font = ExtResource("5_r61su")
+variation_opentype = {
+2003265652: 800
+}
+
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_j2gmx"]
 color = Color(0.28627452, 0.3019608, 0.39215687, 1)
 grow_begin = 0.0
@@ -42,6 +53,20 @@ border_color = Color(0.28627452, 0.3019608, 0.39215687, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52s8g"]
 bg_color = Color(0.28627452, 0.3019608, 0.39215687, 1)
+
+[sub_resource type="StyleBox" id="StyleBox_q51ym"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 8.0
+content_margin_top = -1.0
+content_margin_right = 4.0
+content_margin_bottom = -1.0
+script = ExtResource("7_r61su")
+color = Color(0.92941177, 0.5294118, 0.5882353, 1)
+corner_radius_top_left = 8
+corner_curvature_top_left = 0.0
+anti_aliasing = false
+metadata/_custom_type_script = "uid://bkl6g25jwb47h"
 
 [sub_resource type="Animation" id="Animation_tuhed"]
 length = 0.001
@@ -376,6 +401,17 @@ theme_override_constants/separation = 2
 layout_mode = 2
 text = "vsync"
 
+[node name="Label2" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=1159119530]
+layout_mode = 2
+size_flags_vertical = 1
+tooltip_text = "limits the fps to your monitor's refresh rate"
+mouse_filter = 0
+theme_override_colors/font_color = Color(0.28627452, 0.3019608, 0.39215687, 1)
+theme_override_fonts/font = SubResource("FontVariation_q51ym")
+theme_override_font_sizes/font_size = 3
+text = "(?)"
+vertical_alignment = 1
+
 [node name="HSeparator" type="Control" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=1828178192]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -411,6 +447,38 @@ size_flags_vertical = 0
 theme_type_variation = &"ToggleButton"
 toggle_mode = true
 button_pressed = true
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=2083261016]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer8" unique_id=2134678279]
+layout_mode = 2
+text = "confine mouse"
+
+[node name="Label2" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer8" unique_id=445785636]
+layout_mode = 2
+size_flags_vertical = 1
+tooltip_text = "locks the mouse to the window (unless game is paused)"
+mouse_filter = 0
+theme_override_colors/font_color = Color(0.28627452, 0.3019608, 0.39215687, 1)
+theme_override_fonts/font = SubResource("FontVariation_q51ym")
+theme_override_font_sizes/font_size = 3
+text = "(?)"
+vertical_alignment = 1
+
+[node name="HSeparator" type="Control" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer8" unique_id=67094736]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_type_variation = &"LineFollower"
+
+[node name="ConfineMouse" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer8" unique_id=678645075]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"ToggleButton"
+toggle_mode = true
 
 [node name="SepAudio" type="HBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1041857847]
 layout_mode = 2
@@ -492,28 +560,6 @@ offset_bottom = 4.0
 mouse_filter = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_j2gmx")
 
-[node name="HBoxContainer6" type="HBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=677712163]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="Label" type="Label" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer6" unique_id=367535740]
-layout_mode = 2
-text = "filter effect"
-
-[node name="HSeparator" type="Control" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer6" unique_id=1848296942]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-theme_type_variation = &"LineFollower"
-
-[node name="FilterEffect" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer6" unique_id=1195910504]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 0
-theme_type_variation = &"ToggleButton"
-toggle_mode = true
-button_pressed = true
-
 [node name="Panel" type="Panel" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1400120701]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
@@ -567,6 +613,33 @@ assets:
 fit_content = true
 scroll_active = false
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=621056918]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="Restart" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1073034117]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ButtonConnectLeft"
+text = "RESTART"
+
+[node name="GroupedButtonAnim" type="Node" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Restart" unique_id=1462310081 node_paths=PackedStringArray("button")]
+script = ExtResource("5_u1sdv")
+button = NodePath("..")
+metadata/_custom_type_script = "uid://cadud5wibf3rm"
+
+[node name="Quit" type="Button" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=772746801]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ButtonConnectRight"
+theme_override_styles/normal = SubResource("StyleBox_q51ym")
+text = "QUIT"
+
+[node name="GroupedButtonAnim" type="Node" parent="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Quit" unique_id=1091297035 node_paths=PackedStringArray("button")]
+script = ExtResource("5_u1sdv")
+button = NodePath("..")
+metadata/_custom_type_script = "uid://cadud5wibf3rm"
+
 [node name="Panel" type="Panel" parent="Control/Panel" unique_id=1555409523]
 layout_mode = 1
 anchors_preset = 15
@@ -583,12 +656,21 @@ unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_s184f")
 autoplay = &"RESET"
 
+[node name="ButtonHoverSFX" type="AudioStreamPlayer" parent="." unique_id=123138608]
+unique_name_in_owner = true
+stream = ExtResource("8_s184f")
+volume_db = -12.0
+max_polyphony = 16
+bus = &"UI SFX"
+
 [connection signal="gui_input" from="ColorRect" to="." method="_click_off"]
 [connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SepVideo/ResetVideo" to="." method="_reset_video"]
 [connection signal="toggled" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/Fullscreen" to="." method="_fullscreen"]
 [connection signal="toggled" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer5/Vsync" to="." method="_vsync"]
 [connection signal="toggled" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer7/ShowFPS" to="." method="_show_fps"]
+[connection signal="toggled" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer8/ConfineMouse" to="." method="_confine_mouse"]
 [connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SepAudio/ResetAudio" to="." method="_reset_audio"]
 [connection signal="value_changed" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/Music" to="." method="_music"]
 [connection signal="value_changed" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4/Sfx" to="." method="_sfx"]
-[connection signal="toggled" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer6/FilterEffect" to="." method="_filter_effect"]
+[connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]

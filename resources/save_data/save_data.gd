@@ -26,6 +26,7 @@ class_name SaveData extends Resource
 		show_fps = v
 		if is_instance_valid((Engine.get_main_loop() as SceneTree).get_first_node_in_group(&"fps_label") as Label):
 			((Engine.get_main_loop() as SceneTree).get_first_node_in_group(&"fps_label") as Label).visible = v
+@export var confine_mouse: bool = false
 
 const PATH := "user://save.tres"
 

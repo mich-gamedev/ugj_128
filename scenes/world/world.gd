@@ -10,6 +10,7 @@ static var max_hooks := 15
 const FISH_HIGH_SCORE = preload("uid://d8i3yxn84yi4")
 
 func _ready() -> void:
+
 	if SaveData.data.high_score:
 		var inst := FISH_HIGH_SCORE.instantiate() as Hook
 		inst.position = Vector2(242, 129)
@@ -28,6 +29,7 @@ func _state_changed(new: int) -> void:
 		add_child(inst)
 
 func _spawn_timeout() -> void:
+	spawn_timer.start(randf_range(0, 0.35))
 	if get_tree().get_nodes_in_group(&"hook").size() >= max_hooks: return
 	var hook := Hook.random()
 	if (!GameStats.pack.discoveries.has(hook.resource_path)) and (!SaveData.data.high_score.discoveries.has(hook.resource_path)):
