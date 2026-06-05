@@ -13,6 +13,7 @@ shader_parameter/outline_thickness = 4.0
 shader_parameter/outline_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
 
 [node name="Cursor" type="CanvasLayer" unique_id=1468878262]
+process_mode = 3
 layer = 4096
 script = ExtResource("1_7iavq")
 

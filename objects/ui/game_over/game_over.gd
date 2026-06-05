@@ -29,10 +29,11 @@ func _ready() -> void:
 		var inst := DISCOVER_PANEL.instantiate() as DiscoverPanel
 		inst.hook = load(i)
 		discoveries.add_child(inst)
-	AudioServer.set_bus_effect_enabled(3, 0, true)
-	var effect := AudioServer.get_bus_effect(3, 0) as AudioEffectFilter # filter on In-game SFX
-	twn_filter = create_tween()
-	twn_filter.tween_property(effect, ^"cutoff_hz", 3000, 0.5)
+	if SaveData.data.do_filter_effect:
+		AudioServer.set_bus_effect_enabled(3, 0, true)
+		var effect := AudioServer.get_bus_effect(3, 0) as AudioEffectFilter # filter on In-game SFX
+		twn_filter = create_tween()
+		twn_filter.tween_property(effect, ^"cutoff_hz", 3000, 0.5)
 
 func _on_retry_pressed() -> void:
 	if twn_filter: twn_filter.kill()
@@ -44,4 +45,6 @@ func _on_retry_pressed() -> void:
 
 
 func _on_quit_pressed() -> void:
+	get_tree().reload_current_scene()
+	await get_tree().physics_frame_frame # just in case yknow
 	get_tree().quit()

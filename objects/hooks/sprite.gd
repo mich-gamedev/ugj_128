@@ -6,6 +6,7 @@ func _ready() -> void:
 	hook.hooked.connect(_hooked)
 	hook.deleting.connect(_deleting)
 	scale = Vector2.ZERO
+	reset_physics_interpolation()
 	twn_drag = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	twn_drag.tween_property(self, ^"scale", Vector2.ONE, 0.75 * randf_range(2, 5))
 	if hook is DraggableHook:

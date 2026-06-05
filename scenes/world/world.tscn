@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://btjyjxrp5b0h7"]
 
 [ext_resource type="Script" uid="uid://dw8ltepr8espo" path="res://scenes/world/world.gd" id="1_t5ptc"]
+[ext_resource type="Script" uid="uid://dyr4w2mpw2486" path="res://scenes/world/fps_label.gd" id="3_t5ptc"]
 [ext_resource type="PackedScene" uid="uid://wa2yieno3883" path="res://objects/raft/raft.tscn" id="5_v5dby"]
 [ext_resource type="PackedScene" uid="uid://c0jsr4t763c7g" path="res://objects/hooks/main_menu/start.tscn" id="7_1yooq"]
 [ext_resource type="PackedScene" uid="uid://cf8otyqikwngh" path="res://objects/hooks/main_menu/config.tscn" id="8_gb53w"]
@@ -54,6 +55,18 @@ custom_minimum_size = Vector2(320, 180)
 layout_mode = 2
 mouse_filter = 2
 
+[node name="FpsLabel" type="Label" parent="CanvasLayer/HBoxContainer/Control" unique_id=331731762 groups=["fps_label"]]
+process_mode = 3
+layout_mode = 0
+offset_left = 1.0
+offset_right = 41.0
+offset_bottom = 8.0
+theme_override_colors/font_outline_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 3
+text = "__fps"
+script = ExtResource("3_t5ptc")
+
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/HBoxContainer" unique_id=525618507]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -102,7 +115,5 @@ position = Vector2(208, 50)
 position = Vector2(129, 130)
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=1146789381]
-
-[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1635460710]
 
 [connection signal="timeout" from="SpawnAttemptTimer" to="." method="_spawn_timeout"]
