@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bgqglerkcylxx" path="res://addons/SmoothScroll/smooth_scroll_container.gd" id="3_tmg6i"]
 [ext_resource type="FontFile" uid="uid://ssvwv7airuao" path="res://assets/fonts/azaret_mono.ttf" id="4_577no"]
 [ext_resource type="Script" uid="uid://b7h0k2h2qwlqv" path="res://addons/SmoothScroll/scroll_damper/expo_scroll_damper.gd" id="4_dkxmd"]
+[ext_resource type="AudioStream" uid="uid://ddorcc1632idk" path="res://assets/sound/sfx/hookAdded.wav" id="10_vj21x"]
 [ext_resource type="Script" uid="uid://cadud5wibf3rm" path="res://objects/ui/buttons/grouped_button_comp.gd" id="12_1vw1m"]
 [ext_resource type="Script" uid="uid://cjmmhbp1b5312" path="res://addons/StyleboxFancy/StyleBorder.gd" id="13_431fs"]
 [ext_resource type="Script" uid="uid://bkl6g25jwb47h" path="res://addons/StyleboxFancy/StyleBoxFancy.gd" id="14_pjgq2"]
@@ -466,6 +467,13 @@ grow_vertical = 2
 mouse_filter = 2
 theme_type_variation = &"PanelCover"
 metadata/_edit_lock_ = true
+
+[node name="ButtonHoverSFX" type="AudioStreamPlayer" parent="Control2" unique_id=1208836186]
+unique_name_in_owner = true
+stream = ExtResource("10_vj21x")
+volume_db = -12.0
+max_polyphony = 16
+bus = &"UI SFX"
 
 [node name="Anim" type="AnimationPlayer" parent="Control2" unique_id=1288644167]
 unique_name_in_owner = true

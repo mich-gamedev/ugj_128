@@ -18,6 +18,7 @@ class_name GroupedButtonAnim extends Node
 var twn: Tween
 
 func _mouse_entered() -> void:
+	%ButtonHoverSFX.play()
 	if Engine.is_editor_hint(): return
 	if twn: twn.kill()
 	twn = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)

@@ -2,15 +2,43 @@
 
 [ext_resource type="Script" uid="uid://dw8ltepr8espo" path="res://scenes/world/world.gd" id="1_t5ptc"]
 [ext_resource type="PackedScene" uid="uid://wa2yieno3883" path="res://objects/raft/raft.tscn" id="5_v5dby"]
+[ext_resource type="AudioStream" uid="uid://cls8vpg7fu4cq" path="res://assets/sound/music/mus1.ogg" id="6_bq33v"]
 [ext_resource type="PackedScene" uid="uid://c0jsr4t763c7g" path="res://objects/hooks/main_menu/start.tscn" id="7_1yooq"]
+[ext_resource type="Script" uid="uid://k1tjl0t5fdj4" path="res://objects/music/custom_loop.gd" id="7_j2gmx"]
 [ext_resource type="PackedScene" uid="uid://cf8otyqikwngh" path="res://objects/hooks/main_menu/config.tscn" id="8_gb53w"]
 [ext_resource type="PackedScene" uid="uid://bnmvho21ulye4" path="res://objects/hooks/main_menu/quit.tscn" id="9_5qq27"]
+[ext_resource type="AudioStream" uid="uid://c56fw0htmtl0d" path="res://assets/sound/music/dead.ogg" id="9_gb53w"]
+[ext_resource type="Script" uid="uid://bf7iei4mh65nm" path="res://objects/music/dead_mus_loop.gd" id="10_5qq27"]
 
 [sub_resource type="Curve2D" id="Curve2D_4rhad"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -5, -5, 0, 0, 0, 0, 325, -5, 0, 0, 0, 0, 325, 185, 0, 0, 0, 0, -5, 185, 0, 0, 0, 0, -5, -5)
 }
 point_count = 5
+
+[sub_resource type="GDScript" id="GDScript_1yooq"]
+script/source = "extends Node
+
+static var last_track: int = -1
+
+func _ready() -> void:
+	var trackList = range(get_child_count())
+	if last_track != -1:
+		trackList.remove_at(last_track)
+	
+	last_track = trackList.pick_random()
+	get_child(last_track).play()
+	
+	GameStats.signals.state_changed.connect(dead)
+
+func dead(state: int) -> void:
+	if GameStats.state == GameStats.GAME_OVER:
+		var tween: Tween = get_tree().create_tween()
+		#tween.tween_property(get_child(last_track) as AudioStreamPlayer, \"pitch_scale\", 1.05, 0.25)
+		tween.tween_property(get_child(last_track) as AudioStreamPlayer, \"pitch_scale\", 0.00001, 2.5)
+		tween.tween_callback(get_child(last_track).stop)
+		tween.play()
+"
 
 [node name="Node2D" type="Node2D" unique_id=1398138327]
 script = ExtResource("1_t5ptc")
@@ -104,5 +132,28 @@ position = Vector2(129, 130)
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=1146789381]
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1635460710]
+
+[node name="MusicManager" type="Node" parent="." unique_id=236361331]
+script = SubResource("GDScript_1yooq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MusicManager" unique_id=949219570]
+stream = ExtResource("6_bq33v")
+volume_db = -12.0
+script = ExtResource("7_j2gmx")
+loop_beats = 96.0
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="MusicManager" unique_id=335931495]
+stream = ExtResource("6_bq33v")
+volume_db = -12.0
+script = ExtResource("7_j2gmx")
+loop_beats = 96.0
+
+[node name="DeadLoop" type="AudioStreamPlayer" parent="." unique_id=1239111249]
+stream = ExtResource("9_gb53w")
+volume_db = -12.0
+pitch_scale = 0.8
+autoplay = true
+parameters/looping = true
+script = ExtResource("10_5qq27")
 
 [connection signal="timeout" from="SpawnAttemptTimer" to="." method="_spawn_timeout"]
