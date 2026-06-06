@@ -672,5 +672,6 @@ bus = &"UI SFX"
 [connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SepAudio/ResetAudio" to="." method="_reset_audio"]
 [connection signal="value_changed" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/Music" to="." method="_music"]
 [connection signal="value_changed" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4/Sfx" to="." method="_sfx"]
+[connection signal="meta_clicked" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Label2" to="." method="_meta_clicked"]
 [connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]

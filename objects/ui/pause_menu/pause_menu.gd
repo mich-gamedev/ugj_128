@@ -23,7 +23,7 @@ func _ready() -> void:
 	else:Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"pause"):
 		if anim.assigned_animation != &"open": pause()
 		else: unpause()
@@ -83,3 +83,6 @@ func _on_quit_pressed() -> void:
 
 func _confine_mouse(toggled_on: bool) -> void:
 	SaveData.data.confine_mouse = toggled_on
+
+func _meta_clicked(meta: Variant) -> void:
+	OS.shell_open(meta)

@@ -18,9 +18,14 @@ func _ready() -> void:
 
 func _on_color_rect_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		if !event.pressed:
+		if !event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			anim.play(&"close")
 
 
 func _on_anim_animation_finished(anim_name: StringName) -> void:
 	if anim_name == &"close": queue_free()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"pause"):
+		get_window().set_input_as_handled()
+		anim.play(&"close")

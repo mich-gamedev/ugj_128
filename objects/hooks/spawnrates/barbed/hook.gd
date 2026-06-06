@@ -21,10 +21,6 @@ func connect_to_roses() -> void:
 		ray.collision_mask = 1 << 4
 		ray.enabled = false
 		rays[i] = ray
-		i.tree_exiting.connect(func() -> void:
-			rays[i].queue_free()
-			rays.erase(ray)
-		)
 		add_child(ray)
 		await get_tree().create_timer(0.1).timeout
 
