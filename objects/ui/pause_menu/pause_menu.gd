@@ -19,6 +19,9 @@ func _ready() -> void:
 	sfx.set_value_no_signal(SaveData.data.vol_sfx)
 	show_fps.set_pressed_no_signal(SaveData.data.show_fps)
 	confine_mouse.set_pressed_no_signal(SaveData.data.confine_mouse)
+	if SaveData.data.confine_mouse: Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	else:Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"pause"):

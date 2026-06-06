@@ -17,6 +17,7 @@ desc = "a sticky fish that latches onto any fish it touches, until it runs out o
 great for collecting tons of fish quickly."
 icon_20_x_20 = ExtResource("1_kefyt")
 main_color = Color(0.95686275, 0.85882354, 0.8392157, 1)
+sort_order = 7
 scene = ExtResource("1_oqes7")
 spawnrate = SubResource("Curve_kefyt")
 metadata/_custom_type_script = "uid://bwpicb1kotnet"

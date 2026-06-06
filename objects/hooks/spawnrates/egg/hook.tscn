@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dcmxkv76psi0w"]
 
-[ext_resource type="Script" uid="uid://dtetdikvxautp" path="res://objects/hooks/spawnrates/_mother/hook.gd" id="1_2gswl"]
+[ext_resource type="Script" uid="uid://dtetdikvxautp" path="res://objects/hooks/spawnrates/egg/hook.gd" id="1_2gswl"]
 [ext_resource type="Script" uid="uid://c8brc8tafbvgp" path="res://objects/hooks/sprite.gd" id="2_62q1q"]
 [ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="3_jnf0t"]
 [ext_resource type="PackedScene" uid="uid://6xuvcg34aisj" path="res://objects/hooks/hook_sfx.tscn" id="4_ifplg"]
@@ -8,6 +8,141 @@
 [sub_resource type="Curve" id="Curve_2gswl"]
 _data = [Vector2(0, 1), 0.0, -3.0484302, 0, 1, Vector2(0.27770382, 0.15343934), 0.0, 0.0, 0, 0, Vector2(0.47694075, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.9118294, 0.0, 1, 0]
 point_count = 4
+
+[sub_resource type="Animation" id="Animation_cevdd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect/RingDraw:draw_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.7764706, 0.627451, 0.9647059, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect2/RingDraw2:draw_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.7764706, 0.627451, 0.9647059, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Line2D:default_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.7764706, 0.627451, 0.9647059, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ia6hc"]
+resource_name = "fragile"
+length = 0.3
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [-0.2617993877991494, 0.2617993877991494]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect/RingDraw:draw_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(0.92941177, 0.5294118, 0.5882353, 1), Color(0.7764706, 0.627451, 0.9647059, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect2/RingDraw2:draw_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(0.92941177, 0.5294118, 0.5882353, 1), Color(0.7764706, 0.627451, 0.9647059, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Line2D:default_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(0.92941177, 0.5294118, 0.5882353, 1), Color(0.7764706, 0.627451, 0.9647059, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n8urr"]
+_data = {
+&"RESET": SubResource("Animation_cevdd"),
+&"fragile": SubResource("Animation_ia6hc")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v5dby"]
 radius = 8.0
@@ -29,7 +164,8 @@ radius = 48.0
 [node name="Hook" type="Area2D" unique_id=591076568 node_paths=PackedStringArray("sep_area", "coh_area", "align_area", "raft_area") groups=["hook"]]
 collision_layer = 3
 script = ExtResource("1_2gswl")
-cost = 6
+throw_velocity_ratio = 0.66
+cost = 72
 main_color = Color(0.7764706, 0.627451, 0.9647059, 1)
 sep_distance = 24.0
 sep_ease = 0.5
@@ -65,8 +201,9 @@ hook = NodePath("..")
 [node name="ColorRect" type="ColorRect" parent="Sprite" unique_id=819001141]
 clip_children = 1
 offset_left = -6.0
+offset_top = 1.0
 offset_right = 6.0
-offset_bottom = 6.0
+offset_bottom = 7.0
 mouse_filter = 2
 
 [node name="Outline" type="Node2D" parent="Sprite/ColorRect" unique_id=140084309]
@@ -89,8 +226,9 @@ metadata/_custom_type_script = "uid://bxm5rpt45kanq"
 [node name="ColorRect2" type="ColorRect" parent="Sprite" unique_id=12421406]
 clip_children = 1
 offset_left = -6.0
-offset_top = -10.0
+offset_top = -9.0
 offset_right = 6.0
+offset_bottom = 1.0
 mouse_filter = 2
 
 [node name="Outline" type="Node2D" parent="Sprite/ColorRect2" unique_id=1750251417]
@@ -113,10 +251,15 @@ fill_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
 metadata/_custom_type_script = "uid://bxm5rpt45kanq"
 
 [node name="Line2D" type="Line2D" parent="Sprite" unique_id=241676980]
+visible = false
 points = PackedVector2Array(-1, -5, 1, -3, -1, -1, 0, 1)
 width = 2.0
 width_curve = SubResource("Curve_2gswl")
 default_color = Color(0.7764706, 0.627451, 0.9647059, 1)
+
+[node name="Anim" type="AnimationPlayer" parent="Sprite" unique_id=690393615]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_n8urr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=645445217]
 position = Vector2(0, -1)
@@ -159,9 +302,4 @@ debug_color = Color(0, 1, 0.49803922, 0)
 [node name="HookSFX" parent="." unique_id=1793462183 node_paths=PackedStringArray("hook") instance=ExtResource("4_ifplg")]
 hook = NodePath("..")
 
-[node name="BirthTimer" type="Timer" parent="." unique_id=53198992]
-unique_name_in_owner = true
-wait_time = 0.5
-autostart = true
-
-[connection signal="timeout" from="BirthTimer" to="." method="_on_birth_timer_timeout"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

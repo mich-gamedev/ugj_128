@@ -16,6 +16,7 @@ name = "slip fish"
 desc = "a tricky and expensive fish that can't be dragged, but is extremely lightweight and pullable with nets."
 icon_20_x_20 = ExtResource("1_k0vhe")
 main_color = Color(0.43137255, 0.4509804, 0.5529412, 1)
+sort_order = 2
 scene = ExtResource("1_u3ce2")
 spawnrate = SubResource("Curve_k0vhe")
 metadata/_custom_type_script = "uid://bwpicb1kotnet"

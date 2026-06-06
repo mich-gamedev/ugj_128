@@ -17,6 +17,7 @@ desc = "a helfpul fish that latches onto other fish, pulling them towards it.
 useful to reel many fish in at once."
 icon_20_x_20 = ExtResource("1_3a4pb")
 main_color = Color(0.93333334, 0.83137256, 0.62352943, 1)
+sort_order = 3
 scene = ExtResource("1_xnda2")
 spawnrate = SubResource("Curve_3a4pb")
 metadata/_custom_type_script = "uid://bwpicb1kotnet"

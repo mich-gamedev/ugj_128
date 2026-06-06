@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://c56fw0htmtl0d" path="res://assets/sound/music/dead.ogg" id="9_gb53w"]
 [ext_resource type="Script" uid="uid://bf7iei4mh65nm" path="res://objects/music/dead_mus_loop.gd" id="10_5qq27"]
 [ext_resource type="AudioStream" uid="uid://dynk72n75wlni" path="res://assets/sound/music/mus3.ogg" id="10_dlabj"]
+[ext_resource type="PackedScene" uid="uid://bftdamxkdy5n3" path="res://objects/hooks/main_menu/fish_logs.tscn" id="12_dlabj"]
 
 [sub_resource type="Curve2D" id="Curve2D_4rhad"]
 _data = {
@@ -150,5 +151,8 @@ pitch_scale = 0.8
 autoplay = true
 parameters/looping = true
 script = ExtResource("10_5qq27")
+
+[node name="Hook4" parent="." unique_id=1693802989 instance=ExtResource("12_dlabj")]
+position = Vector2(48, 128)
 
 [connection signal="timeout" from="SpawnAttemptTimer" to="." method="_spawn_timeout"]

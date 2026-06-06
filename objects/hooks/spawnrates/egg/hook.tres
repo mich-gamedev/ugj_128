@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="HookSpawnrate" format=3 uid="uid://c4ixo7fk0cc7s"]
+
+[ext_resource type="Script" uid="uid://bwpicb1kotnet" path="res://objects/hooks/hook_spawnrate.gd" id="1_725ho"]
+[ext_resource type="PackedScene" uid="uid://bwmcerf8l4bqt" path="res://objects/hooks/spawnrates/egg/icon.tscn" id="1_y0eer"]
+[ext_resource type="PackedScene" uid="uid://dcmxkv76psi0w" path="res://objects/hooks/spawnrates/egg/hook.tscn" id="2_qe1nu"]
+
+[sub_resource type="Curve" id="Curve_wri0o"]
+_limits = [0.0, 1.0, 0.0, 14.0]
+_data = [Vector2(1.6205441, 0), 0.0, 0.44152376, 0, 0, Vector2(3.5311344, 0.29311758), -0.016146744, -0.037086226, 0, 0, Vector2(5.140915, 0.32684153), 0.0, 0.0, 0, 0, Vector2(7.4796295, 0.043572545), -0.23344482, 0.0, 0, 0]
+point_count = 4
+
+[resource]
+script = ExtResource("1_725ho")
+name = "EGG FISH"
+desc = "a fragile fish that's expensive, but easily shatters if it rams into other fish."
+icon_20_x_20 = ExtResource("1_y0eer")
+main_color = Color(0.7764706, 0.627451, 0.9647059, 1)
+sort_order = 5
+scene = ExtResource("2_qe1nu")
+spawnrate = SubResource("Curve_wri0o")
+metadata/_custom_type_script = "uid://bwpicb1kotnet"

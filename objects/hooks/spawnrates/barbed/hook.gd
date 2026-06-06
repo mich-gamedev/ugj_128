@@ -10,7 +10,7 @@ func _ready() -> void:
 	connect_to_roses()
 
 func connect_to_roses() -> void:
-	for i in get_tree().get_nodes_in_group(&"barbed_hook"):
+	for i: Hook in get_tree().get_nodes_in_group(&"barbed_hook"):
 		if i == self or !is_instance_valid(i) or hooks.has(i): continue
 		Hook.add_hook(self, i)
 		var ray := RayCast2D.new()
@@ -20,7 +20,11 @@ func connect_to_roses() -> void:
 		ray.add_exception(i)
 		ray.collision_mask = 1 << 4
 		ray.enabled = false
-		rays[i as Hook] = ray
+		rays[i] = ray
+		i.tree_exiting.connect(func() -> void:
+			rays[i].queue_free()
+			rays.erase(ray)
+		)
 		add_child(ray)
 		await get_tree().create_timer(0.1).timeout
 

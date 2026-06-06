@@ -5,6 +5,7 @@ extends Node2D
 func _ready() -> void:
 	hook.hooked.connect(_hooked)
 	hook.deleting.connect(_deleting)
+	hook.collected.connect(_collected)
 	scale = Vector2.ZERO
 	reset_physics_interpolation()
 	twn_drag = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
@@ -44,9 +45,15 @@ func _hooked(to: Hook) -> void:
 	inst.to = to
 	get_tree().current_scene.add_child(inst)
 
+var dur := randf_range(0.25, .75)
+
 func _deleting() -> void:
-	var dur := randf_range(0.25, .75)
 	if twn_drag: twn_drag.kill()
 	twn_drag = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).set_parallel()
 	twn_drag.tween_property(self, ^"scale", Vector2.ZERO, dur)
-	twn_drag.tween_property(self, ^'global_position', get_tree().get_first_node_in_group(&"raft").global_position, dur)
+
+var twn_collect: Tween
+
+func _collected() -> void:
+	twn_collect = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	twn_collect.tween_property(self, ^'global_position', get_tree().get_first_node_in_group(&"raft").global_position, dur)

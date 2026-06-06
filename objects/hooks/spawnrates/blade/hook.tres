@@ -6,7 +6,7 @@
 
 [sub_resource type="Curve" id="Curve_q5pkx"]
 _limits = [0.0, 1.0, 0.0, 10.0]
-_data = [Vector2(0.2602768, 0), 0.0, 0.0, 0, 0, Vector2(2.075462, 0), 0.0, 0.0, 0, 0, Vector2(3.1362555, 0.027996063), 0.0, 0.0, 0, 0, Vector2(4.9876776, 0), 0.0, 0.0, 0, 0, Vector2(5.55574, 0), 0.0, 0.15952595, 0, 0, Vector2(10, 0.13102901), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.2602768, 0), 0.0, 0.0, 0, 0, Vector2(2.075462, 0), 0.0, 0.0, 0, 0, Vector2(2.902285, 0.037813067), 0.0, 0.0, 0, 0, Vector2(3.7882905, 0.014185309), 0.0, 0.0, 0, 0, Vector2(7.075904, 0.012606263), 0.0, 0.105666846, 0, 0, Vector2(10, 0.06977904), 0.0, 0.0, 0, 0]
 point_count = 6
 
 [resource]
@@ -15,6 +15,7 @@ name = "SAW FISH"
 desc = "a profit-shattering fish that cuts through nets. These guys should be taken care of as quickly as possible."
 icon_20_x_20 = ExtResource("1_q5pkx")
 main_color = Color(0.9607843, 0.6627451, 0.49803922, 1)
+sort_order = 6
 scene = ExtResource("2_h474c")
 spawnrate = SubResource("Curve_q5pkx")
 metadata/_custom_type_script = "uid://bwpicb1kotnet"

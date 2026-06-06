@@ -16,6 +16,7 @@ name = "ELDER MONEY FISH"
 desc = "because of hunting, it's rare to find money fish this old. they have extremely high money, but have to be pushed rathed than dragged, and are extremely heavy."
 icon_20_x_20 = ExtResource("1_132u1")
 main_color = Color(0.54509807, 0.8352941, 0.7921569, 1)
+sort_order = 8
 scene = ExtResource("2_fruva")
 spawnrate = SubResource("Curve_6e8w3")
 metadata/_custom_type_script = "uid://bwpicb1kotnet"

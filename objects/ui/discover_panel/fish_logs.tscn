@@ -1,0 +1,398 @@
+[gd_scene format=3 uid="uid://dvuskuiv7tu2s"]
+
+[ext_resource type="Script" uid="uid://bgvo3el375gb1" path="res://objects/ui/discover_panel/fish_logs.gd" id="1_4hul8"]
+[ext_resource type="Shader" uid="uid://ci68iy2dvw7kn" path="res://resources/shaders/mipmap_blur.gdshader" id="2_nbn7i"]
+[ext_resource type="Shader" uid="uid://c2ka5jjkpagki" path="res://resources/shaders/stripes.gdshader" id="3_erf51"]
+[ext_resource type="Script" uid="uid://bgqglerkcylxx" path="res://addons/SmoothScroll/smooth_scroll_container.gd" id="5_4slkh"]
+[ext_resource type="Script" uid="uid://b7h0k2h2qwlqv" path="res://addons/SmoothScroll/scroll_damper/expo_scroll_damper.gd" id="6_2d6fg"]
+[ext_resource type="AudioStream" uid="uid://ddorcc1632idk" path="res://assets/sound/sfx/hookAdded.wav" id="10_qsuq1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6m72w"]
+shader = ExtResource("2_nbn7i")
+shader_parameter/blur = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v5dby"]
+shader = ExtResource("3_erf51")
+shader_parameter/color_gap = Color(0.2509804, 0.2509804, 0.2509804, 0)
+shader_parameter/color_stripe = Color(0.5411765, 0.6784314, 0.95686275, 1)
+shader_parameter/divisions = 8.0
+shader_parameter/stripe_bias = 2.5
+shader_parameter/speed = 0.25
+shader_parameter/angle = 0.357
+
+[sub_resource type="Resource" id="Resource_qtaky"]
+script = ExtResource("6_2d6fg")
+
+[sub_resource type="Resource" id="Resource_gdgjr"]
+script = ExtResource("6_2d6fg")
+
+[sub_resource type="Animation" id="Animation_t5ptc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control2/Control:size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [160.00003]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control2/Control:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [80.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control2/Control:size:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [180.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control2/Control:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect:material:shader_parameter/blur")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4hul8"]
+resource_name = "close"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control2/Control:size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.16693833, -4.206031),
+"update": 0,
+"values": [160.00003, 2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control2/Control:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.16693833, -4.206031),
+"update": 0,
+"values": [80.0, 159.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control2/Control:size:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-4.206031, 0.16693833),
+"update": 0,
+"values": [180.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control2/Control:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-4.206031, 0.16693833),
+"update": 0,
+"values": [0.0, 90.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect:material:shader_parameter/blur")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [5.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_bq33v"]
+resource_name = "open"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control2/Control:size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-4.206031, 1),
+"update": 0,
+"values": [2.0, 160.00003]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control2/Control:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-4.206031, 1),
+"update": 0,
+"values": [159.0, 80.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control2/Control:size:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.16693833, 1),
+"update": 0,
+"values": [0.0, 180.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control2/Control:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.16693833, 1),
+"update": 0,
+"values": [90.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect:material:shader_parameter/blur")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [0.0, 5.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j2gmx"]
+_data = {
+&"RESET": SubResource("Animation_t5ptc"),
+&"close": SubResource("Animation_4hul8"),
+&"open": SubResource("Animation_bq33v")
+}
+
+[node name="FishLogs" type="CanvasLayer" unique_id=627183422]
+script = ExtResource("1_4hul8")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1342291898]
+visible = false
+material = SubResource("ShaderMaterial_6m72w")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control2" type="Control" parent="." unique_id=1338457558]
+custom_minimum_size = Vector2(320, 180)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -90.0
+offset_right = 160.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control" type="MarginContainer" parent="Control2" unique_id=1769020183]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_right = 80.00003
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 4
+
+[node name="ColorRect2" type="Panel" parent="Control2/Control" unique_id=594098629]
+clip_contents = true
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control2/Control/ColorRect2" unique_id=1756132973]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control2/Control/ColorRect2/MarginContainer" unique_id=134759060]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control2/Control/ColorRect2/MarginContainer/VBoxContainer" unique_id=156977565]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Control2/Control/ColorRect2/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2102697019]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderLabel"
+theme_override_font_sizes/font_size = 8
+text = "fish logs <>3"
+
+[node name="ColorRect" type="ColorRect" parent="Control2/Control/ColorRect2/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1687906278]
+material = SubResource("ShaderMaterial_v5dby")
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+color = Color(0.5411765, 0.6784314, 0.95686275, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control2/Control/ColorRect2/MarginContainer/VBoxContainer" unique_id=1673264469]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control2/Control/ColorRect2/MarginContainer/VBoxContainer/MarginContainer" unique_id=1504994027]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+scroll_hint_mode = 1
+script = ExtResource("5_4slkh")
+speed = 320.0
+wheel_scroll_damper = SubResource("Resource_qtaky")
+dragging_scroll_damper = SubResource("Resource_gdgjr")
+metadata/_custom_type_script = "uid://bgqglerkcylxx"
+
+[node name="DiscoveriesContainer" type="VBoxContainer" parent="Control2/Control/ColorRect2/MarginContainer/VBoxContainer/MarginContainer/ScrollContainer" unique_id=548581465]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+metadata/_smooth_scroll_default_mouse_filter_set = true
+
+[node name="Panel" type="Panel" parent="Control2/Control/ColorRect2" unique_id=1477832449]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"PanelCover"
+metadata/_edit_lock_ = true
+
+[node name="ButtonHoverSFX" type="AudioStreamPlayer" parent="Control2" unique_id=1208836186]
+unique_name_in_owner = true
+stream = ExtResource("10_qsuq1")
+volume_db = -12.0
+max_polyphony = 16
+bus = &"UI SFX"
+
+[node name="Anim" type="AnimationPlayer" parent="Control2" unique_id=1288644167]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_j2gmx")
+autoplay = &"open"
+
+[connection signal="gui_input" from="ColorRect" to="." method="_on_color_rect_gui_input"]
+[connection signal="animation_finished" from="Control2/Anim" to="." method="_on_anim_animation_finished"]

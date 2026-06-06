@@ -16,6 +16,7 @@ name = "money fish"
 desc = "a very rare fish, that holds alot of money. it's wealth makes it very heavy, so it's often better to just manually move it in than use nets."
 icon_20_x_20 = ExtResource("1_ixk8t")
 main_color = Color(0.6509804, 0.85490197, 0.58431375, 1)
+sort_order = 1
 scene = ExtResource("1_11uo4")
 spawnrate = SubResource("Curve_ixk8t")
 metadata/_custom_type_script = "uid://bwpicb1kotnet"

@@ -69,13 +69,13 @@ script = ExtResource("1_ys5xd")
 clip_contents = false
 offset_left = -3.0
 offset_top = -3.0
-offset_right = 3.0
-offset_bottom = 2.0
+offset_right = 5.0
+offset_bottom = 5.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/default_color = Color(0.5019608, 0.5294118, 0.63529414, 1)
 theme_override_colors/font_outline_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
 theme_override_constants/outline_size = 2
-theme_override_font_sizes/normal_font_size = 4
+theme_override_font_sizes/normal_font_size = 6
 bbcode_enabled = true
 text = "[font otv='wght=900']+1"
 fit_content = true
