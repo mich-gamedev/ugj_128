@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://de8ivsvcrx5b0" path="res://assets/sound/sfx/hookRemoved.wav" id="3_fam6y"]
 [ext_resource type="AudioStream" uid="uid://be6m7nis7f5kk" path="res://assets/sound/sfx/dragStart.wav" id="4_8kkok"]
 [ext_resource type="AudioStream" uid="uid://cxjvembywksvw" path="res://assets/sound/sfx/dragEnd.wav" id="5_w0mu1"]
+[ext_resource type="AudioStream" uid="uid://cylyen6gyocxo" path="res://assets/sound/sfx/slice.wav" id="6_df8ec"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_b7jl3"]
 random_pitch = 1.0293022
@@ -25,6 +26,11 @@ stream_0/stream = ExtResource("4_8kkok")
 random_pitch = 1.0293022
 streams_count = 1
 stream_0/stream = ExtResource("5_w0mu1")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fam6y"]
+random_pitch = 1.0594631
+streams_count = 1
+stream_0/stream = ExtResource("6_df8ec")
 
 [node name="HookSFX" type="Node2D" unique_id=1793462183]
 script = ExtResource("1_x30kt")
@@ -60,3 +66,11 @@ max_distance = 19200.0
 attenuation = 1e-05
 max_polyphony = 16
 bus = &"In-game SFX"
+
+[node name="SlicedSFX" type="AudioStreamPlayer2D" parent="." unique_id=1975077086]
+stream = SubResource("AudioStreamRandomizer_fam6y")
+volume_db = -9.0
+max_distance = 19200.0
+attenuation = 1e-05
+max_polyphony = 16
+bus = &"SFX"

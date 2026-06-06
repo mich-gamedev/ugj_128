@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://c8brc8tafbvgp" path="res://objects/hooks/sprite.gd" id="2_62q1q"]
 [ext_resource type="Script" uid="uid://bxm5rpt45kanq" path="res://components/misc/fancy_circle.gd" id="3_jnf0t"]
 [ext_resource type="PackedScene" uid="uid://6xuvcg34aisj" path="res://objects/hooks/hook_sfx.tscn" id="4_ifplg"]
+[ext_resource type="AudioStream" uid="uid://bw2825gkndm7b" path="res://assets/sound/sfx/crack.wav" id="5_ia6hc"]
+[ext_resource type="Script" uid="uid://dmvogk41bpu78" path="res://objects/hooks/spawnrates/bomb/explode_sfx.gd" id="6_n8urr"]
 
 [sub_resource type="Curve" id="Curve_2gswl"]
 _data = [Vector2(0, 1), 0.0, -3.0484302, 0, 1, Vector2(0.27770382, 0.15343934), 0.0, 0.0, 0, 0, Vector2(0.47694075, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.9118294, 0.0, 1, 0]
@@ -161,6 +163,11 @@ radius = 180.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_6m72w"]
 radius = 48.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n8urr"]
+random_pitch = 1.0594631
+streams_count = 1
+stream_0/stream = ExtResource("5_ia6hc")
+
 [node name="Hook" type="Area2D" unique_id=591076568 node_paths=PackedStringArray("sep_area", "coh_area", "align_area", "raft_area") groups=["hook"]]
 collision_layer = 3
 script = ExtResource("1_2gswl")
@@ -301,5 +308,12 @@ debug_color = Color(0, 1, 0.49803922, 0)
 
 [node name="HookSFX" parent="." unique_id=1793462183 node_paths=PackedStringArray("hook") instance=ExtResource("4_ifplg")]
 hook = NodePath("..")
+
+[node name="CrackSFX" type="AudioStreamPlayer2D" parent="." unique_id=1533645654]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_n8urr")
+volume_db = -9.0
+bus = &"SFX"
+script = ExtResource("6_n8urr")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

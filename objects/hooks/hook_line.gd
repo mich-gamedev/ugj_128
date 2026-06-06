@@ -32,6 +32,7 @@ func _physics_process(delta: float) -> void:
 		ray.force_raycast_update()
 		if ray.is_colliding() and from.hooks.has(to):
 			Hook.remove_hook(from, to)
+			(ray.get_collider() as Hook).sliced.emit()
 
 func hook_detatched(detatched: Hook, origin: Hook) -> void:
 	if detatched in [from, to]:

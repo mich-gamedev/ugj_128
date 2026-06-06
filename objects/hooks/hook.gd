@@ -66,6 +66,7 @@ signal hook_removed(other: Hook)
 signal hook_detatched_from(from: Hook)
 signal deleting
 signal collected
+signal sliced
 
 var forces: Array[Callable] = [get_separation, get_coherence, get_alignment, get_hook, get_turn, get_edge_resist, get_raft]
 var _force_cache: Array[Vector2]

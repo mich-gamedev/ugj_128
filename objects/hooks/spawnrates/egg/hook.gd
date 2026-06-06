@@ -14,4 +14,5 @@ func _on_area_entered(area: Area2D) -> void:
 			get_tree().current_scene.add_child(inst)
 			inst.global_position = global_position
 			inst.reset_physics_interpolation()
+			(%CrackSFX as ExplodeSFX).play_in_current_pos()
 			queue_free()

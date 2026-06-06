@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://ds2g4fsrm1o0m" path="res://assets/sound/sfx/roundClear.wav" id="5_3su3l"]
 [ext_resource type="AudioStream" uid="uid://ovv878ynk4ky" path="res://assets/sound/sfx/raftPts1.wav" id="5_60lnf"]
 [ext_resource type="AudioStream" uid="uid://ongdqj8veqbx" path="res://assets/sound/sfx/raftPts2.wav" id="6_3su3l"]
+[ext_resource type="AudioStream" uid="uid://xwyliywtcn2k" path="res://assets/sound/sfx/raftPts3.wav" id="8_q2es0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fc07u"]
 radius = 25.079872
@@ -192,14 +193,22 @@ stream_0/stream = ExtResource("3_ommf3")
 stream_1/stream = ExtResource("4_ehv71")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3su3l"]
+random_pitch = 1.005793
 random_volume_offset_db = 0.5
 streams_count = 1
 stream_0/stream = ExtResource("5_60lnf")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q2es0"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jivyt"]
+random_pitch = 1.005793
 random_volume_offset_db = 0.5
 streams_count = 1
 stream_0/stream = ExtResource("6_3su3l")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q2es0"]
+random_pitch = 1.005793
+random_volume_offset_db = 0.5
+streams_count = 1
+stream_0/stream = ExtResource("8_q2es0")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_en5le"]
 bg_color = Color(0.43137255, 0.4509804, 0.5529412, 1)
@@ -463,6 +472,13 @@ max_polyphony = 16
 bus = &"In-game SFX"
 
 [node name="GreenPts2SFX" type="AudioStreamPlayer" parent="." unique_id=467137276]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_jivyt")
+volume_db = -10.0
+max_polyphony = 16
+bus = &"In-game SFX"
+
+[node name="GreenPts3SFX" type="AudioStreamPlayer" parent="." unique_id=1167525123]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_q2es0")
 volume_db = -10.0

@@ -29,7 +29,9 @@ static var points: int:
 		if diff > 0:
 			var inst := EARN_POPUP.instantiate() as Node2D
 			(inst.get_node(^"Label") as RichTextLabel).text = "[font otv='wght=900']%+d" % diff
-			if diff >= 10:
+			if diff >= 50:
+				(inst.get_node(^"Label") as RichTextLabel).add_theme_color_override(&"default_color", Color("d9c179ff"))
+			elif diff >= 10:
 				(inst.get_node(^"Label") as RichTextLabel).add_theme_color_override(&"default_color", Color("#a6da95"))
 			raft.add_child(inst)
 			inst.position = Vector2.from_angle(randf() * TAU) * sqrt(randf_range(0, 625)) # 625 == 25 ** 2
@@ -96,8 +98,10 @@ func _on_area_entered(area: Area2D) -> void:
 		points += area.cost
 
 		%PlopSFX.play();
-		if area.cost >= 10:
-			%GreenPts1SFX.play()
-		if area.cost >= 20:
+		if area.cost >= 50:
+			%GreenPts3SFX.play()
+		elif area.cost >= 20:
 			%GreenPts2SFX.play()
+		elif area.cost >= 10:
+			%GreenPts1SFX.play()
 		GameStats.pack.total_points += area.cost
