@@ -17,7 +17,7 @@ func _ready() -> void:
 		high_score_label.show()
 	quotas.text = str(GameStats.pack.quotas)
 	points.text = str(GameStats.pack.total_points)
-	time.text = "%2d:%2d" % [
+	time.text = "%2d:%02d" % [
 		Time.get_time_dict_from_unix_time(int(GameStats.pack.time_elapsed)).minute,
 		Time.get_time_dict_from_unix_time(int(GameStats.pack.time_elapsed)).second
 	]

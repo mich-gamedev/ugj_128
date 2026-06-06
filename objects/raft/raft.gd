@@ -12,8 +12,10 @@ static var points: int:
 		points = v
 		if v >= needed_points:
 			points = 0
-			needed_points *= randf_range(.9, 2.5)
-			wait_time *= randf_range(1, 1.15)
+			add_points *= randf_range(1.05, 2.0)
+			add_points = clamp(add_points, 0, 1024)
+			needed_points += add_points
+			wait_time = 45 + (needed_points / (50 + GameStats.pack.quotas * 2)) + (GameStats.pack.quotas * 2)
 			World.max_hooks *= randf_range(1.1, 1.5)
 			World.max_hooks = min(World.max_hooks, 64)
 			time_left = wait_time
@@ -32,13 +34,15 @@ static var points: int:
 			raft.add_child(inst)
 			inst.position = Vector2.from_angle(randf() * TAU) * sqrt(randf_range(0, 625)) # 625 == 25 ** 2
 			inst.reset_physics_interpolation()
-static var needed_points: int = 30
-static var wait_time: float = 40:
+static var needed_points: int = 45
+static var add_points: int = 25
+static var wait_time: float = 30:
 	set(v):
 		wait_time = v
 		if raft.twn_time: raft.twn_time.kill()
 		raft.twn_time = raft.create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 		raft.twn_time.tween_property(raft.time_label, ^"scale", Vector2.ONE, 1.5).from(Vector2.ONE * 2.5)
+static var add_time: float = 1
 static var time_left: float = wait_time
 
 @onready var time_label: RichTextLabel = %TimeLabel
@@ -48,8 +52,9 @@ static var time_left: float = wait_time
 
 func reset() -> void:
 	points = 0
-	needed_points = 30
-	wait_time = 40
+	needed_points = 45
+	wait_time = 45
+	add_points = 25
 	time_left = wait_time
 
 func _ready() -> void:

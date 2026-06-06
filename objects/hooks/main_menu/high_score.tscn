@@ -115,7 +115,7 @@ theme_override_fonts/font = SubResource("FontVariation_07fi6")
 theme_override_font_sizes/font_size = 5
 text = " %d points
  %d quotas
- in %d:%2d"
+ in %d:%02d"
 
 [node name="SepArea" type="Area2D" parent="." unique_id=11390180]
 visible = false
