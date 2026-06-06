@@ -6,10 +6,10 @@ func _ready() -> void:
 	var trackList = range(get_child_count())
 	if last_track != -1:
 		trackList.remove_at(last_track)
-	
+
 	last_track = trackList.pick_random()
 	get_child(last_track).play()
-	
+
 	GameStats.signals.state_changed.connect(dead)
 
 func dead(state: int) -> void:

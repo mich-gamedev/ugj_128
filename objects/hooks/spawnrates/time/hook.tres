@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="HookSpawnrate" format=3 uid="uid://xfvaqoweopg3"]
+
+[ext_resource type="Script" uid="uid://bwpicb1kotnet" path="res://objects/hooks/hook_spawnrate.gd" id="1_75r33"]
+[ext_resource type="PackedScene" uid="uid://cljtmiq56rm0e" path="res://objects/hooks/spawnrates/time/icon.tscn" id="1_ugosd"]
+[ext_resource type="PackedScene" uid="uid://bnb3ipewhfgvi" path="res://objects/hooks/spawnrates/time/hook.tscn" id="2_sme8q"]
+
+[sub_resource type="Curve" id="Curve_85w73"]
+_data = [Vector2(0, 0.005), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[resource]
+script = ExtResource("1_75r33")
+name = "TIME FISH"
+desc = "a rare fish that increases the time left before the quota ends by 10 seconds."
+icon_20_x_20 = ExtResource("1_ugosd")
+main_color = Color(0.49019608, 0.76862746, 0.89411765, 1)
+sort_order = 11
+scene = ExtResource("2_sme8q")
+spawnrate = SubResource("Curve_85w73")
+metadata/_custom_type_script = "uid://bwpicb1kotnet"

@@ -1,8 +1,4 @@
-- do the thing
-	- do this thing to complete the above
-	[x] this one is done
-	[ ] this one isn't
-[x] [rainbow]what the fish[/rainbow]
-[x] saves to [code]res://notes.txt[/code] by default
-
-[img]res://icon.svg[/img]
+GOALS 2026-06-06 _michdev:
+	[ ] Fix rose fish
+	[ ] Start object pooling branch
+	[ ] Get footage, start trailer and capsule gif (doesnt need to be finished today)

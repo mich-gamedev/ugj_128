@@ -47,6 +47,7 @@ static var wait_time: float = 30:
 static var add_time: float = 1
 static var time_left: float = wait_time
 
+
 @onready var time_label: RichTextLabel = %TimeLabel
 @onready var points_label: RichTextLabel = %PointsLabel
 @onready var points_bar: ProgressBar = %PointsBar

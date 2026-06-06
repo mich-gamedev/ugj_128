@@ -6,8 +6,8 @@
 
 [sub_resource type="Curve" id="Curve_yobk4"]
 _limits = [0.0, 1.0, 0.0, 20.0]
-_data = [Vector2(1.8238732, 0), -0.8387021, 0.0, 0, 0, Vector2(5.9153576, 0), 0.0, 0.0, 0, 0, Vector2(10.627649, 0.07112414), 0.0, 0.0, 0, 0, Vector2(17.32477, 0.0016111135), 0.0, 0.0, 0, 0, Vector2(20, 0.04507351), 0.0, 0.0, 0, 0]
-point_count = 5
+_data = [Vector2(1.8238732, 0), -0.8387021, 0.0, 0, 0, Vector2(5.9153576, 0), 0.0, 0.0, 0, 0, Vector2(12.274471, 0.11754352), 0.0, 0.0, 0, 0, Vector2(20, 0.11840308), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [resource]
 script = ExtResource("1_d76tv")
@@ -15,6 +15,7 @@ name = "ROSE FISH"
 desc = "a thorny fish that creates a vast network with other rose fish, and stops you from dragging other fish when you touch it's nets."
 icon_20_x_20 = ExtResource("1_yobk4")
 main_color = Color(0.93333334, 0.6, 0.627451, 1)
+sort_order = 10
 scene = ExtResource("1_bgay6")
 spawnrate = SubResource("Curve_yobk4")
 metadata/_custom_type_script = "uid://bwpicb1kotnet"

@@ -8,10 +8,11 @@ const DISCOVER_PANEL = preload("uid://dh3w4l4j4274e")
 func _ready() -> void:
 	var spawns := Hook.get_hook_spawns().duplicate()
 	spawns.sort_custom(func(a: HookSpawnrate, b: HookSpawnrate) -> bool: return a.sort_order < b.sort_order)
+
 	for i in spawns:
 		var inst := DISCOVER_PANEL.instantiate() as DiscoverPanel
 		inst.hook = i
-		inst.discovered = is_instance_valid(SaveData.data.high_score) and i.resource_path in SaveData.data.high_score.discoveries
+		inst.discovered = is_instance_valid(SaveData.data.high_score) and (i.resource_path in SaveData.data.high_score.discoveries or i.resource_path in GameStats.pack.discoveries)
 		discoveries.add_child(inst)
 
 

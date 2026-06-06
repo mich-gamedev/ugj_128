@@ -60,7 +60,7 @@ z_index = 1
 points = PackedVector2Array(-5, 0, -2, -2, 0, -5, 2, -2, 5, 0, 2, 2, 0, 5, -2, 2)
 closed = true
 width = 2.0
-default_color = Color(0.9411765, 0.7764706, 0.7764706, 1)
+default_color = Color(0.92941177, 0.5294118, 0.5882353, 1)
 sharp_limit = 100.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite/Line2D" unique_id=1974543881]
@@ -72,6 +72,6 @@ z_index = 1
 script = ExtResource("1_x58s8")
 width = 2.0
 radius = 4.0
-draw_color = Color(0.9411765, 0.7764706, 0.7764706, 1)
+draw_color = Color(0.92941177, 0.5294118, 0.5882353, 1)
 fill_color = Color(0.14117648, 0.15294118, 0.22745098, 1)
 metadata/_custom_type_script = "uid://bxm5rpt45kanq"

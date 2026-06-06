@@ -2,8 +2,6 @@ extends Node
 
 @export var hook: Hook
 
-#TODO: Set up a pause / config menu
-
 func _ready() -> void:
 	hook.collected.connect(_collected)
 

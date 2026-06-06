@@ -135,6 +135,7 @@ script = ExtResource("7_5qq27")
 process_mode = 3
 stream = ExtResource("6_bq33v")
 volume_db = -12.0
+bus = &"Music"
 script = ExtResource("7_j2gmx")
 loop_beats = 96.0
 
@@ -142,6 +143,7 @@ loop_beats = 96.0
 process_mode = 3
 stream = ExtResource("10_dlabj")
 volume_db = -12.0
+bus = &"Music"
 script = ExtResource("7_j2gmx")
 loop_beats = 96.0
 
@@ -158,6 +160,7 @@ stream = ExtResource("9_gb53w")
 volume_db = -12.0
 pitch_scale = 0.8
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 script = ExtResource("10_5qq27")
 

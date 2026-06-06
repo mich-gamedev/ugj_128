@@ -253,7 +253,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:self_modulate")
+tracks/1/path = NodePath(".:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -305,7 +305,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:self_modulate")
+tracks/1/path = NodePath(".:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -485,7 +485,8 @@ volume_db = -10.0
 max_polyphony = 16
 bus = &"In-game SFX"
 
-[node name="Node2D" type="CanvasGroup" parent="." unique_id=1498632425]
+[node name="Node2D" type="Node2D" parent="." unique_id=1083160564]
+modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(0, 32)
 
