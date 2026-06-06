@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://c56fw0htmtl0d" path="res://assets/sound/music/dead.ogg" id="9_gb53w"]
 [ext_resource type="Script" uid="uid://bf7iei4mh65nm" path="res://objects/music/dead_mus_loop.gd" id="10_5qq27"]
 [ext_resource type="AudioStream" uid="uid://dynk72n75wlni" path="res://assets/sound/music/mus3.ogg" id="10_dlabj"]
+[ext_resource type="AudioStream" uid="uid://j1tdtds5dq5b" path="res://assets/sound/music/mus2.ogg" id="11_umvgx"]
 [ext_resource type="PackedScene" uid="uid://bftdamxkdy5n3" path="res://objects/hooks/main_menu/fish_logs.tscn" id="12_dlabj"]
 
 [sub_resource type="Curve2D" id="Curve2D_4rhad"]
@@ -142,6 +143,14 @@ process_mode = 3
 stream = ExtResource("10_dlabj")
 volume_db = -12.0
 script = ExtResource("7_j2gmx")
+loop_beats = 96.0
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="MusicManager" unique_id=1360358787]
+process_mode = 3
+stream = ExtResource("11_umvgx")
+volume_db = -12.0
+script = ExtResource("7_j2gmx")
+bpm = 115.0
 loop_beats = 96.0
 
 [node name="DeadLoop" type="AudioStreamPlayer" parent="." unique_id=1239111249]
