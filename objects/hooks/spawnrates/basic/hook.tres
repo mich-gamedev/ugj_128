@@ -17,4 +17,5 @@ icon_20_x_20 = ExtResource("1_7xct0")
 main_color = Color(0.7921569, 0.827451, 0.9607843, 1)
 scene = ExtResource("1_y20af")
 spawnrate = SubResource("Curve_p3uu3")
+default_count = 15
 metadata/_custom_type_script = "uid://bwpicb1kotnet"
