@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bnmvho21ulye4" path="res://objects/hooks/main_menu/quit.tscn" id="9_5qq27"]
 [ext_resource type="AudioStream" uid="uid://c56fw0htmtl0d" path="res://assets/sound/music/dead.ogg" id="9_gb53w"]
 [ext_resource type="Script" uid="uid://bf7iei4mh65nm" path="res://objects/music/dead_mus_loop.gd" id="10_5qq27"]
+[ext_resource type="AudioStream" uid="uid://dynk72n75wlni" path="res://assets/sound/music/mus3.ogg" id="10_dlabj"]
 
 [sub_resource type="Curve2D" id="Curve2D_4rhad"]
 _data = {
@@ -125,16 +126,19 @@ position = Vector2(129, 130)
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1635460710]
 
 [node name="MusicManager" type="Node" parent="." unique_id=236361331]
+process_mode = 3
 script = ExtResource("7_5qq27")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MusicManager" unique_id=949219570]
+process_mode = 3
 stream = ExtResource("6_bq33v")
 volume_db = -12.0
 script = ExtResource("7_j2gmx")
 loop_beats = 96.0
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="MusicManager" unique_id=335931495]
-stream = ExtResource("6_bq33v")
+process_mode = 3
+stream = ExtResource("10_dlabj")
 volume_db = -12.0
 script = ExtResource("7_j2gmx")
 loop_beats = 96.0
