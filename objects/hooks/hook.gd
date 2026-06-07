@@ -310,7 +310,8 @@ func delete() -> void:
 		Hook.remove_hook(self, i)
 	deleting.emit()
 	await get_tree().create_timer(0.5).timeout
-	stash()
+	if spawnrate: stash()
+	else: queue_free()
 
 func flush_hooks() -> void:
 	hooks = hooks.filter(func(i): return is_instance_valid(i))
