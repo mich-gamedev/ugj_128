@@ -72,6 +72,30 @@ var forces: Array[Callable] = [get_separation, get_coherence, get_alignment, get
 var _force_cache: Array[Vector2]
 var _force_cache_delta: float = randf_range(0, .1)
 
+var spawnrate: HookSpawnrate
+
+static var pool: Dictionary[HookSpawnrate, Array]
+
+var stashed: bool
+
+func stash() -> void:
+	if stashed:
+		push_error("Node already stashed.")
+		return
+	stashed = true
+	if is_inside_tree():
+		get_parent().remove_child(self)
+	pool.get_or_add(spawnrate, []).append(self)
+
+func unstash() -> Hook:
+	if !stashed:
+		push_error("Node not stashed. Returning `null`")
+		return null
+	stashed = false
+	World.world.add_child(self)
+	pool[spawnrate].erase(self)
+	return self
+
 func _ready() -> void:
 	set_collision_layer_value(2, true)
 
@@ -271,6 +295,9 @@ func _fetch_total_hooks(found: Array[Hook]) -> Array[Hook]:
 
 
 func _exit_tree() -> void:
+	velocity = Vector2.ZERO
+	_force_cache_delta = -1
+	_force_cache.clear()
 	for i in hooks:
 		Hook.remove_hook(i, self)
 
@@ -283,7 +310,8 @@ func delete() -> void:
 		Hook.remove_hook(self, i)
 	deleting.emit()
 	await get_tree().create_timer(0.5).timeout
-	queue_free()
+	if spawnrate: stash()
+	else: queue_free()
 
 func flush_hooks() -> void:
 	hooks = hooks.filter(func(i): return is_instance_valid(i))

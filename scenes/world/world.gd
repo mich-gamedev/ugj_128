@@ -6,11 +6,14 @@ class_name World extends Node2D
 const GAME_OVER = preload("uid://ejgi2xvv1tnq")
 
 static var max_hooks := 15
+static var world: World
 
 const FISH_HIGH_SCORE = preload("uid://d8i3yxn84yi4")
 
 func _ready() -> void:
-
+	world = self
+	for i in Hook.get_hook_spawns():
+		i.make_defaults()
 	if SaveData.data.high_score:
 		var inst := FISH_HIGH_SCORE.instantiate() as Hook
 		inst.position = Vector2(242, 129)
@@ -34,8 +37,8 @@ func _spawn_timeout() -> void:
 	var hook := Hook.random()
 	if (!GameStats.pack.discoveries.has(hook.resource_path)) and (!SaveData.data.high_score.discoveries.has(hook.resource_path)):
 		GameStats.pack.discoveries.append(hook.resource_path)
-	var inst := hook.scene.instantiate() as Hook
-	add_child(inst)
+	var inst := hook.get_hook()
+
 	var rect := bounds.get_global_rect()
 	inst.global_position = Vector2(
 		randi_range(rect.position.x, rect.end.x),

@@ -19,4 +19,5 @@ main_color = Color(0.43137255, 0.4509804, 0.5529412, 1)
 sort_order = 2
 scene = ExtResource("1_u3ce2")
 spawnrate = SubResource("Curve_k0vhe")
+default_count = 5
 metadata/_custom_type_script = "uid://bwpicb1kotnet"
